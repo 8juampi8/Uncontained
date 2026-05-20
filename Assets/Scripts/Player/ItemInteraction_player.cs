@@ -28,15 +28,15 @@ public class ItemInteraction_player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log(slotLantern);
-            Debug.Log(lightOn);
             if(slotLantern != null)
             {
+                Debug.Log(lightOn);
                 if (lightOn)
                 {
                     slotLantern.DisableLight();
                     lightOn = false;
                 }
-                if (!lightOn)
+                else
                 {
                     slotLantern.EnableLight();
                     lightOn = true;
