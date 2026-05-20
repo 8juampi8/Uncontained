@@ -16,7 +16,7 @@ public class Pistol_gun : Guns_gun
     {
         if (shootTimer >= shootCooldown)
         {
-            Instantiate(bullet, canion.transform.position, canion.transform.rotation);
+            Instantiate(bullet, cannon.transform.position, cannon.transform.rotation);
             shootTimer = 0;
         }
     }

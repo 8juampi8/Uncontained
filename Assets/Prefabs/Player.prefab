@@ -13,10 +13,8 @@ GameObject:
   - component: {fileID: 8903048847353405809}
   - component: {fileID: 1080578089078140915}
   - component: {fileID: 7734105748122799297}
-  - component: {fileID: 1534948930650563462}
   - component: {fileID: 4385855970214506266}
-  - component: {fileID: 8667052172115547226}
-  - component: {fileID: 747232425496149435}
+  - component: {fileID: -8248357436384275857}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -177,21 +175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Movement_player
   rb: {fileID: 8903048847353405809}
   cam: {fileID: 0}
---- !u!114 &1534948930650563462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148579008531778595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7759c8f21c7fe4ea69c60a31c43775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Combat_player
-  enemies:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &4385855970214506266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SilenceHab_player
   playerSprite: {fileID: 1391675941740519288}
---- !u!114 &8667052172115547226
+--- !u!114 &-8248357436384275857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,22 +197,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1148579008531778595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb2a4b19160cb5d44bd0c97a41265581, type: 3}
+  m_Script: {fileID: 11500000, guid: 826a2010cf1d68941b36d15216d4c490, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickGun_player
-  gunPosition: {fileID: 6138940390832369402}
---- !u!114 &747232425496149435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148579008531778595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa8aa7643705994980e615879212ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pickitem_player
+  m_EditorClassIdentifier: Assembly-CSharp::ItemInteraction_player
 --- !u!1 &6138940390832369402
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +211,7 @@ GameObject:
   - component: {fileID: 5658966841432191281}
   m_Layer: 7
   m_Name: GunPosition
-  m_TagString: Untagged
+  m_TagString: GunPos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,7 +271,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8508879442654253282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 

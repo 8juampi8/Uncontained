@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7378315935860152541}
   - component: {fileID: 8238021689157342834}
   - component: {fileID: -3565324918428637367}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shotgun
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2387747364544302460}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.85, y: -0.09, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 46.44, y: -19.04, z: 0}
   m_LocalScale: {x: 0.5177287, y: 0.46610725, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -144,8 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun_gun
   bullet: {fileID: 6865897758103964060, guid: 1f3e7c9e3876e7b4e8e117ce737e2c1f, type: 3}
-  canion: {fileID: 0}
-  gunCollider: {fileID: 8238021689157342834}
+  cannon: {fileID: 4072051952653767348}
 --- !u!1 &4072051952653767348
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +170,7 @@ Transform:
   m_GameObject: {fileID: 4072051952653767348}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0.98, z: 0}
+  m_LocalPosition: {x: -0.029, y: 1.946, z: 0}
   m_LocalScale: {x: 1.9315137, y: 2.1454291, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -6,11 +6,11 @@ public class Combat_player : MonoBehaviour
     [SerializeField] private LayerMask enemies;
     private float meleRadius = 1.5f;
     private int meleDamage = 10;
-    PickGun_player gun;
+    ItemInteraction_player gun;
 
     void Start()
     {
-        gun = GetComponent<PickGun_player>();
+        gun = GetComponent<ItemInteraction_player>();
     }
 
     void Update()
@@ -19,9 +19,9 @@ public class Combat_player : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             // SI TIENE UN ARMA, SE FIJA QUE ARMA
-            if (gun.equiped)
+            if (gun.EquippedItem.gameObject.CompareTag("Gun"))
             {
-                Guns_gun equippedGun = GameManager.instance.EquippedGun.GetComponent<Guns_gun>();
+                Guns_gun equippedGun = gun.EquippedItem.gameObject.GetComponent<Guns_gun>();
 
                 if (equippedGun != null)
                 {
