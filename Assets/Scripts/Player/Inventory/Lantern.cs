@@ -25,10 +25,12 @@ public class Lantern : Item
         transform.rotation = player.transform.rotation;
     }
 
-    public override void Drop()
+    public void EnableLight()
+    {
+        lux.enabled = true;
+    }
+    public void DisableLight()
     {
         lux.enabled = false;
-
-        transform.SetParent(null);
     }
 }

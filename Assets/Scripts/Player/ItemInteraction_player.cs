@@ -5,33 +5,80 @@ public class ItemInteraction_player : MonoBehaviour
     private bool onItem = false;
     private Item item;
 
-    private Item equippedItem;
-    private Guns_gun equippedGun;
+    private Lantern slotLantern;
+    private Guns_gun slotGun;
 
-    public Guns_gun EquippedGun => equippedGun;
+    public Lantern EquippedLantern => slotLantern;
+    public Guns_gun EquippedGun => slotGun;
 
-    private bool itemEquipped = false;
+    private bool lightOn = false;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && onItem)
         {
-            item.Equip();
-            equippedItem = item;
-
-            equippedGun = item.GetComponent<Guns_gun>();
-
-            Debug.Log(equippedGun);
-
-            itemEquipped = true;
+            EquipItem(item);
         }
 
-        if (Input.GetKeyDown(KeyCode.G) && itemEquipped)
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            equippedItem.Drop();
+            DropGun();
+        }
 
-            equippedGun = null;
-            itemEquipped = false;
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log(slotLantern);
+            Debug.Log(lightOn);
+            if(slotLantern != null)
+            {
+                if (lightOn)
+                {
+                    slotLantern.DisableLight();
+                    lightOn = false;
+                }
+                if (!lightOn)
+                {
+                    slotLantern.EnableLight();
+                    lightOn = true;
+                }
+            }
+        }
+    }
+
+    private void EquipItem(Item item)
+    {
+        Guns_gun gun = item.GetComponent<Guns_gun>();
+        if (gun != null)
+        {
+            if (slotGun)
+            {
+                slotGun.Drop();
+            }
+
+            slotGun = gun;
+            slotGun.Equip();
+
+            return;
+        }
+
+        Lantern lantern = item.GetComponent<Lantern>();
+        if (lantern != null)
+        {
+            slotLantern = lantern;
+            slotLantern.Equip();
+
+            lightOn = true;
+
+             return;
+        }
+    }
+
+    private void DropGun()
+    {
+        if (slotGun != null)
+        {
+            slotGun.Drop();
+            slotGun = null;
         }
     }
 

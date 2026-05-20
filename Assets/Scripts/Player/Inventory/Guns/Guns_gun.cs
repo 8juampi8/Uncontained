@@ -21,8 +21,11 @@ public abstract class Guns_gun : Item
         transform.rotation = player.transform.rotation;
     }
 
-    public override void Drop()
+    public void Drop()
     {
         transform.SetParent(null);
+
+        itemCollider = GetComponent<Collider2D>();
+        itemCollider.enabled = true;
     }
 }
