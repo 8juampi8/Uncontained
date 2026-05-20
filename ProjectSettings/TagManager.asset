@@ -12,6 +12,7 @@ TagManager:
   - Defeat
   - Victory
   - Pause
+  - Light
   layers:
   - Default
   - TransparentFX

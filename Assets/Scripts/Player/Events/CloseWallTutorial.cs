@@ -8,9 +8,9 @@ public class CollisionEvents_player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("CloseWallTutorial"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            Destroy(gameObject);
 
             float newScaley = 9.4f;
             float diference = newScaley - wallTutorial.transform.localScale.y;
@@ -20,13 +20,6 @@ public class CollisionEvents_player : MonoBehaviour
             wallTutorial.transform.localScale = scale;
 
             wallTutorial.transform.localPosition -= new Vector3(0, diference / 2f, 0);
-        }
-
-        if (collision.gameObject.CompareTag("FinalTutorial"))
-        {
-            Destroy(collision.gameObject);
-
-            SceneManager.LoadScene("Game");
         }
     }
 }
