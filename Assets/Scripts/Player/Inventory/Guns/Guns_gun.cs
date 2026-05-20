@@ -20,4 +20,9 @@ public abstract class Guns_gun : Item
         transform.localPosition = Vector2.zero;
         transform.rotation = player.transform.rotation;
     }
+
+    public override void Drop()
+    {
+        transform.SetParent(null);
+    }
 }

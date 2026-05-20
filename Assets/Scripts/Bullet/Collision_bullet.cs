@@ -6,13 +6,14 @@ public class Collision_bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Light")) return;
-
-        if (collision.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
-            collision.gameObject.GetComponent<Health_enemy>().getDamage(damage);
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.GetComponent<Health_enemy>().getDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }

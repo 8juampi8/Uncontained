@@ -5,12 +5,14 @@ public abstract class Item : MonoBehaviour
 {
     private Collider2D itemCollider;
 
-    public abstract void Equip();
-
-    public void Drop()
+    public virtual void Equip()
     {
-        transform.SetParent(null);
+        itemCollider = GetComponent<Collider2D>();
+        itemCollider.enabled = false;   
+    }
 
+    public virtual void Drop()
+    {
         itemCollider = GetComponent<Collider2D>();
         itemCollider.enabled = true;
     }
