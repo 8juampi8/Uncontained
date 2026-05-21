@@ -12,6 +12,9 @@ public class Flashlight : MonoBehaviour
 
     public void Toggle()
     {
-        lght.enabled = !lght.enabled;
+        if (Time.timeScale > 0)
+        {
+            lght.enabled = !lght.enabled;
+        }
     }
 }

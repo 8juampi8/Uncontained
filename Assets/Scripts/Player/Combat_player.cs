@@ -3,8 +3,10 @@ using UnityEngine;
 public class Combat_player : MonoBehaviour
 {
     [SerializeField] private LayerMask enemies;
+
     private float meleRadius = 1.5f;
     private int meleDamage = 10;
+
     private ItemInteraction_player item;
 
     void Start()
@@ -22,19 +24,19 @@ public class Combat_player : MonoBehaviour
             }
             else
             {
-                Collider2D meleHit = Physics2D.OverlapCircle(transform.position, meleRadius, enemies);
+                Collider2D meleHit =
+                    Physics2D.OverlapCircle(
+                        transform.position,
+                        meleRadius,
+                        enemies);
 
                 if (meleHit != null)
                 {
-                    meleHit.GetComponent<Health_enemy>().getDamage(meleDamage);
+                    meleHit
+                        .GetComponent<Health_enemy>()
+                        .getDamage(meleDamage);
                 }
             }
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, meleRadius);
     }
 }

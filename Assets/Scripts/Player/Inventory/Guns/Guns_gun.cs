@@ -1,29 +1,29 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Guns_gun : Item
+public abstract class Guns_gun : MonoBehaviour
 {
     [SerializeField] protected GameObject bullet;
     [SerializeField] protected GameObject cannon;
-    private GameObject player;
-    private GameObject gunPosition;
+
+    [SerializeField] private string gunID;
+    public string GunID => gunID;
+
     protected bool isEquipped = false;
+
+    [SerializeField] private GameObject pickupPrefab;
+    public GameObject PickupPrefab => pickupPrefab;
 
     public abstract void Shoot();
 
-    public override void Equip()
+    public virtual void Equip()
     {
         isEquipped = true;
     }
 
-    public void Drop()
+    public virtual void Drop()
     {
-        transform.SetParent(null);
-
         isEquipped = false;
 
-        itemCollider = GetComponent<Collider2D>();
-        itemCollider.enabled = true;
+        Destroy(gameObject);
     }
 }

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     GameObject pauseScreen;
     GameObject player;
 
-    Guns_gun equippedGun;
+    [SerializeField] private Guns_gun[] gunPrefabs;
 
     void Start()
     {
@@ -25,6 +25,28 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseScreen != null)
+            {
+                pauseScreen.SetActive(true);
+            }
+        }
+        if (victoryScreen != null && defeatScreen != null && pauseScreen != null)
+        {
+            if (victoryScreen.activeSelf || defeatScreen.activeSelf || pauseScreen.activeSelf)
+            {
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
         }
     }
 
@@ -42,33 +64,16 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 
-        defeatScreen = FindAnyObjectByType<Defeat>(FindObjectsInactive.Include)?.gameObject;
-        victoryScreen = FindAnyObjectByType<Victory>(FindObjectsInactive.Include)?.gameObject;
-        pauseScreen = FindAnyObjectByType<Pause>(FindObjectsInactive.Include)?.gameObject;
+        defeatScreen = FindAnyObjectByType<Defeat>(
+            FindObjectsInactive.Include)?.gameObject;
+
+        victoryScreen = FindAnyObjectByType<Victory>(
+            FindObjectsInactive.Include)?.gameObject;
+
+        pauseScreen = FindAnyObjectByType<Pause>(
+            FindObjectsInactive.Include)?.gameObject;
 
         ReequipGun();
-    }
-
-    void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseScreen.SetActive(true);
-        }
-
-        if (victoryScreen != null && defeatScreen != null && pauseScreen != null)
-        {
-            if (victoryScreen.activeSelf || defeatScreen.activeSelf || pauseScreen.activeSelf)
-            {
-                Time.timeScale = 0f;
-            }
-
-            else
-            {
-                Time.timeScale = 1f;
-            }
-        }
     }
 
     public void getDamage(int damage)
@@ -77,44 +82,34 @@ public class GameManager : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            Destroy(player);
+            playerHealth = 0;
+
+            if (player != null)
+                Destroy(player);
 
             PlayerPrefs.DeleteKey("equippedGun");
-            ClearWeaponVisual();
 
-            defeatScreen.SetActive(true);
+            if (defeatScreen != null)
+                defeatScreen.SetActive(true);
+
             playerHealth = 3;
-        }
-    }
-
-    public void ClearWeaponVisual()
-    {
-        GameObject gunPos = GameObject.FindWithTag("GunPos");
-        if (gunPos == null) return;
-
-        foreach (Transform child in gunPos.transform)
-        {
-            Destroy(child.gameObject);
         }
     }
 
     public void Win()
     {
-        victoryScreen.SetActive(true);
+        if (victoryScreen != null)
+            victoryScreen.SetActive(true);
     }
 
-    public void PickGun(Guns_gun gun)
+    public void PickGun(string gunID)
     {
-        equippedGun = gun;
-
-        PlayerPrefs.SetString("equippedGun", gun.gameObject.name);
+        PlayerPrefs.SetString("equippedGun", gunID);
         PlayerPrefs.Save();
     }
 
     public void DropGun()
     {
-        equippedGun = null;
-
         PlayerPrefs.DeleteKey("equippedGun");
     }
 
@@ -122,25 +117,41 @@ public class GameManager : MonoBehaviour
     {
         string gunID = PlayerPrefs.GetString("equippedGun", "");
 
-        if (string.IsNullOrEmpty(gunID)) return;
-
-        Guns_gun[] guns = FindObjectsByType<Guns_gun>(FindObjectsInactive.Exclude);
-
-        foreach (var g in guns)
-        {
-            if (g.gameObject.name != gunID) continue;
-
-            equippedGun = g;
-
-            GameObject gunPos = GameObject.FindWithTag("GunPos");
-            if (gunPos == null) return;
-
-            g.transform.SetParent(gunPos.transform);
-            g.transform.localPosition = Vector3.zero;
-            g.transform.localRotation = Quaternion.identity;
-
-            g.Equip();
+        if (string.IsNullOrEmpty(gunID))
             return;
+
+        Guns_gun prefab = null;
+
+        foreach (var gun in gunPrefabs)
+        {
+            if (gun.GunID == gunID)
+            {
+                prefab = gun;
+                break;
+            }
         }
+
+        if (prefab == null)
+            return;
+
+        GameObject gunPos = GameObject.FindWithTag("GunPos");
+
+        if (gunPos == null)
+            return;
+
+        Guns_gun newGun = Instantiate(prefab, gunPos.transform);
+
+        newGun.transform.localPosition = Vector3.zero;
+        newGun.transform.localRotation = Quaternion.identity;
+
+        newGun.Equip();
+
+        if (player == null)
+            return;
+
+        ItemInteraction_player item =
+            player.GetComponent<ItemInteraction_player>();
+
+        item.SetGun(newGun);
     }
 }

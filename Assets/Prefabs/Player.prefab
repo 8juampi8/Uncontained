@@ -202,6 +202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826a2010cf1d68941b36d15216d4c490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInteraction_player
+  gunPos: {fileID: 5658966841432191281}
+  interactRadius: 1
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1428559473178132555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +233,7 @@ GameObject:
   - component: {fileID: 8271419139405367787}
   - component: {fileID: 6092015518901255145}
   - component: {fileID: 6335803435738927151}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Flashlight
   m_TagString: Flashlight
   m_Icon: {fileID: 0}

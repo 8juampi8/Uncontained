@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 116470505727167653}
   - component: {fileID: 7378315935860152541}
-  - component: {fileID: 8238021689157342834}
-  - component: {fileID: -3565324918428637367}
-  m_Layer: 8
+  - component: {fileID: 6596341574697938834}
+  m_Layer: 0
   m_Name: Shotgun
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2387747364544302460}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 46.44, y: -19.04, z: 0}
+  m_LocalPosition: {x: 3.029608, y: 1.1161649, z: 0}
   m_LocalScale: {x: 0.5177287, y: 0.46610725, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.1509434, g: 0.08757565, b: 0.08757565, a: 1}
+  m_Color: {r: 0.27450982, g: 0.05882353, b: 0.05882353, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,44 +93,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!70 &8238021689157342834
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2387747364544302460}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2.0000002}
-  m_Direction: 0
---- !u!114 &-3565324918428637367
+--- !u!114 &6596341574697938834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,6 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun_gun
   bullet: {fileID: 6865897758103964060, guid: 1f3e7c9e3876e7b4e8e117ce737e2c1f, type: 3}
   cannon: {fileID: 4072051952653767348}
+  gunID: ShotGun
+  pickupPrefab: {fileID: 6393930321013842300, guid: 1a7310b9c35a7d248bd8ac5fb1d2dc4d, type: 3}
 --- !u!1 &4072051952653767348
 GameObject:
   m_ObjectHideFlags: 0
