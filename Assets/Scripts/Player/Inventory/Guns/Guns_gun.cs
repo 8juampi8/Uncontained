@@ -8,22 +8,20 @@ public abstract class Guns_gun : Item
     [SerializeField] protected GameObject cannon;
     private GameObject player;
     private GameObject gunPosition;
+    protected bool isEquipped = false;
 
     public abstract void Shoot();
 
     public override void Equip()
     {
-        player = GameObject.FindWithTag("Player");
-        gunPosition = GameObject.FindWithTag("GunPos");
-
-        transform.SetParent(gunPosition.transform);
-        transform.localPosition = Vector2.zero;
-        transform.rotation = player.transform.rotation;
+        isEquipped = true;
     }
 
     public void Drop()
     {
         transform.SetParent(null);
+
+        isEquipped = false;
 
         itemCollider = GetComponent<Collider2D>();
         itemCollider.enabled = true;

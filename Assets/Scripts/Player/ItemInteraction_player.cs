@@ -5,13 +5,19 @@ public class ItemInteraction_player : MonoBehaviour
     private bool onItem = false;
     private Item item;
 
-    private Lantern slotLantern;
     private Guns_gun slotGun;
 
-    public Lantern EquippedLantern => slotLantern;
     public Guns_gun EquippedGun => slotGun;
 
-    private bool lightOn = false;
+    private Flashlight flashlight;
+
+    private bool hasKeyCard = false;
+    public bool HasKeyCard => hasKeyCard;
+
+    void Start()
+    {
+        flashlight = GetComponentInChildren<Flashlight>();
+    }
 
     void Update()
     {
@@ -25,51 +31,38 @@ public class ItemInteraction_player : MonoBehaviour
             DropGun();
         }
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log(slotLantern);
-            if(slotLantern != null)
-            {
-                Debug.Log(lightOn);
-                if (lightOn)
-                {
-                    slotLantern.DisableLight();
-                    lightOn = false;
-                }
-                else
-                {
-                    slotLantern.EnableLight();
-                    lightOn = true;
-                }
-            }
+            flashlight.Toggle();
         }
     }
 
     private void EquipItem(Item item)
     {
         Guns_gun gun = item.GetComponent<Guns_gun>();
+
         if (gun != null)
         {
             if (slotGun)
             {
                 slotGun.Drop();
+
+                GameManager.Instance.DropGun();
             }
 
+            GameManager.Instance.PickGun(gun);
             slotGun = gun;
-            slotGun.Equip();
+
+            GameManager.Instance.ReequipGun();
 
             return;
         }
 
-        Lantern lantern = item.GetComponent<Lantern>();
-        if (lantern != null)
+        if (item.gameObject.CompareTag("KeyCard"))
         {
-            slotLantern = lantern;
-            slotLantern.Equip();
+            Destroy(item.gameObject);
 
-            lightOn = true;
-
-             return;
+            hasKeyCard = true;
         }
     }
 
@@ -79,6 +72,8 @@ public class ItemInteraction_player : MonoBehaviour
         {
             slotGun.Drop();
             slotGun = null;
+
+            GameManager.Instance.DropGun();
         }
     }
 

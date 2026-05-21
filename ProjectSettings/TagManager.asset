@@ -13,9 +13,8 @@ TagManager:
   - Victory
   - Pause
   - Light
-  - Lantern
   - GunPos
-  - LanternPos
+  - Flashlight
   layers:
   - Default
   - TransparentFX

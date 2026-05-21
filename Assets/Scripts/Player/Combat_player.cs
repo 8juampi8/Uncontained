@@ -15,12 +15,10 @@ public class Combat_player : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
-        {          
+        {
             if (item.EquippedGun != null)
             {
                 item.EquippedGun.Shoot();
-
-                Debug.Log("Shoot");
             }
             else
             {
@@ -30,8 +28,6 @@ public class Combat_player : MonoBehaviour
                 {
                     meleHit.GetComponent<Health_enemy>().getDamage(meleDamage);
                 }
-
-                Debug.Log("Mele Attack");
             }
         }
     }
