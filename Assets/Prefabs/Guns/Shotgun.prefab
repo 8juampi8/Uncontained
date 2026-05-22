@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 116470505727167653}
   - component: {fileID: 7378315935860152541}
   - component: {fileID: 6596341574697938834}
-  m_Layer: 0
+  - component: {fileID: -4397967022680961911}
+  - component: {fileID: -8781956910974217795}
+  m_Layer: 8
   m_Name: Shotgun
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -107,8 +109,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun_gun
   bullet: {fileID: 6865897758103964060, guid: 1f3e7c9e3876e7b4e8e117ce737e2c1f, type: 3}
   cannon: {fileID: 4072051952653767348}
-  gunID: ShotGun
-  pickupPrefab: {fileID: 6393930321013842300, guid: 1a7310b9c35a7d248bd8ac5fb1d2dc4d, type: 3}
+--- !u!114 &-4397967022680961911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387747364544302460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140117a1b31c0d341b1c206c186c9d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  itemName: Shotgun
+  prefab: {fileID: 2387747364544302460}
+--- !u!70 &-8781956910974217795
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387747364544302460}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2.0000002}
+  m_Direction: 0
 --- !u!1 &4072051952653767348
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7854563606337987623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

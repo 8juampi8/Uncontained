@@ -1,13 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public abstract class Item : MonoBehaviour
+
+public class Item : MonoBehaviour
 {
-    protected Collider2D itemCollider;
+    [SerializeField] private string itemName;
+    public string ItemName => itemName;
 
-    public virtual void Equip()
-    {
-        itemCollider = GetComponent<Collider2D>();
-        itemCollider.enabled = false;   
-    }
+
+    [SerializeField] private GameObject prefab;
+    public GameObject Prefab => prefab;
 }

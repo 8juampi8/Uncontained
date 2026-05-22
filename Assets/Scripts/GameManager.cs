@@ -72,8 +72,6 @@ public class GameManager : MonoBehaviour
 
         pauseScreen = FindAnyObjectByType<Pause>(
             FindObjectsInactive.Include)?.gameObject;
-
-        ReequipGun();
     }
 
     public void getDamage(int damage)
@@ -100,58 +98,5 @@ public class GameManager : MonoBehaviour
     {
         if (victoryScreen != null)
             victoryScreen.SetActive(true);
-    }
-
-    public void PickGun(string gunID)
-    {
-        PlayerPrefs.SetString("equippedGun", gunID);
-        PlayerPrefs.Save();
-    }
-
-    public void DropGun()
-    {
-        PlayerPrefs.DeleteKey("equippedGun");
-    }
-
-    public void ReequipGun()
-    {
-        string gunID = PlayerPrefs.GetString("equippedGun", "");
-
-        if (string.IsNullOrEmpty(gunID))
-            return;
-
-        Guns_gun prefab = null;
-
-        foreach (var gun in gunPrefabs)
-        {
-            if (gun.GunID == gunID)
-            {
-                prefab = gun;
-                break;
-            }
-        }
-
-        if (prefab == null)
-            return;
-
-        GameObject gunPos = GameObject.FindWithTag("GunPos");
-
-        if (gunPos == null)
-            return;
-
-        Guns_gun newGun = Instantiate(prefab, gunPos.transform);
-
-        newGun.transform.localPosition = Vector3.zero;
-        newGun.transform.localRotation = Quaternion.identity;
-
-        newGun.Equip();
-
-        if (player == null)
-            return;
-
-        ItemInteraction_player item =
-            player.GetComponent<ItemInteraction_player>();
-
-        item.SetGun(newGun);
     }
 }

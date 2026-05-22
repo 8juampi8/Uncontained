@@ -1,120 +1,62 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ItemInteraction_player : MonoBehaviour
 {
-    private Item item;
-
-    private Guns_gun slotGun;
-    public Guns_gun EquippedGun => slotGun;
-
-    private Flashlight flashlight;
+    [SerializeField] private LayerMask itemLayer;
+    Item item;
 
     private bool hasKeyCard = false;
     public bool HasKeyCard => hasKeyCard;
 
-    [SerializeField] private Transform gunPos;
-    [SerializeField] private float interactRadius = 1f;
-    [SerializeField] private LayerMask itemLayer;
-
-    void Start()
-    {
-        flashlight = GetComponentInChildren<Flashlight>();
-    }
+    [SerializeField] private Flashlight flashlight;
 
     void Update()
     {
-        DetectItem();
-
         if (Input.GetKeyDown(KeyCode.E))
         {
-            TryInteract();
+            Collider2D currentItem = Physics2D.OverlapCircle(transform.position, 1f, itemLayer);
+
+            if (currentItem == null) return;
+
+            Item item = currentItem.GetComponent<Item>();
+
+            if (item == null) return;
+
+            if (item.gameObject.CompareTag("Gun"))
+            {
+                if (InvManager.Instance.IsEquipped)
+                {
+                    InvManager.Instance.DropItem();
+                }
+
+                InvManager.Instance.AddItem(item.ItemName);
+                InvManager.Instance.SpawnItem();
+            }
+
+            if (item.gameObject.CompareTag("KeyCard"))
+            {
+                hasKeyCard = true;
+            }
+
+            Destroy(currentItem.gameObject);
         }
+
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            DropGun();
+            if (!string.IsNullOrEmpty(InvManager.Instance.SlotItem))
+            {
+                InvManager.Instance.DropItem();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            if (flashlight == null) return;
+
             flashlight.Toggle();
         }
     }
 
-    void DetectItem()
-    {
-        Collider2D col = Physics2D.OverlapCircle(transform.position, interactRadius, itemLayer);
-
-        if (col == null)
-        {
-            item = null;
-            return;
-        }
-
-        item = col.GetComponent<Item>();
-    }
-
-    void TryInteract()
-    {
-        if (item == null)
-            return;
-
-        EquipItem(item);
-    }
-
-    public void SetGun(Guns_gun gun)
-    {
-        slotGun = gun;
-    }
-
-    private void EquipItem(Item item)
-    {
-        GunPickup pickup = item.GetComponent<GunPickup>();
-
-        if (pickup != null)
-        {
-            if (slotGun != null)
-                DropGun();
-
-            Guns_gun newGun =
-                Instantiate(pickup.GunPrefab, gunPos);
-
-            newGun.transform.localPosition = Vector3.zero;
-            newGun.transform.localRotation = Quaternion.identity;
-
-            newGun.Equip();
-
-            slotGun = newGun;
-
-            GameManager.Instance.PickGun(newGun.GunID);
-
-            Destroy(pickup.gameObject);
-
-            return;
-        }
-
-        if (item.CompareTag("KeyCard"))
-        {
-            Destroy(item.gameObject);
-            hasKeyCard = true;
-        }
-    }
-
-    private void DropGun()
-    {
-        if (slotGun == null) return;
-
-        Instantiate(slotGun.PickupPrefab, transform.position, transform.rotation);
-
-        slotGun.Drop();
-        slotGun = null;
-
-        GameManager.Instance.DropGun();
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, interactRadius);
-    }
 }

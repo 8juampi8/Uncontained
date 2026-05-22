@@ -7,20 +7,15 @@ public class Combat_player : MonoBehaviour
     private float meleRadius = 1.5f;
     private int meleDamage = 10;
 
-    private ItemInteraction_player item;
-
-    void Start()
-    {
-        item = GetComponent<ItemInteraction_player>();
-    }
-
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (item.EquippedGun != null)
+            Guns_gun gun = InvManager.Instance.CurrentGun;
+
+            if (gun != null)
             {
-                item.EquippedGun.Shoot();
+                gun.Shoot();
             }
             else
             {

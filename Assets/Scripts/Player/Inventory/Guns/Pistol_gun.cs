@@ -4,7 +4,7 @@ using UnityEngine;
 public class Pistol_gun : Guns_gun
 {
     private float shootCooldown = 0.5f;
-    private float shootTimer = 0.5f;
+    private float shootTimer = 0f;
 
     // MODIFICO EL DISPARO
 
