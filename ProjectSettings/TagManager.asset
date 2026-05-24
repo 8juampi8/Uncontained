@@ -16,6 +16,7 @@ TagManager:
   - GunPos
   - Flashlight
   - Item
+  - Battery
   layers:
   - Default
   - TransparentFX

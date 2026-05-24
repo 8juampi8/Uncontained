@@ -39,6 +39,11 @@ public class ItemInteraction_player : MonoBehaviour
                 hasKeyCard = true;
             }
 
+            if (item.gameObject.CompareTag("Battery"))
+            {
+                flashlight.AddPower();
+                if (flashlight == null) return;
+            }
             Destroy(currentItem.gameObject);
         }
 
