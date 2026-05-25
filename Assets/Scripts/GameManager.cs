@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
             if (player != null)
                 Destroy(player);
 
+            PlayerPrefs.DeleteKey("equippedGun");
 
             if (defeatScreen != null)
                 defeatScreen.SetActive(true);

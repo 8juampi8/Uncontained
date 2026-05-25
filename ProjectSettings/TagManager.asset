@@ -4,29 +4,29 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Gun
-  - Flashlight
-  - GunPos
-  - Light
   - Enemy
+  - Gun
   - KeyCard
-  - Victory
-  - Battery
-  - PistolBullet
-  - Pause
-  - Defeat
   - CloseWallTutorial
-  - ShotgunBullet
+  - FinalTutorial
+  - Defeat
+  - Victory
+  - Pause
+  - Light
+  - GunPos
+  - Flashlight
+  - Item
+  - Battery
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemy
+  - Enemies
   - Water
   - UI
+  - Obstacles
+  - Player
   - Item
-  - Obstacle
-  - 
   - 
   - 
   - 
