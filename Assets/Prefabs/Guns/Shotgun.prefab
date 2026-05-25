@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6596341574697938834}
   - component: {fileID: -4397967022680961911}
   - component: {fileID: -8781956910974217795}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Shotgun
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.27450982, g: 0.05882353, b: 0.05882353, a: 1}
@@ -109,6 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun_gun
   bullet: {fileID: 6865897758103964060, guid: 1f3e7c9e3876e7b4e8e117ce737e2c1f, type: 3}
   cannon: {fileID: 4072051952653767348}
+  shootCooldown: 1.25
+  maxCharger: 2
 --- !u!114 &-4397967022680961911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7854563606337987623}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Canion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

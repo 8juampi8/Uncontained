@@ -194,10 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0c103689c04814bbb2de235dadf623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowPlayer_enemy
-  silenceHab: {fileID: 0}
   focusObjects:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
 --- !u!114 &-2786682763587567662
 MonoBehaviour:
   m_ObjectHideFlags: 0
