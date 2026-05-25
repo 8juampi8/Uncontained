@@ -8,7 +8,6 @@ TagManager:
   - Gun
   - KeyCard
   - CloseWallTutorial
-  - FinalTutorial
   - Defeat
   - Victory
   - Pause
@@ -16,6 +15,8 @@ TagManager:
   - GunPos
   - Flashlight
   - Item
+  - PistolBullet
+  - ShotgunBullet
   layers:
   - Default
   - TransparentFX

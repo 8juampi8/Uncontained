@@ -151,3 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4637c4c634e9f43a668ed685d6a397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeyCard
+  itemName: KeyCard
+  prefab: {fileID: 8922534567621697489}

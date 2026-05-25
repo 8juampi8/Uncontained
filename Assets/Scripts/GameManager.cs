@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     GameObject pauseScreen;
     GameObject player;
 
-    [SerializeField] private Guns_gun[] gunPrefabs;
-
     void Start()
     {
         if (instance != null)
@@ -85,7 +83,6 @@ public class GameManager : MonoBehaviour
             if (player != null)
                 Destroy(player);
 
-            PlayerPrefs.DeleteKey("equippedGun");
 
             if (defeatScreen != null)
                 defeatScreen.SetActive(true);

@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ItemInteraction_player : MonoBehaviour
 {
     [SerializeField] private LayerMask itemLayer;
-    Item item;
 
     private bool hasKeyCard = false;
     public bool HasKeyCard => hasKeyCard;
@@ -15,7 +13,12 @@ public class ItemInteraction_player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider2D currentItem = Physics2D.OverlapCircle(transform.position, 1f, itemLayer);
+            Collider2D currentItem =
+                Physics2D.OverlapCircle(
+                    transform.position,
+                    1f,
+                    itemLayer
+                );
 
             if (currentItem == null) return;
 
@@ -23,7 +26,7 @@ public class ItemInteraction_player : MonoBehaviour
 
             if (item == null) return;
 
-            if (item.gameObject.CompareTag("Gun"))
+            if (item.CompareTag("Gun"))
             {
                 if (InvManager.Instance.IsEquipped)
                 {
@@ -31,23 +34,33 @@ public class ItemInteraction_player : MonoBehaviour
                 }
 
                 InvManager.Instance.AddItem(item.ItemName);
-                InvManager.Instance.SpawnItem();
+                InvManager.Instance.EquipGun(item.gameObject);
             }
-
-            if (item.gameObject.CompareTag("KeyCard"))
+            else
             {
-                hasKeyCard = true;
+                if (item.CompareTag("KeyCard"))
+                {
+                    hasKeyCard = true;
+                }
+
+                if (item.CompareTag("PistolBullet"))
+                {
+                    InvManager.Instance.PickPistolAmmo();
+                }
+                if (item.CompareTag("ShotgunBullet"))
+                {
+                    InvManager.Instance.PickShotgunAmmo();
+                }
+
+                Destroy(item.gameObject);
             }
-
-            Destroy(currentItem.gameObject);
         }
-
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (!string.IsNullOrEmpty(InvManager.Instance.SlotItem))
+            if (InvManager.Instance.IsEquipped)
             {
-                InvManager.Instance.DropItem();
+                InvManager.Instance.DropGun();
             }
         }
 
@@ -57,6 +70,10 @@ public class ItemInteraction_player : MonoBehaviour
 
             flashlight.Toggle();
         }
-    }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            // Falta hacer recargado de municion
+        }
+    }
 }

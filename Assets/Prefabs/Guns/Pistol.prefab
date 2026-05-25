@@ -140,6 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pistol_gun
   bullet: {fileID: 8120399556643160100, guid: 4047747c07ab5ad4cbcd563cc344b68f, type: 3}
   cannon: {fileID: 5624659373783008997}
+  shootCooldown: 0.5
+  gunCharger: 7
 --- !u!114 &936249385169731355
 MonoBehaviour:
   m_ObjectHideFlags: 0
