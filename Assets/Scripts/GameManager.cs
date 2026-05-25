@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     static public GameManager instance;
     static public GameManager Instance => instance;
 
+    public float flashlightPower = 100;
     int playerHealth = 3;
 
     GameObject defeatScreen;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Guns_gun[] gunPrefabs;
 
-    void Start()
+    void Awake()
     {
         if (instance != null)
         {

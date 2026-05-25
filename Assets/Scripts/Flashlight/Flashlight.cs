@@ -3,13 +3,14 @@ using UnityEngine.Rendering.Universal;
 
 public class Flashlight : MonoBehaviour
 {
+    private float power;
     Light2D lght;
-
-    [SerializeField] private float power = 100;
 
     void Start()
     {
         lght = GetComponent<Light2D>();
+
+        power = GameManager.Instance.flashlightPower;
     }
 
     public void Toggle()
@@ -29,18 +30,20 @@ public class Flashlight : MonoBehaviour
     {
         if (power <= 0)
         {
-            lght.enabled = false;
             power = 0;
+            lght.enabled = false;
         }
 
         if (lght.enabled && power > 0)
         {
             power -= Time.deltaTime;
         }
+        GameManager.Instance.flashlightPower = power;
     }
 
     public void AddPower()
     {
         power += 25;
+        GameManager.Instance.flashlightPower = power;   
     }
 }
