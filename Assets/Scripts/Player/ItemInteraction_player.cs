@@ -30,7 +30,7 @@ public class ItemInteraction_player : MonoBehaviour
             {
                 if (InvManager.Instance.IsEquipped)
                 {
-                    InvManager.Instance.DropItem();
+                    InvManager.Instance.DropGun();
                 }
 
                 InvManager.Instance.AddItem(item.ItemName);
