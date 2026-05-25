@@ -141,6 +141,7 @@ public class InvManager : MonoBehaviour
         isEquipped = false;
         currentGun = null;
         slotItem = null;
+        obj = null;
     }
 
     public GameObject GetPrefab(string id)
@@ -158,13 +159,39 @@ public class InvManager : MonoBehaviour
         savedCharger--;
     }
 
+    public void AddBullet(int ammo)
+    {
+        savedCharger += ammo;
+    }
+
     public void PickPistolAmmo()
     {
         pistolAmmo += 7;
+        Debug.Log("Ahora tenes " + pistolAmmo + " balas de pistola en el inventario: ");
     }
 
     public void PickShotgunAmmo()
     {
         shotgunAmmo += 2;
+        Debug.Log("Ahora tenes " + shotgunAmmo + " balas de escopeta en el inventario: ");
+    }
+
+    public void UseAmmo(int ammo)
+    {
+        if (obj == null) return;
+
+        Pistol_gun pistol = obj.GetComponent<Pistol_gun>();
+
+        if (pistol != null)
+        {
+            pistolAmmo -= ammo;
+            Debug.Log("Balas restantes de pistola en el inventario: " + pistolAmmo);
+
+            return;        
+        }
+
+        shotgunAmmo -= ammo;
+        Debug.Log("Balas restantes de escopeta en el inventario: " + shotgunAmmo);
+
     }
 }

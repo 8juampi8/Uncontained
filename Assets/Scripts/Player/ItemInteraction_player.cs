@@ -77,9 +77,12 @@ public class ItemInteraction_player : MonoBehaviour
             flashlight.Toggle();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            // Falta hacer recargado de municion
-        }
+        if (Input.GetKeyDown(KeyCode.R)) {
+            if (InvManager.Instance.Obj != null) {
+                InvManager.Instance.Obj.GetComponent<Guns_gun>().Reload();
+                Debug.Log(InvManager.Instance.Obj.GetComponent<Guns_gun>().GunCharger);
+            }
+        }       
+
     }
 }
