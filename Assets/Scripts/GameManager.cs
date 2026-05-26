@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     static public GameManager instance;
     static public GameManager Instance => instance;
 
+    public float flashlightPower = 100;
     int playerHealth = 3;
 
     GameObject defeatScreen;
@@ -13,7 +14,9 @@ public class GameManager : MonoBehaviour
     GameObject pauseScreen;
     GameObject player;
 
-    void Start()
+    [SerializeField] private Guns_gun[] gunPrefabs;
+
+    void Awake()
     {
         if (instance != null)
         {
@@ -83,6 +86,7 @@ public class GameManager : MonoBehaviour
             if (player != null)
                 Destroy(player);
 
+            PlayerPrefs.DeleteKey("equippedGun");
 
             if (defeatScreen != null)
                 defeatScreen.SetActive(true);

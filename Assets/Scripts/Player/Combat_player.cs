@@ -11,20 +11,12 @@ public class Combat_player : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (InvManager.Instance.IsEquipped)
-            {
-                Guns_gun gun = InvManager.Instance.Obj.GetComponent<Guns_gun>();
+            Guns_gun gun = InvManager.Instance.CurrentGun;
 
-                if(gun.GunCharger > 0)
-                {
-                    gun.Shoot();
-                }
-                else
-                {
-                    Debug.Log("No tenes balas");
-                }
+            if (gun != null)
+            {
+                gun.Shoot();
             }
-            
             else
             {
                 Collider2D meleHit =
