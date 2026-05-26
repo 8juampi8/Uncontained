@@ -1098,6 +1098,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3330939476339987977, guid: f5804d5ff5a2c4d4eb83bbff5c22ca8f, type: 3}
   m_PrefabInstance: {fileID: 248104465}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &256861495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256861496}
+  m_Layer: 0
+  m_Name: Batteries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &256861496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256861495}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.47046, y: -1.66295, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1324786977}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &360330444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4501,15 +4533,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 256861496}
     m_Modifications:
     - target: {fileID: 1389206257048259564, guid: e52af77fdb03268489f9dae83d60abee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.502206
+      value: 6.08
       objectReference: {fileID: 0}
     - target: {fileID: 1389206257048259564, guid: e52af77fdb03268489f9dae83d60abee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1625495
+      value: 2.52
       objectReference: {fileID: 0}
     - target: {fileID: 1389206257048259564, guid: e52af77fdb03268489f9dae83d60abee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4552,6 +4584,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e52af77fdb03268489f9dae83d60abee, type: 3}
+--- !u!4 &1324786977 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1389206257048259564, guid: e52af77fdb03268489f9dae83d60abee, type: 3}
+  m_PrefabInstance: {fileID: 1324786976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1349150617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7596,8 +7633,8 @@ SceneRoots:
   - {fileID: 1804762292}
   - {fileID: 719882321}
   - {fileID: 902629809}
+  - {fileID: 256861496}
   - {fileID: 854944597}
   - {fileID: 2065978039}
   - {fileID: 1821908030}
   - {fileID: 972178497}
-  - {fileID: 1324786976}

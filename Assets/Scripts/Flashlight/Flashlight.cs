@@ -37,6 +37,11 @@ public class Flashlight : MonoBehaviour
             lght.enabled = false;
         }
 
+        if (power > 100)
+        {
+            power = 100;
+        }
+
         if (lght.enabled && power > 0)
         {
             power -= Time.deltaTime;
