@@ -100,4 +100,9 @@ public class GameManager : MonoBehaviour
         if (victoryScreen != null)
             victoryScreen.SetActive(true);
     }
+
+    public void ChangePower(float value)
+    {
+        flashlightPower = value;
+    }
 }

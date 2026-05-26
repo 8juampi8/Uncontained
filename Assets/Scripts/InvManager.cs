@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 
 public class InvManager : MonoBehaviour
@@ -22,12 +22,22 @@ public class InvManager : MonoBehaviour
     private GameObject hand;
 
     private GameObject obj;
+    public GameObject Obj => obj;
 
     private bool isEquipped = false;
     public bool IsEquipped => isEquipped;
 
     private Guns_gun currentGun;
     public Guns_gun CurrentGun => currentGun;
+
+    private int savedCharger = 0;
+    public int SavedCharger => savedCharger;
+
+    private int pistolAmmo = 0;
+    public int PistolAmmo => pistolAmmo;
+
+    private int shotgunAmmo = 0;
+    public int ShotgunAmmo => shotgunAmmo;
 
     void Awake()
     {
@@ -36,11 +46,11 @@ public class InvManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
 
         itemDictionary = new Dictionary<string, GameObject>();
 
@@ -70,11 +80,11 @@ public class InvManager : MonoBehaviour
         currentGun = null;
         isEquipped = false;
 
-        SpawnItem();
+        SpawnGun();
     }
 
+    public void SpawnGun()
 
-    public void SpawnItem()
     {
         if (string.IsNullOrEmpty(slotItem)) return;
 
@@ -88,6 +98,11 @@ public class InvManager : MonoBehaviour
         obj = Instantiate(prefab);
         currentGun = obj.GetComponent<Guns_gun>();
 
+        if (currentGun == null) return;
+
+        currentGun.setAmmo(savedCharger);
+        isEquipped = true;
+
         hand = GameObject.FindWithTag("GunPos");
 
 
@@ -100,12 +115,12 @@ public class InvManager : MonoBehaviour
 
         Collider2D col = obj.GetComponent<Collider2D>();
 
-        if (col != null)
-        {
-            col.enabled = false;
-        }
+        if (col != null) col.enabled = false;
 
-        isEquipped = true;
+
+
+
+
     }
 
 
@@ -114,17 +129,37 @@ public class InvManager : MonoBehaviour
         slotItem = item;
     }
 
+    public void EquipGun(GameObject item)
+    {
+        hand = GameObject.FindWithTag("GunPos");
 
-    public void DropItem()
+        if (hand == null) return;
+
+        item.transform.SetParent(hand.transform);
+        item.transform.localPosition = Vector3.zero;
+        item.transform.rotation = hand.transform.rotation;
+
+        Collider2D col = item.GetComponent<Collider2D>();
+
+        if (col != null) col.enabled = false;
+
+        isEquipped = true;
+        obj = item;
+
+        Guns_gun ammo = obj.GetComponent<Guns_gun>();
+        savedCharger = ammo.GunCharger;
+    }
+
+    public void DropGun()
     {
         if (obj != null)
         {
             Collider2D col = obj.GetComponent<Collider2D>();
 
-            if (col != null)
-            {
-                col.enabled = true;
-            }
+            if (col != null) col.enabled = true;
+
+
+
 
             obj.transform.SetParent(null);
         }
@@ -133,6 +168,7 @@ public class InvManager : MonoBehaviour
 
         currentGun = null;
         slotItem = null;
+        obj = null;
     }
 
 
@@ -143,7 +179,48 @@ public class InvManager : MonoBehaviour
             return prefab;
         }
 
-
         return null;
+    }
+
+    public void RemoveBullet()
+    {
+        savedCharger--;
+    }
+
+    public void AddBullet(int ammo)
+    {
+        savedCharger += ammo;
+    }
+
+    public void PickPistolAmmo()
+    {
+        pistolAmmo += 7;
+        Debug.Log("Ahora tenes " + pistolAmmo + " balas de pistola en el inventario: ");
+    }
+
+    public void PickShotgunAmmo()
+    {
+        shotgunAmmo += 2;
+        Debug.Log("Ahora tenes " + shotgunAmmo + " balas de escopeta en el inventario: ");
+    }
+
+    public void UseAmmo(int ammo)
+    {
+        if (obj == null) return;
+
+        Pistol_gun pistol = obj.GetComponent<Pistol_gun>();
+
+        if (pistol != null)
+        {
+            pistolAmmo -= ammo;
+            Debug.Log("Balas restantes de pistola en el inventario: " + pistolAmmo);
+
+            return;        
+        }
+
+        shotgunAmmo -= ammo;
+        Debug.Log("Balas restantes de escopeta en el inventario: " + shotgunAmmo);
+
+
     }
 }

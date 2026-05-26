@@ -17,6 +17,8 @@ TagManager:
   - Flashlight
   - Item
   - Battery
+  - PistolBullet
+  - ShotgunBullet
   layers:
   - Default
   - TransparentFX
