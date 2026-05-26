@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b0848eb52ec28a94895970c793bef942
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 275888
+  packageName: Sci-Fi 2D Top-Down Shooter Graphics
+  packageVersion: 1.1
+  assetPath: Assets/Sci-Fi 2D Top-Down Shooter Graphics by valentint/Graphics/NPCs/NPC_Scientist/Animations/NPC_Scientist_Walk.anim
+  uploadId: 695480

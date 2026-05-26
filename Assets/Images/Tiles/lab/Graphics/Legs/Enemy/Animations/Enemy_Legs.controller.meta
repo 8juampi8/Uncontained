@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b36ddbe696bccfb4cb465b9ff6fb8cb9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 275888
+  packageName: Sci-Fi 2D Top-Down Shooter Graphics
+  packageVersion: 1.1
+  assetPath: Assets/Sci-Fi 2D Top-Down Shooter Graphics by valentint/Graphics/Legs/Enemy/Animations/Enemy_Legs.controller
+  uploadId: 695480

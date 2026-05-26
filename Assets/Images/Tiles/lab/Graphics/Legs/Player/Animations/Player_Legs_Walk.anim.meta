@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cdca121a98a6d1a40b170cf106df5a54
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 275888
+  packageName: Sci-Fi 2D Top-Down Shooter Graphics
+  packageVersion: 1.1
+  assetPath: Assets/Sci-Fi 2D Top-Down Shooter Graphics by valentint/Graphics/Legs/Player/Animations/Player_Legs_Walk.anim
+  uploadId: 695480
