@@ -9,6 +9,7 @@ public class Guns_gun : MonoBehaviour
     protected float shootTimer;
 
     [SerializeField] protected int maxCharger;
+    public int MaxCharger => maxCharger;
 
     private int gunCharger;
     public int GunCharger => gunCharger;
@@ -35,6 +36,7 @@ public class Guns_gun : MonoBehaviour
         InvManager.Instance.RemoveBullet();
         Debug.Log(gunCharger);
 
+        GameManager.Instance.UpdateAmmo();
 
         shootTimer = 0;
     }
@@ -69,5 +71,8 @@ public class Guns_gun : MonoBehaviour
 
         InvManager.Instance.UseAmmo(bulletsToReload);
         Debug.Log("Recargaste");
+
+        GameManager.Instance.UpdateAmmo();
+        GameManager.Instance.UpdateMoreAmmo();
     }
 }

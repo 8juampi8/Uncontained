@@ -54,10 +54,14 @@ public class ItemInteraction_player : MonoBehaviour
                 if (item.CompareTag("PistolBullet"))
                 {
                     InvManager.Instance.PickPistolAmmo();
+
+                    GameManager.Instance.UpdateMoreAmmo();
                 }
                 if (item.CompareTag("ShotgunBullet"))
                 {
                     InvManager.Instance.PickShotgunAmmo();
+
+                    GameManager.Instance.UpdateMoreAmmo();
                 }
 
                 Destroy(item.gameObject);

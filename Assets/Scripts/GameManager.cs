@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +17,14 @@ public class GameManager : MonoBehaviour
     GameObject player;
 
     [SerializeField] private Guns_gun[] gunPrefabs;
+
+    // HUD
+    private TextMeshProUGUI healthTxt;
+    private TextMeshProUGUI ammoTxt;
+    private TextMeshProUGUI moreAmmoTxt;
+    private Slider powerSlider;
+
+    private GameObject hud;
 
     void Awake()
     {
@@ -43,10 +53,14 @@ public class GameManager : MonoBehaviour
             if (victoryScreen.activeSelf || defeatScreen.activeSelf || pauseScreen.activeSelf)
             {
                 Time.timeScale = 0f;
+
+                hud.SetActive(false);
             }
             else
             {
                 Time.timeScale = 1f;
+
+                hud.SetActive(true);
             }
         }
     }
@@ -64,6 +78,7 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         player = GameObject.FindWithTag("Player");
+        hud = GameObject.FindWithTag("HUD");
 
         defeatScreen = FindAnyObjectByType<Defeat>(
             FindObjectsInactive.Include)?.gameObject;
@@ -78,6 +93,8 @@ public class GameManager : MonoBehaviour
     public void getDamage(int damage)
     {
         playerHealth -= damage;
+        UpdateHealth();
+
 
         if (playerHealth <= 0)
         {
@@ -104,5 +121,75 @@ public class GameManager : MonoBehaviour
     public void ChangePower(float value)
     {
         flashlightPower = value;
+    }
+
+    // UPDATES
+    public void UpdateHealth()
+    {
+        if (healthTxt == null) return;
+
+        healthTxt.text = playerHealth.ToString();
+    }
+
+    public void UpdateAmmo()
+    {
+        if(InvManager.Instance.Obj == null)
+        {
+            ammoTxt.text = "";
+            return;
+        }
+
+        ammoTxt.text = InvManager.Instance.SavedCharger.ToString() + " | " + InvManager.Instance.Obj.GetComponent<Guns_gun>().MaxCharger.ToString();
+    }
+
+    public void UpdateMoreAmmo()
+    {
+        if (InvManager.Instance.Obj == null)
+        {
+            moreAmmoTxt.text = "";
+
+            return;
+        }
+
+        Pistol_gun pistol = InvManager.Instance.Obj.GetComponent<Pistol_gun>();
+
+        if (pistol != null)
+        {
+            moreAmmoTxt.text = InvManager.Instance.PistolAmmo.ToString();
+
+            return;        
+        }
+
+        moreAmmoTxt.text = InvManager.Instance.ShotgunAmmo.ToString();
+    }
+
+    public void UpdateFLpower()
+    {
+        powerSlider.value = flashlightPower;
+    }
+
+    // SAVES
+    public void SaveHealth(TextMeshProUGUI health)
+    {
+        healthTxt = health;
+        UpdateHealth();
+    }
+
+    public void SaveAmmo(TextMeshProUGUI ammo)
+    {
+        ammoTxt = ammo;
+        UpdateAmmo();
+    }
+
+    public void SaveMoreAmmo(TextMeshProUGUI ammo)
+    {
+        moreAmmoTxt = ammo;
+        UpdateMoreAmmo();
+    }
+
+    public void SaveFLpower(Slider power)
+    {
+        powerSlider = power;
+        UpdateFLpower();
     }
 }

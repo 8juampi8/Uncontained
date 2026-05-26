@@ -6,8 +6,6 @@ public class Flashlight : MonoBehaviour
     private float power;
     Light2D lght;
 
-
-
     void Start()
     {
         lght = GetComponent<Light2D>();
@@ -47,6 +45,7 @@ public class Flashlight : MonoBehaviour
             power -= Time.deltaTime;
         }
         GameManager.Instance.ChangePower(power);
+        GameManager.Instance.UpdateFLpower();
     }
 
     public void AddPower()

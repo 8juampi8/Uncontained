@@ -117,10 +117,8 @@ public class InvManager : MonoBehaviour
 
         if (col != null) col.enabled = false;
 
-
-
-
-
+        GameManager.Instance.UpdateAmmo();
+        GameManager.Instance.UpdateMoreAmmo();
     }
 
 
@@ -148,6 +146,9 @@ public class InvManager : MonoBehaviour
 
         Guns_gun ammo = obj.GetComponent<Guns_gun>();
         savedCharger = ammo.GunCharger;
+
+        GameManager.Instance.UpdateAmmo();
+        GameManager.Instance.UpdateMoreAmmo();
     }
 
     public void DropGun()
@@ -169,6 +170,8 @@ public class InvManager : MonoBehaviour
         currentGun = null;
         slotItem = null;
         obj = null;
+        GameManager.Instance.UpdateAmmo();
+        GameManager.Instance.UpdateMoreAmmo();
     }
 
 

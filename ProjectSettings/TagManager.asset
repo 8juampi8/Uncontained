@@ -19,6 +19,7 @@ TagManager:
   - Battery
   - PistolBullet
   - ShotgunBullet
+  - HUD
   layers:
   - Default
   - TransparentFX
