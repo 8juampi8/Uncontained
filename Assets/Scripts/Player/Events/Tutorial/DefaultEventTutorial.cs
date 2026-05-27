@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class DefaultEventTutorial : MonoBehaviour
+public class DefaultEventTutorial : Events
 {
     [SerializeField] private GameObject panel;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject == player)
         {
-            Destroy(gameObject);
-
             panel.SetActive(true);
         }
     }

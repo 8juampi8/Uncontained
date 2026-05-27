@@ -49,9 +49,9 @@ public class GameManager : MonoBehaviour
                 pauseScreen.SetActive(true);
             }
         }
-        if (victoryScreen != null && defeatScreen != null && pauseScreen != null)
+        if (defeatScreen != null || pauseScreen != null)
         {
-            if (victoryScreen.activeSelf || defeatScreen.activeSelf || pauseScreen.activeSelf || tutorialScreen.activeSelf)
+            if (defeatScreen.activeSelf || pauseScreen.activeSelf)
             {
                 Time.timeScale = 0f;
 
@@ -62,6 +62,38 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1f;
 
                 hud.SetActive(true);
+            }
+        }
+        if (victoryScreen != null)
+        {
+            if (tutorialScreen.activeSelf)
+            {
+                Time.timeScale = 0f;
+
+                hud.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 1f;
+
+                hud.SetActive(true);
+
+            }
+        }
+        if (tutorialScreen != null)
+        {
+            if (tutorialScreen.activeSelf)
+            {
+                Time.timeScale = 0f;
+
+                hud.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 1f;
+
+                hud.SetActive(true);
+
             }
         }
     }
@@ -79,7 +111,6 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         player = GameObject.FindWithTag("Player");
-        hud = GameObject.FindWithTag("HUD");
 
         defeatScreen = FindAnyObjectByType<Defeat>(
             FindObjectsInactive.Include)?.gameObject;
@@ -92,6 +123,9 @@ public class GameManager : MonoBehaviour
 
         tutorialScreen = FindAnyObjectByType<Tutorial>(
             FindObjectsInactive.Include)?.gameObject;
+
+        hud = FindAnyObjectByType<HUD>(
+        FindObjectsInactive.Include)?.gameObject;
     }
 
     public void getDamage(int damage)
@@ -137,7 +171,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateAmmo()
     {
-        if(InvManager.Instance.Obj == null)
+        if (InvManager.Instance.Obj == null)
         {
             ammoTxt.text = "";
             return;
@@ -161,7 +195,7 @@ public class GameManager : MonoBehaviour
         {
             moreAmmoTxt.text = InvManager.Instance.PistolAmmo.ToString();
 
-            return;        
+            return;
         }
 
         moreAmmoTxt.text = InvManager.Instance.ShotgunAmmo.ToString();
@@ -169,7 +203,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateFLpower()
     {
-        powerSlider.value = flashlightPower;
+        if (powerSlider != null) powerSlider.value = flashlightPower;
     }
 
     // SAVES

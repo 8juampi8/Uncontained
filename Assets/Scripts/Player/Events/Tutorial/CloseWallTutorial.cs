@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CollisionEvents_player : MonoBehaviour
+public class CollisionEvents_player : Events
 {
 
     [SerializeField] private GameObject wallTut;
@@ -13,12 +13,10 @@ public class CollisionEvents_player : MonoBehaviour
         silence = GameObject.FindWithTag("Player").GetComponent<SilenceHab_player>();
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject == player)
         {
-            Destroy(gameObject);
-
             wallTut.SetActive(true);
 
             silence.ResetWait();

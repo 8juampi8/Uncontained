@@ -1042,6 +1042,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VictoryScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 7000981586492112441, guid: d576f9747d88a1a4d91f513e82d73b97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7551407780383571235, guid: d576f9747d88a1a4d91f513e82d73b97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -85298,7 +85302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1371908951166120193, guid: fd251bfd72ecd5944981560f24b74ffb, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 760.24
+      value: 870.31
       objectReference: {fileID: 0}
     - target: {fileID: 1371908951166120193, guid: fd251bfd72ecd5944981560f24b74ffb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -85334,7 +85338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1371908951166120193, guid: fd251bfd72ecd5944981560f24b74ffb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000015230384
+      value: 0.82418
       objectReference: {fileID: 0}
     - target: {fileID: 1371908951166120193, guid: fd251bfd72ecd5944981560f24b74ffb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
