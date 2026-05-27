@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 796104823}
   - component: {fileID: 796104822}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Lvl 2 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -777,7 +777,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game 2
+          m_StringArgument: Level 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &796104823
@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 1224063557}
   - component: {fileID: 1224063556}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Tutorial Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1299,7 +1299,7 @@ GameObject:
   - component: {fileID: 1369403303}
   - component: {fileID: 1369403302}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Lvl 1 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1569,7 +1569,7 @@ GameObject:
   - component: {fileID: 1547790886}
   - component: {fileID: 1547790885}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Lvl 4 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1648,7 +1648,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game 4
+          m_StringArgument: Level 4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1547790886
@@ -1702,7 +1702,7 @@ GameObject:
   - component: {fileID: 1677520531}
   - component: {fileID: 1677520530}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Lvl 3 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1781,7 +1781,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game 3
+          m_StringArgument: Level 3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1677520531
