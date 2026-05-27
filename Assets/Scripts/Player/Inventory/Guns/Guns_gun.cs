@@ -3,7 +3,7 @@ using UnityEngine;
 public class Guns_gun : MonoBehaviour
 {
     [SerializeField] protected GameObject bullet;
-    [SerializeField] protected GameObject cannon;
+    private GameObject cannon;
 
     [SerializeField] protected float shootCooldown;
     protected float shootTimer;
@@ -16,9 +16,18 @@ public class Guns_gun : MonoBehaviour
 
     private int bulletsNedeed;
 
+    private bool wasEquipped = false;
+    public bool WasEquipped => wasEquipped;
+
+    // CAMBIADO: Usamos Awake para establecer las balas iniciales por defecto antes de que el InvManager las lea
     void Awake()
     {
         gunCharger = maxCharger;
+    }
+
+    public void UpdateShootTimer()
+    {
+        shootTimer += Time.deltaTime;
     }
 
     public void setAmmo(int ammo)
@@ -26,9 +35,14 @@ public class Guns_gun : MonoBehaviour
         gunCharger = ammo;
     }
 
+    public void setCannon(GameObject newCannon)
+    {
+        cannon = newCannon;
+    }
+
     public void Shoot()
     {
-        if(shootTimer <= shootCooldown) return;
+        if (shootTimer <= shootCooldown) return;
 
         Instantiate(bullet, cannon.transform.position, cannon.transform.rotation);
 
@@ -43,7 +57,7 @@ public class Guns_gun : MonoBehaviour
 
     public void Reload()
     {
-        if(gunCharger == maxCharger) return;
+        if (gunCharger == maxCharger) return;
 
         bulletsNedeed = maxCharger - gunCharger;
 
@@ -53,14 +67,14 @@ public class Guns_gun : MonoBehaviour
 
         if (pistol != null)
         {
-            bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.PistolAmmo);       
+            bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.PistolAmmo);
         }
         else
         {
             bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.ShotgunAmmo);
         }
 
-        if(bulletsToReload <= 0)
+        if (bulletsToReload <= 0)
         {
             Debug.Log("No tenes balas para poder recargar");
             return;

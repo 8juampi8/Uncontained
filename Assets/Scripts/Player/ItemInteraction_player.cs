@@ -1,10 +1,8 @@
 using UnityEngine;
 
-
 public class ItemInteraction_player : MonoBehaviour
 {
     [SerializeField] private LayerMask itemLayer;
-
 
     private bool hasKeyCard = false;
     public bool HasKeyCard => hasKeyCard;
@@ -15,12 +13,7 @@ public class ItemInteraction_player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider2D currentItem =
-                Physics2D.OverlapCircle(
-                    transform.position,
-                    1f,
-                    itemLayer
-                );
+            Collider2D currentItem = Physics2D.OverlapCircle(transform.position, 1f, itemLayer);
 
             if (currentItem == null) return;
 
@@ -28,50 +21,53 @@ public class ItemInteraction_player : MonoBehaviour
 
             if (item == null) return;
 
-            if (item.CompareTag("Gun"))
+            switch (item.tag)
             {
-                if (InvManager.Instance.IsEquipped)
-                {
-                    InvManager.Instance.DropGun();
-                }
+                case "Gun":
+                    if (InvManager.Instance.IsEquipped)
+                    {
+                        InvManager.Instance.DropGun();
+                    }
 
-                InvManager.Instance.AddItem(item.ItemName);
-                InvManager.Instance.EquipGun(item.gameObject);
-            }
-            else
-            {
-                if (item.CompareTag("KeyCard"))
-                {
+                    // MODIFICADO: Antes de destruir el objeto del suelo, tomamos sus balas actuales
+                    // y las guardamos en los datos de nuestro diccionario global
+                    Guns_gun floorGunScript = item.GetComponent<Guns_gun>();
+                    if (floorGunScript != null)
+                    {
+                        var cachedGun = InvManager.Instance.GetGunScript(item.ItemName);
+                        if (cachedGun != null)
+                        {
+                            cachedGun.setAmmo(floorGunScript.GunCharger);
+                        }
+                    }
+
+                    InvManager.Instance.AddItem(item.ItemName);
+                    InvManager.Instance.EquipGun();
+                    break;
+
+                case "KeyCard":
                     hasKeyCard = true;
-                }
+                    break;
 
-                if (item.gameObject.CompareTag("Battery"))
-                {
-                    flashlight.AddPower();
+                case "Battery":
+                    // CORREGIDO: Se valida antes de usar la variable para evitar errores.
                     if (flashlight == null) return;
-                }
+                    flashlight.AddPower();
+                    break;
 
-                if (item.CompareTag("PistolBullet"))
-                {
+                case "PistolBullet":
                     InvManager.Instance.PickPistolAmmo();
-
                     GameManager.Instance.UpdateMoreAmmo();
-                }
-                if (item.CompareTag("ShotgunBullet"))
-                {
+                    break;
+
+                case "ShotgunBullet":
                     InvManager.Instance.PickShotgunAmmo();
-
                     GameManager.Instance.UpdateMoreAmmo();
-                }
-
-                Destroy(item.gameObject);
-
-
-
+                    break;
             }
 
+            Destroy(item.gameObject);
         }
-
 
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -84,17 +80,16 @@ public class ItemInteraction_player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (flashlight == null) return;
-
             flashlight.Toggle();
         }
 
-        if (Input.GetKeyDown(KeyCode.R)) {
-            if (InvManager.Instance.Obj != null) {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (InvManager.Instance.Obj != null)
+            {
                 InvManager.Instance.Obj.GetComponent<Guns_gun>().Reload();
                 Debug.Log(InvManager.Instance.Obj.GetComponent<Guns_gun>().GunCharger);
             }
-        }       
-
+        }
     }
-
 }

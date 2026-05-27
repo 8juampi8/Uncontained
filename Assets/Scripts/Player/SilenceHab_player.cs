@@ -53,4 +53,9 @@ public class SilenceHab_player : MonoBehaviour
             playerSprite.color = Color.white;
         }
     }
+
+    public void ResetWait()
+    {
+        silenceWait = 20;
+    }
 }
