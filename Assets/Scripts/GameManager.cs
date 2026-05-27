@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     GameObject defeatScreen;
     GameObject victoryScreen;
     GameObject pauseScreen;
+    GameObject tutorialScreen;
     GameObject player;
 
     [SerializeField] private Guns_gun[] gunPrefabs;
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
         }
         if (victoryScreen != null && defeatScreen != null && pauseScreen != null)
         {
-            if (victoryScreen.activeSelf || defeatScreen.activeSelf || pauseScreen.activeSelf)
+            if (victoryScreen.activeSelf || defeatScreen.activeSelf || pauseScreen.activeSelf || tutorialScreen.activeSelf)
             {
                 Time.timeScale = 0f;
 
@@ -87,6 +88,9 @@ public class GameManager : MonoBehaviour
             FindObjectsInactive.Include)?.gameObject;
 
         pauseScreen = FindAnyObjectByType<Pause>(
+            FindObjectsInactive.Include)?.gameObject;
+
+        tutorialScreen = FindAnyObjectByType<Tutorial>(
             FindObjectsInactive.Include)?.gameObject;
     }
 

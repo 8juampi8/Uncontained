@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4643211423506800697}
   - component: {fileID: 3988031153146711258}
   m_Layer: 8
-  m_Name: Battery
+  m_Name: battery
   m_TagString: Battery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
