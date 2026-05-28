@@ -13,7 +13,7 @@ public class ItemInteraction_player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider2D currentItem = Physics2D.OverlapCircle(transform.position, 1f, itemLayer);
+            Collider2D currentItem = Physics2D.OverlapCircle(transform.position, 1.5f, itemLayer);
 
             if (currentItem == null) return;
 

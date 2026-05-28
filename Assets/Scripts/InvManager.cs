@@ -87,6 +87,8 @@ public class InvManager : MonoBehaviour
 
         if (player == null) return;
         playerSprite = player.GetComponent<SpriteRenderer>();
+
+        EquipGun();
     }
 
     public void AddItem(string item)

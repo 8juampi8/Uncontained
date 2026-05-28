@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         }
         if (victoryScreen != null)
         {
-            if (tutorialScreen.activeSelf)
+            if (victoryScreen.activeSelf)
             {
                 Time.timeScale = 0f;
 

@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
     [SerializeField] private ItemInteraction_player player;
+    [SerializeField] private string toScene;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -10,7 +12,7 @@ public class Door : MonoBehaviour
         {
             Destroy(gameObject);
 
-            GameManager.instance.Win();
+            SceneManager.LoadScene(toScene);
         }
     }
 }

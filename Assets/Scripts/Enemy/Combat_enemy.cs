@@ -12,7 +12,7 @@ public class Combat_enemy : MonoBehaviour
         hitTimer += Time.deltaTime;
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && hitTimer >= hitCooldown)
         {
