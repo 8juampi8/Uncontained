@@ -9,6 +9,7 @@ public class DefaultEventTutorial : Events
         if (collision.gameObject == player)
         {
             panel.SetActive(true);
+            Destroy(gameObject);
         }
     }
 }

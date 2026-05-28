@@ -21,6 +21,7 @@ public class LightsOffTutorial : Events
             freeLight.enabled = true;
 
             panel.SetActive(true);
+            Destroy(gameObject);
         }
     }
 }

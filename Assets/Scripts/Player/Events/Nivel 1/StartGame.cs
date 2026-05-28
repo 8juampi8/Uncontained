@@ -13,7 +13,7 @@ public class StartGame : Events
 
     [SerializeField] private Movement_player movement;
 
-    void Start()
+    protected override void Start()
     {
         StartCoroutine(Titilar());
     }

@@ -4,7 +4,7 @@ public class Events : MonoBehaviour
 {
     protected GameObject player;
 
-    void Start()
+    protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player");
     }

@@ -5,11 +5,14 @@ public class CollisionEvents_player : Events
 {
 
     [SerializeField] private GameObject wallTut;
+    [SerializeField] private GameObject panel;
 
     SilenceHab_player silence;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         silence = GameObject.FindWithTag("Player").GetComponent<SilenceHab_player>();
     }
 
@@ -17,9 +20,11 @@ public class CollisionEvents_player : Events
     {
         if (collision.gameObject == player)
         {
+            panel.SetActive(true);
             wallTut.SetActive(true);
 
             silence.ResetWait();
+            Destroy(gameObject);
         }
     }
 }

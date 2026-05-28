@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     GameObject victoryScreen;
     GameObject pauseScreen;
     GameObject tutorialScreen;
+    GameObject dialogue;
     GameObject player;
 
     [SerializeField] private Guns_gun[] gunPrefabs;
@@ -47,11 +48,22 @@ public class GameManager : MonoBehaviour
             if (pauseScreen != null)
             {
                 pauseScreen.SetActive(true);
+
+                if (pauseScreen.activeSelf)
+                {
+                    hud.SetActive(false);
+                    Time.timeScale = 0f;
+                }
+                else
+                {
+                    hud.SetActive(true);
+                    Time.timeScale = 1f;
+                }
             }
         }
-        if (defeatScreen != null || pauseScreen != null)
+        if (defeatScreen != null)
         {
-            if (defeatScreen.activeSelf || pauseScreen.activeSelf)
+            if (defeatScreen.activeSelf)
             {
                 Time.timeScale = 0f;
 
@@ -126,6 +138,11 @@ public class GameManager : MonoBehaviour
 
         hud = FindAnyObjectByType<HUD>(
         FindObjectsInactive.Include)?.gameObject;
+
+        dialogue = FindAnyObjectByType<Dialogue>(
+        FindObjectsInactive.Include)?.gameObject;
+
+        if (SceneManager.GetActiveScene().name == "Level 1") flashlightPower = 100;
     }
 
     public void getDamage(int damage)
