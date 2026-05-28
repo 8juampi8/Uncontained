@@ -88,7 +88,12 @@ public class InvManager : MonoBehaviour
         if (player == null) return;
         playerSprite = player.GetComponent<SpriteRenderer>();
 
-        if (SceneManager.GetActiveScene().name == "Level 1") slotItem = null;
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            slotItem = null;
+            pistolAmmo = 0;
+            shotgunAmmo = 0;
+        }
 
         EquipGun();
     }

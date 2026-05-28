@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     static public GameManager instance;
     static public GameManager Instance => instance;
 
-    public float flashlightPower = 100;
+    public float flashlightPower = 10;
     int playerHealth = 3;
 
     GameObject defeatScreen;
@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (dialogue.activeSelf) return;
+
             if (pauseScreen != null)
             {
                 pauseScreen.SetActive(true);

@@ -20,18 +20,18 @@ public class StartGame : Events
 
     IEnumerator Titilar()
     {
-        float intervalo = 0.2f;
+        float intvl = 0.2f;
 
         while (startingPanel.activeSelf)
         {
             globalLight.color = Color.red;
-            yield return new WaitForSeconds(intervalo);
+            yield return new WaitForSeconds(intvl);
 
             globalLight.color = Color.white;
-            yield return new WaitForSeconds(intervalo);
+            yield return new WaitForSeconds(intvl);
         }
 
-        globalLight.color = new Color(0f / 255f, 0f / 255f, 0f / 255f);
+        globalLight.color = new Color(89f / 255f, 89f / 255f, 89f / 255f);
         globalLight.intensity = 0.01f;
 
         freeLight.enabled = true;
