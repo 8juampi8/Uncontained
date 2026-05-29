@@ -33,7 +33,7 @@ public class StartGame : Events
             yield return new WaitForSeconds(intvl);
         }
 
-        globalLight.color = new Color(89f / 255f, 89f / 255f, 89f / 255f);
+        globalLight.color = new Color(0f / 255f, 0f / 255f, 0f / 255f);
         globalLight.intensity = 0.01f;
 
         freeLight.enabled = true;
