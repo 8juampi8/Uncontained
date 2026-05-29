@@ -20,6 +20,8 @@ TagManager:
   - Tutorial
   - PistolCannon
   - ShotgunCannon
+  - SMGCannon
+  - RIfleCannon
   layers:
   - Default
   - TransparentFX

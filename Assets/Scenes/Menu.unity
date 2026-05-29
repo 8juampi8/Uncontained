@@ -301,7 +301,9 @@ MonoBehaviour:
   - {fileID: -4397967022680961911, guid: 91a916db3ecc70348a99f99c42a37aa0, type: 3}
   mele: {fileID: -2311659948842064771, guid: 93deabdc49cc34540b6edf42828ef4ca, type: 3}
   withPistol: {fileID: -2311659948842064771, guid: 3dea02fb0ea480c4f8bcf05fed9a367c, type: 3}
-  withShotgun: {fileID: 4501083361703174315, guid: c980b7512230f7744aae8ea80a4abd01, type: 3}
+  withShotgun: {fileID: 2750298860172458669, guid: a7dd465f0b1755e42bdcce8113777afe, type: 3}
+  withSMG: {fileID: 2750298860172458669, guid: 59c452a3d44140441a4f3ce800b6eda6, type: 3}
+  withRifle: {fileID: -6184050716912831369, guid: af8f4aec48981f94986cd0e08e51e3f4, type: 3}
 --- !u!1 &290252248
 GameObject:
   m_ObjectHideFlags: 0

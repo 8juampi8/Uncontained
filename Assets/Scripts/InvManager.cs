@@ -35,6 +35,8 @@ public class InvManager : MonoBehaviour
     [SerializeField] private Sprite mele;
     [SerializeField] private Sprite withPistol;
     [SerializeField] private Sprite withShotgun;
+    [SerializeField] private Sprite withSMG;
+    [SerializeField] private Sprite withRifle;
 
     private GameObject player;
     private SpriteRenderer playerSprite;
@@ -113,17 +115,25 @@ public class InvManager : MonoBehaviour
 
         isEquipped = true;
 
-        Pistol_gun gunType = obj.GetComponent<Pistol_gun>();
-
-        if (gunType != null)
+        if (obj.GetComponent<Pistol_gun>() != null)
         {
             cannon = GameObject.FindWithTag("PistolCannon");
             playerSprite.sprite = withPistol;
         }
-        else
+        if (obj.GetComponent<Shotgun_gun>() != null)
         {
             cannon = GameObject.FindWithTag("ShotgunCannon");
             playerSprite.sprite = withShotgun;
+        }
+        if (obj.GetComponent<SMG_gun>() != null)
+        {
+            cannon = GameObject.FindWithTag("SMGCannon");
+            playerSprite.sprite = withSMG;
+        }
+        if (obj.GetComponent<Rifle_gun>() != null)
+        {
+            cannon = GameObject.FindWithTag("RifleCannon");
+            playerSprite.sprite = withRifle;
         }
 
         currentGun = obj.GetComponent<Guns_gun>();
