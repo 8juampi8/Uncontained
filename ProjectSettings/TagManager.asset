@@ -21,7 +21,7 @@ TagManager:
   - PistolCannon
   - ShotgunCannon
   - SMGCannon
-  - RIfleCannon
+  - RifleCannon
   layers:
   - Default
   - TransparentFX

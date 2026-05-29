@@ -9,12 +9,14 @@ public class StartGame : Events
     [SerializeField] private Light2D freeLight;
 
     [SerializeField] private GameObject startingPanel;
-    [SerializeField] private GameObject hud;
+    private GameObject hud;
 
     [SerializeField] private Movement_player movement;
 
     protected override void Start()
     {
+        hud = FindAnyObjectByType<HUD>(FindObjectsInactive.Include)?.gameObject;
+
         StartCoroutine(Titilar());
     }
 

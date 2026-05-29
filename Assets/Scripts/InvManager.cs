@@ -26,11 +26,14 @@ public class InvManager : MonoBehaviour
     private int savedCharger = 0;
     public int SavedCharger => savedCharger;
 
-    private int pistolAmmo = 0;
-    public int PistolAmmo => pistolAmmo;
+    private int smallAmmo = 0;
+    public int SmallAmmo => smallAmmo;
 
     private int shotgunAmmo = 0;
     public int ShotgunAmmo => shotgunAmmo;
+
+    private int rifleAmmo = 0;
+    public int RifleAmmo => rifleAmmo;
 
     [SerializeField] private Sprite mele;
     [SerializeField] private Sprite withPistol;
@@ -93,11 +96,27 @@ public class InvManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
             slotItem = null;
-            pistolAmmo = 0;
+            smallAmmo = 0;
             shotgunAmmo = 0;
+            rifleAmmo = 0;
         }
 
         EquipGun();
+
+        if (GameManager.Instance.PlayerDied)
+        {
+            smallAmmo = GameManager.Instance.SmallAmmoOD;
+            shotgunAmmo = GameManager.Instance.ShotgunAmmoOD;
+            rifleAmmo = GameManager.Instance.RifleAmmoOD;
+
+            if (currentGun != null)
+            {
+                savedCharger = currentGun.MaxCharger;
+                currentGun.setAmmo(savedCharger);
+            }
+
+            GameManager.Instance.ResetDeathState();
+        }
     }
 
     public void AddItem(string item)
@@ -211,30 +230,42 @@ public class InvManager : MonoBehaviour
 
     public void PickPistolAmmo()
     {
-        pistolAmmo += 7;
-        Debug.Log("Ahora tenes " + pistolAmmo + " balas de pistola en el inventario: ");
+        smallAmmo += 7;
+        Debug.Log("Ahora tenes " + smallAmmo + " balas de pistola en el inventario");
     }
 
     public void PickShotgunAmmo()
     {
         shotgunAmmo += 2;
-        Debug.Log("Ahora tenes " + shotgunAmmo + " balas de escopeta en el inventario: ");
+        Debug.Log("Ahora tenes " + shotgunAmmo + " balas de escopeta en el inventario");
+    }
+
+    public void PickRifleAmmo()
+    {
+        rifleAmmo += 5;
+        Debug.Log("Ahora tenes " + rifleAmmo + " balas de rifle en el inventario");
     }
 
     public void UseAmmo(int ammo)
     {
         if (obj == null) return;
 
-        Pistol_gun pistol = obj.GetComponent<Pistol_gun>();
-
-        if (pistol != null)
+        if (obj.GetComponent<Pistol_gun>() != null || obj.GetComponent<SMG_gun>() != null)
         {
-            pistolAmmo -= ammo;
-            Debug.Log("Balas restantes de pistola en el inventario: " + pistolAmmo);
-            return;
+            smallAmmo -= ammo;
+            Debug.Log("Balas restantes chicas en el inventario: " + smallAmmo);
         }
 
-        shotgunAmmo -= ammo;
-        Debug.Log("Balas restantes de escopeta en el inventario: " + shotgunAmmo);
+        if (obj.GetComponent<Shotgun_gun>() != null)
+        {
+            shotgunAmmo -= ammo;
+            Debug.Log("Balas restantes de escopeta en el inventario: " + shotgunAmmo);
+        }
+
+        if (obj.GetComponent<Rifle_gun>() != null)
+        {
+            rifleAmmo -= ammo;
+            Debug.Log("Balas restantes de rifle en el inventario: " + rifleAmmo);
+        }
     }
 }

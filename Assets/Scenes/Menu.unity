@@ -299,6 +299,8 @@ MonoBehaviour:
   items:
   - {fileID: 936249385169731355, guid: ac1acd136f8aedd48a3353b1c562b75c, type: 3}
   - {fileID: -4397967022680961911, guid: 91a916db3ecc70348a99f99c42a37aa0, type: 3}
+  - {fileID: 6771674389501989119, guid: 84beed6f264db184ea6b55d5e2189bf6, type: 3}
+  - {fileID: 1919008997404726145, guid: 4c77762e99b712c498230291e8db401e, type: 3}
   mele: {fileID: -2311659948842064771, guid: 93deabdc49cc34540b6edf42828ef4ca, type: 3}
   withPistol: {fileID: -2311659948842064771, guid: 3dea02fb0ea480c4f8bcf05fed9a367c, type: 3}
   withShotgun: {fileID: 2750298860172458669, guid: a7dd465f0b1755e42bdcce8113777afe, type: 3}
@@ -3417,7 +3419,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Levels
+          m_StringArgument: Level 15
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1967186404
@@ -3594,6 +3596,8 @@ MonoBehaviour:
   gunPrefabs:
   - {fileID: -8326335147776935529, guid: ac1acd136f8aedd48a3353b1c562b75c, type: 3}
   - {fileID: 6596341574697938834, guid: 91a916db3ecc70348a99f99c42a37aa0, type: 3}
+  - {fileID: 4560830476994490875, guid: 84beed6f264db184ea6b55d5e2189bf6, type: 3}
+  - {fileID: 345448121994330374, guid: 4c77762e99b712c498230291e8db401e, type: 3}
 --- !u!4 &2046594621
 Transform:
   m_ObjectHideFlags: 0

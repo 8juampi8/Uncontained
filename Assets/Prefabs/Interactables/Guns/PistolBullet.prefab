@@ -156,4 +156,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecad42a1cde26648ad742b73e8e63c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Collision_bullet
-  damage: 25
+  damage: 35

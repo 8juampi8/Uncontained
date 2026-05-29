@@ -8,8 +8,23 @@ public class GameManager : MonoBehaviour
     static public GameManager instance;
     static public GameManager Instance => instance;
 
-    public float flashlightPower = 10;
-    int playerHealth = 3;
+    [SerializeField] private float flashlightPower = 100;
+    public float FlashlightPower => flashlightPower;
+
+    private int playerHealth = 3;
+    public int PlayerHealth => playerHealth;
+
+    private bool playerDied = false;
+    public bool PlayerDied => playerDied;
+
+    private int smallAmmoOD;
+    public int SmallAmmoOD => smallAmmoOD;
+
+    private int shotgunAmmoOD;
+    public int ShotgunAmmoOD => shotgunAmmoOD;
+
+    private int rifleAmmoOD;
+    public int RifleAmmoOD => rifleAmmoOD;
 
     GameObject defeatScreen;
     GameObject victoryScreen;
@@ -126,25 +141,23 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 
-        defeatScreen = FindAnyObjectByType<Defeat>(
-            FindObjectsInactive.Include)?.gameObject;
+        defeatScreen = FindAnyObjectByType<Defeat>(FindObjectsInactive.Include)?.gameObject;
 
-        victoryScreen = FindAnyObjectByType<Victory>(
-            FindObjectsInactive.Include)?.gameObject;
+        victoryScreen = FindAnyObjectByType<Victory>(FindObjectsInactive.Include)?.gameObject;
 
-        pauseScreen = FindAnyObjectByType<Pause>(
-            FindObjectsInactive.Include)?.gameObject;
+        pauseScreen = FindAnyObjectByType<Pause>(FindObjectsInactive.Include)?.gameObject;
 
-        tutorialScreen = FindAnyObjectByType<Tutorial>(
-            FindObjectsInactive.Include)?.gameObject;
+        tutorialScreen = FindAnyObjectByType<Tutorial>(FindObjectsInactive.Include)?.gameObject;
 
-        hud = FindAnyObjectByType<HUD>(
-        FindObjectsInactive.Include)?.gameObject;
+        hud = FindAnyObjectByType<HUD>(FindObjectsInactive.Include)?.gameObject;
 
-        dialogue = FindAnyObjectByType<Dialogue>(
-        FindObjectsInactive.Include)?.gameObject;
+        dialogue = FindAnyObjectByType<Dialogue>(FindObjectsInactive.Include)?.gameObject;
 
         if (SceneManager.GetActiveScene().name == "Level 1") flashlightPower = 100;
+
+        smallAmmoOD = InvManager.Instance.SmallAmmo;
+        shotgunAmmoOD = InvManager.Instance.ShotgunAmmo;
+        rifleAmmoOD = InvManager.Instance.RifleAmmo;
     }
 
     public void getDamage(int damage)
@@ -152,10 +165,11 @@ public class GameManager : MonoBehaviour
         playerHealth -= damage;
         UpdateHealth();
 
-
         if (playerHealth <= 0)
         {
             playerHealth = 0;
+
+            playerDied = true;
 
             if (player != null)
                 Destroy(player);
@@ -167,6 +181,11 @@ public class GameManager : MonoBehaviour
 
             playerHealth = 3;
         }
+    }
+
+    public void ResetDeathState()
+    {
+        playerDied = false;
     }
 
     public void Win()
@@ -208,16 +227,24 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Pistol_gun pistol = InvManager.Instance.Obj.GetComponent<Pistol_gun>();
-
-        if (pistol != null)
+        if (InvManager.Instance.Obj.GetComponent<Pistol_gun>() != null || InvManager.Instance.Obj.GetComponent<SMG_gun>())
         {
-            moreAmmoTxt.text = InvManager.Instance.PistolAmmo.ToString();
+            moreAmmoTxt.text = InvManager.Instance.SmallAmmo.ToString();
 
             return;
         }
+        if (InvManager.Instance.Obj.GetComponent<Shotgun_gun>() != null)
+        {
+            moreAmmoTxt.text = InvManager.Instance.ShotgunAmmo.ToString();
 
-        moreAmmoTxt.text = InvManager.Instance.ShotgunAmmo.ToString();
+            return;
+        }
+        if (InvManager.Instance.Obj.GetComponent<Rifle_gun>() != null)
+        {
+            moreAmmoTxt.text = InvManager.Instance.RifleAmmo.ToString();
+
+            return;
+        }
     }
 
     public void UpdateFLpower()

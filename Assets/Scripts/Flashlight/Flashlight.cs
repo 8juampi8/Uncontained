@@ -10,7 +10,7 @@ public class Flashlight : MonoBehaviour
     {
         lght = GetComponent<Light2D>();
 
-        power = GameManager.Instance.flashlightPower;
+        power = GameManager.Instance.FlashlightPower;
     }
 
     public void Toggle()
@@ -51,6 +51,6 @@ public class Flashlight : MonoBehaviour
     public void AddPower()
     {
         power += 25;
-        GameManager.Instance.ChangePower(power); 
+        GameManager.Instance.ChangePower(power);
     }
 }

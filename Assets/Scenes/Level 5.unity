@@ -16317,11 +16317,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 116470505727167653, guid: 91a916db3ecc70348a99f99c42a37aa0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.21694605
+      value: 0.21694613
       objectReference: {fileID: 0}
     - target: {fileID: 116470505727167653, guid: 91a916db3ecc70348a99f99c42a37aa0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.10752569
+      value: 0.10752573
       objectReference: {fileID: 0}
     - target: {fileID: 116470505727167653, guid: 91a916db3ecc70348a99f99c42a37aa0, type: 3}
       propertyPath: m_LocalPosition.x

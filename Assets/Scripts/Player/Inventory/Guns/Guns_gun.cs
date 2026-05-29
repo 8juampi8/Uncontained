@@ -61,17 +61,19 @@ public class Guns_gun : MonoBehaviour
 
         bulletsNedeed = maxCharger - gunCharger;
 
-        Pistol_gun pistol = InvManager.Instance.Obj.GetComponent<Pistol_gun>();
+        int bulletsToReload = 0;
 
-        int bulletsToReload;
-
-        if (pistol != null)
+        if (InvManager.Instance.Obj.GetComponent<Pistol_gun>() != null || InvManager.Instance.Obj.GetComponent<SMG_gun>() != null)
         {
-            bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.PistolAmmo);
+            bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.SmallAmmo);
         }
-        else
+        if (InvManager.Instance.Obj.GetComponent<Shotgun_gun>() != null)
         {
             bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.ShotgunAmmo);
+        }
+        if (InvManager.Instance.Obj.GetComponent<Rifle_gun>() != null)
+        {
+            bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.RifleAmmo);
         }
 
         if (bulletsToReload <= 0)
