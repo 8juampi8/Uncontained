@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8120399556643160100
+--- !u!1 &8849977828140942067
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6683206204987922014}
-  - component: {fileID: 1951542507980129140}
-  - component: {fileID: 8171959923946553032}
-  - component: {fileID: -8798914651461350846}
-  - component: {fileID: 1980932215349475466}
+  - component: {fileID: 114737199349600377}
+  - component: {fileID: 585149423362616998}
+  - component: {fileID: 6638441230958553733}
+  - component: {fileID: 6270467832085008797}
+  - component: {fileID: 384592228439808501}
   m_Layer: 0
-  m_Name: PistolBullet
+  m_Name: FusilBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6683206204987922014
+--- !u!4 &114737199349600377
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8120399556643160100}
+  m_GameObject: {fileID: 8849977828140942067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3096, y: -1.4277, z: 0}
-  m_LocalScale: {x: 0.98292905, y: 0.3767796, z: 1}
+  m_LocalPosition: {x: 1.34, y: -0.73, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1951542507980129140
+--- !u!212 &585149423362616998
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8120399556643160100}
+  m_GameObject: {fileID: 8849977828140942067}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -82,52 +82,25 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8353622520779725729, guid: bf4a5fcfc39a650409ce9b78a8c6413c, type: 3}
-  m_Color: {r: 1, g: 0.5039347, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &8171959923946553032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8120399556643160100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49a46fd3a4cceb3408a389f658593e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Create_bullet
-  speed: 15
-  destroyTime: 2
---- !u!114 &-8798914651461350846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8120399556643160100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ecad42a1cde26648ad742b73e8e63c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Collision_bullet
-  damage: 35
---- !u!60 &1980932215349475466
+--- !u!60 &6638441230958553733
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8120399556643160100}
+  m_GameObject: {fileID: 8849977828140942067}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -160,7 +133,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.61, y: 1.97}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -180,3 +153,30 @@ PolygonCollider2D:
       - {x: 0.085, y: -0.185}
       - {x: 0.074999996, y: 0.13499999}
   m_UseDelaunayMesh: 1
+--- !u!114 &6270467832085008797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8849977828140942067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a46fd3a4cceb3408a389f658593e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Create_bullet
+  speed: 25
+  destroyTime: 2
+--- !u!114 &384592228439808501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8849977828140942067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecad42a1cde26648ad742b73e8e63c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collision_bullet
+  damage: 100

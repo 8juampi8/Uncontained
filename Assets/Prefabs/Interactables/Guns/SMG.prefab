@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SMG_gun
   bullet: {fileID: 8120399556643160100, guid: 4047747c07ab5ad4cbcd563cc344b68f, type: 3}
   shootCooldown: 0
-  maxCharger: 8
+  maxCharger: 15
 --- !u!60 &695905983757538346
 PolygonCollider2D:
   m_ObjectHideFlags: 0

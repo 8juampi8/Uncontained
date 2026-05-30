@@ -64,6 +64,10 @@ public class ItemInteraction_player : MonoBehaviour
                     InvManager.Instance.PickShotgunAmmo();
                     GameManager.Instance.UpdateMoreAmmo();
                     break;
+                case "RifleBullet":
+                    InvManager.Instance.PickRifleAmmo();
+                    GameManager.Instance.UpdateMoreAmmo();
+                    break;
             }
 
             Destroy(item.gameObject);
