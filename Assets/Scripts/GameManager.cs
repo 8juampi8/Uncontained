@@ -60,24 +60,43 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (dialogue.activeSelf) return;
-
-            if (pauseScreen != null)
+            if (dialogue == null)
             {
-                pauseScreen.SetActive(true);
+                if (pauseScreen != null)
+                {
+                    pauseScreen.SetActive(true);
 
-                if (pauseScreen.activeSelf)
-                {
-                    hud.SetActive(false);
-                    Time.timeScale = 0f;
                 }
-                else
+            }
+            else
+            {
+                if (!dialogue.activeSelf)
                 {
-                    hud.SetActive(true);
-                    Time.timeScale = 1f;
+                    if (pauseScreen != null)
+                    {
+                        pauseScreen.SetActive(true);
+
+                    }
                 }
             }
         }
+
+        if (pauseScreen != null)
+        {
+            if (pauseScreen.activeSelf)
+            {
+                Time.timeScale = 0f;
+
+                hud.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 1f;
+
+                hud.SetActive(true);
+            }
+        }
+
         if (defeatScreen != null)
         {
             if (defeatScreen.activeSelf)
@@ -93,6 +112,7 @@ public class GameManager : MonoBehaviour
                 hud.SetActive(true);
             }
         }
+
         if (victoryScreen != null)
         {
             if (victoryScreen.activeSelf)
@@ -109,6 +129,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
+
         if (tutorialScreen != null)
         {
             if (tutorialScreen.activeSelf)
