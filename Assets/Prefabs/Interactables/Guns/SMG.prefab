@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7344993897154221772}
   - component: {fileID: 6479511069198878626}
+  - component: {fileID: 695905983757538346}
   - component: {fileID: 6771674389501989119}
   - component: {fileID: 4560830476994490875}
-  - component: {fileID: 695905983757538346}
   m_Layer: 8
   m_Name: SMG
   m_TagString: Gun
@@ -94,35 +94,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &6771674389501989119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449364505258150935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 140117a1b31c0d341b1c206c186c9d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: SMG
-  prefab: {fileID: 7449364505258150935}
---- !u!114 &4560830476994490875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449364505258150935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be1f0dc873daf38478797038c4371bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SMG_gun
-  bullet: {fileID: 8120399556643160100, guid: 4047747c07ab5ad4cbcd563cc344b68f, type: 3}
-  shootCooldown: 0
-  maxCharger: 15
 --- !u!60 &695905983757538346
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -387,3 +358,32 @@ PolygonCollider2D:
       - {x: 0.43629876, y: -0.10557114}
       - {x: 0.44690424, y: -0.08436021}
   m_UseDelaunayMesh: 1
+--- !u!114 &6771674389501989119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449364505258150935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140117a1b31c0d341b1c206c186c9d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  itemName: SMG
+  prefab: {fileID: 7449364505258150935}
+--- !u!114 &4560830476994490875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449364505258150935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1f0dc873daf38478797038c4371bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SMG_gun
+  bullet: {fileID: 8120399556643160100, guid: 4047747c07ab5ad4cbcd563cc344b68f, type: 3}
+  shootCooldown: 0
+  maxCharger: 15

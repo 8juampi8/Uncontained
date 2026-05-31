@@ -41,9 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4339213884742258789}
   - component: {fileID: 3606843453505686838}
-  - component: {fileID: -8326335147776935529}
-  - component: {fileID: 936249385169731355}
   - component: {fileID: 1831780018902542867}
+  - component: {fileID: 936249385169731355}
+  - component: {fileID: -8326335147776935529}
   m_Layer: 8
   m_Name: Pistol
   m_TagString: Gun
@@ -126,35 +126,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-8326335147776935529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7898314995201419879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378daa406bf04c04497dd4eaee620ec9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pistol_gun
-  bullet: {fileID: 8120399556643160100, guid: 4047747c07ab5ad4cbcd563cc344b68f, type: 3}
-  shootCooldown: 0.5
-  maxCharger: 7
---- !u!114 &936249385169731355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7898314995201419879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 140117a1b31c0d341b1c206c186c9d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Pistol
-  prefab: {fileID: 7898314995201419879}
 --- !u!60 &1831780018902542867
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -402,3 +373,32 @@ PolygonCollider2D:
       - {x: 1.3199999, y: 0.51}
       - {x: 1.31, y: 0.52}
   m_UseDelaunayMesh: 0
+--- !u!114 &936249385169731355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7898314995201419879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140117a1b31c0d341b1c206c186c9d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  itemName: Pistol
+  prefab: {fileID: 7898314995201419879}
+--- !u!114 &-8326335147776935529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7898314995201419879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378daa406bf04c04497dd4eaee620ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pistol_gun
+  bullet: {fileID: 8120399556643160100, guid: 4047747c07ab5ad4cbcd563cc344b68f, type: 3}
+  shootCooldown: 0.5
+  maxCharger: 7

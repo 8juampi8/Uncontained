@@ -35,14 +35,9 @@ public class InvManager : MonoBehaviour
     private int rifleAmmo = 0;
     public int RifleAmmo => rifleAmmo;
 
-    [SerializeField] private Sprite mele;
-    [SerializeField] private Sprite withPistol;
-    [SerializeField] private Sprite withShotgun;
-    [SerializeField] private Sprite withSMG;
-    [SerializeField] private Sprite withRifle;
+    private Animator animator;
 
     private GameObject player;
-    private SpriteRenderer playerSprite;
 
     private GameObject cannon;
 
@@ -91,7 +86,8 @@ public class InvManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         if (player == null) return;
-        playerSprite = player.GetComponent<SpriteRenderer>();
+
+        animator = player.GetComponent<Animator>();
 
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
@@ -124,6 +120,15 @@ public class InvManager : MonoBehaviour
         slotItem = item;
     }
 
+    private void ResetWeaponBools()
+    {
+        if (animator == null) return;
+        animator.SetBool("equipPistol", false);
+        animator.SetBool("equipShotgun", false);
+        animator.SetBool("equipSMG", false);
+        animator.SetBool("equipRifle", false);
+    }
+
     public void EquipGun()
     {
         if (string.IsNullOrEmpty(slotItem)) return;
@@ -134,25 +139,27 @@ public class InvManager : MonoBehaviour
 
         isEquipped = true;
 
+        ResetWeaponBools();
+
         if (obj.GetComponent<Pistol_gun>() != null)
         {
             cannon = GameObject.FindWithTag("PistolCannon");
-            playerSprite.sprite = withPistol;
+            animator.SetBool("equipPistol", true);
         }
-        if (obj.GetComponent<Shotgun_gun>() != null)
+        else if (obj.GetComponent<Shotgun_gun>() != null)
         {
             cannon = GameObject.FindWithTag("ShotgunCannon");
-            playerSprite.sprite = withShotgun;
+            animator.SetBool("equipShotgun", true);
         }
-        if (obj.GetComponent<SMG_gun>() != null)
+        else if (obj.GetComponent<SMG_gun>() != null)
         {
             cannon = GameObject.FindWithTag("SMGCannon");
-            playerSprite.sprite = withSMG;
+            animator.SetBool("equipSMG", true);
         }
-        if (obj.GetComponent<Rifle_gun>() != null)
+        else if (obj.GetComponent<Rifle_gun>() != null)
         {
             cannon = GameObject.FindWithTag("RifleCannon");
-            playerSprite.sprite = withRifle;
+            animator.SetBool("equipRifle", true);
         }
 
         currentGun = obj.GetComponent<Guns_gun>();
@@ -172,7 +179,8 @@ public class InvManager : MonoBehaviour
     {
         if (obj != null)
         {
-            playerSprite.sprite = mele;
+            ResetWeaponBools();
+
             isEquipped = false;
 
             if (!string.IsNullOrEmpty(slotItem) && currentGun != null)
