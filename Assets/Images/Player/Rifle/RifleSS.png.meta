@@ -1,10 +1,40 @@
 fileFormatVersion: 2
-guid: 644e6f5fa40623443959268cd9b77746
+guid: 5e162fe31302c2e4c84b19d30599005d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8793915729297761979
-    second: 03_0
+      213: -8981081426810799786
+    second: RifleSS_0
+  - first:
+      213: -7805941060217837305
+    second: RifleSS_1
+  - first:
+      213: 2916829259538913841
+    second: RifleSS_2
+  - first:
+      213: 5196779779384411691
+    second: RifleSS_3
+  - first:
+      213: -9025665462378909027
+    second: RifleSS_4
+  - first:
+      213: 7518052367935448448
+    second: RifleSS_5
+  - first:
+      213: -9128061753221845837
+    second: RifleSS_6
+  - first:
+      213: 1068756854218237900
+    second: RifleSS_7
+  - first:
+      213: -8734255495836768496
+    second: RifleSS_8
+  - first:
+      213: -3879600097121069478
+    second: RifleSS_9
+  - first:
+      213: -2715551993788523257
+    second: RifleSS_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +130,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 03_0
+      name: RifleSS_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 284
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 299
+        height: 527
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bb6638d73c34a0a70800000000000000
-      internalID: 8793915729297761979
+      spriteID: cf8103837f3b84c4a850c1372991fbb3
+      internalID: -571960989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RifleSS_1
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 0
+        width: 299
+        height: 527
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50df8a293cb55ad46bee6f3fcf621e68
+      internalID: -675569600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RifleSS_2
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 0
+        width: 299
+        height: 527
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f254bbd4b4bbafb47a7e1c25ac3144d0
+      internalID: 1438600745
       vertices: []
       indices: 
       edges: []
@@ -125,7 +199,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c3e4a1664b8bfd548bf6db220790a541
     internalID: 0
     vertices: []
     indices: 
@@ -133,9 +207,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":299.0,"y":527.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.8500000238418579},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      03_0: 8793915729297761979
+      RifleSS_0: -571960989
+      RifleSS_1: -675569600
+      RifleSS_2: 1438600745
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
