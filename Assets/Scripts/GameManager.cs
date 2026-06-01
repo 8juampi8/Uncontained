@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject hud;
 
+    private PlayerSoundsController soundsController;
+
     void Awake()
     {
         if (instance != null)
@@ -162,6 +164,11 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 
+        if (player != null)
+        {
+            soundsController = player.GetComponent<PlayerSoundsController>();
+        }
+
         defeatScreen = FindAnyObjectByType<Defeat>(FindObjectsInactive.Include)?.gameObject;
 
         victoryScreen = FindAnyObjectByType<Victory>(FindObjectsInactive.Include)?.gameObject;
@@ -183,6 +190,8 @@ public class GameManager : MonoBehaviour
 
     public void getDamage(int damage)
     {
+        soundsController.PlayOneShot(soundsController.GeneralSource, soundsController.GetDamage);
+
         playerHealth -= damage;
         UpdateHealth();
 
@@ -190,10 +199,12 @@ public class GameManager : MonoBehaviour
         {
             playerHealth = 0;
 
+            soundsController.PlayOneShot(soundsController.GeneralSource, soundsController.Death);
+
             playerDied = true;
 
-            if (player != null)
-                Destroy(player);
+            // if (player != null)
+            //     Destroy(player);
 
             PlayerPrefs.DeleteKey("equippedGun");
 

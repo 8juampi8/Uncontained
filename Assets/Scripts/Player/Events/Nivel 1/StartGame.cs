@@ -13,6 +13,8 @@ public class StartGame : Events
 
     [SerializeField] private Movement_player movement;
 
+    [SerializeField] private PlayerSoundsController soundsController;
+
     protected override void Start()
     {
         hud = FindAnyObjectByType<HUD>(FindObjectsInactive.Include)?.gameObject;
@@ -24,6 +26,11 @@ public class StartGame : Events
     {
         float intvl = 0.2f;
 
+        if (startingPanel.activeSelf)
+        {
+            soundsController.PlayLoop(soundsController.GeneralSource, soundsController.Alarm);
+        }
+
         while (startingPanel.activeSelf)
         {
             globalLight.color = Color.red;
@@ -32,6 +39,8 @@ public class StartGame : Events
             globalLight.color = Color.white;
             yield return new WaitForSeconds(intvl);
         }
+
+        soundsController.Stop(soundsController.GeneralSource);
 
         globalLight.color = new Color(0f / 255f, 0f / 255f, 0f / 255f);
         globalLight.intensity = 0.01f;

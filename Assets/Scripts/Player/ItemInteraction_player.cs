@@ -9,6 +9,13 @@ public class ItemInteraction_player : MonoBehaviour
 
     [SerializeField] private Flashlight flashlight;
 
+    private PlayerSoundsController soundsController;
+
+    void Start()
+    {
+        soundsController = gameObject.GetComponent<PlayerSoundsController>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -29,8 +36,6 @@ public class ItemInteraction_player : MonoBehaviour
                         InvManager.Instance.DropGun();
                     }
 
-                    // MODIFICADO: Antes de destruir el objeto del suelo, tomamos sus balas actuales
-                    // y las guardamos en los datos de nuestro diccionario global
                     Guns_gun floorGunScript = item.GetComponent<Guns_gun>();
                     if (floorGunScript != null)
                     {
@@ -43,30 +48,47 @@ public class ItemInteraction_player : MonoBehaviour
 
                     InvManager.Instance.AddItem(item.ItemName);
                     InvManager.Instance.EquipGun();
+
+                    soundsController.PlayPickAmmo();
+
                     break;
 
                 case "KeyCard":
                     hasKeyCard = true;
+
+                    soundsController.PlayPickKey();
+
                     break;
 
                 case "Battery":
-                    // CORREGIDO: Se valida antes de usar la variable para evitar errores.
                     if (flashlight == null) return;
                     flashlight.AddPower();
+
+                    soundsController.PlayPickBattery();
+
                     break;
 
                 case "PistolBullet":
                     InvManager.Instance.PickPistolAmmo();
                     GameManager.Instance.UpdateMoreAmmo();
+
+                    soundsController.PlayPickAmmo();
+                    
                     break;
 
                 case "ShotgunBullet":
                     InvManager.Instance.PickShotgunAmmo();
                     GameManager.Instance.UpdateMoreAmmo();
+
+                    soundsController.PlayPickAmmo();
+
                     break;
                 case "RifleBullet":
                     InvManager.Instance.PickRifleAmmo();
                     GameManager.Instance.UpdateMoreAmmo();
+
+                    soundsController.PlayPickAmmo();
+
                     break;
             }
 

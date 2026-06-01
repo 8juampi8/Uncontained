@@ -262,6 +262,7 @@ MonoBehaviour:
   bullet: {fileID: 6865897758103964060, guid: 1f3e7c9e3876e7b4e8e117ce737e2c1f, type: 3}
   shootCooldown: 1.25
   maxCharger: 2
+  shootSound: {fileID: 8300000, guid: 639fcaa4fac2eac40bdbd6fd3370964d, type: 3}
 --- !u!1 &4072051952653767348
 GameObject:
   m_ObjectHideFlags: 0
