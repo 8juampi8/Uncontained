@@ -90,6 +90,14 @@ public class ItemInteraction_player : MonoBehaviour
                     soundsController.PlayPickAmmo();
 
                     break;
+                case "Button":
+                    Debug.Log("Botón presionado");
+                    Button btnEvent = GameObject.FindWithTag("ButtonEvent").GetComponent<Button>();
+                    Debug.Log(btnEvent);
+
+                    btnEvent.StartCount();
+                
+                    break;
             }
 
             Destroy(item.gameObject);

@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
                 if (pauseScreen != null)
                 {
                     pauseScreen.SetActive(true);
-
                 }
             }
             else
@@ -77,7 +76,6 @@ public class GameManager : MonoBehaviour
                     if (pauseScreen != null)
                     {
                         pauseScreen.SetActive(true);
-
                     }
                 }
             }
@@ -94,8 +92,6 @@ public class GameManager : MonoBehaviour
             else
             {
                 Time.timeScale = 1f;
-
-                hud.SetActive(true);
             }
         }
 

@@ -379,6 +379,7 @@ MonoBehaviour:
   silence: {fileID: 8300000, guid: 99e5b45b411a8a04e8cf31b7f7b32c0e, type: 3}
   door: {fileID: 8300000, guid: 2e0b04c41edbef543b089113711150fd, type: 3}
   reload: {fileID: 8300000, guid: 7ed1cbc682276f541a674c8ad8b9797d, type: 3}
+  count: {fileID: 8300000, guid: 3abda7acf56d564428a2ad7aa2ed476a, type: 3}
 --- !u!82 &4700653626060386727
 AudioSource:
   m_ObjectHideFlags: 0

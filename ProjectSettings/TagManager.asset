@@ -22,6 +22,9 @@ TagManager:
   - ShotgunCannon
   - SMGCannon
   - RifleCannon
+  - RifleBullet
+  - Button
+  - ButtonEvent
   layers:
   - Default
   - TransparentFX

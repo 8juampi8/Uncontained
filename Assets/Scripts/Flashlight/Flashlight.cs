@@ -24,9 +24,12 @@ public class Flashlight : MonoBehaviour
     {
         if (Time.timeScale > 0)
         {
-            lght.enabled = !lght.enabled;
+            if (lght != null)
+            {    
+                lght.enabled = !lght.enabled;
 
-            soundsController.PlayToggleFL();
+                soundsController.PlayToggleFL();
+            }
         }
     }
 

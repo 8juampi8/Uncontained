@@ -45,6 +45,10 @@ public class PlayerSoundsController : MonoBehaviour
 
     [SerializeField] private AudioClip reload;
 
+    [SerializeField] private AudioClip count;
+
+    [SerializeField] private AudioClip explotion;
+
     // GENERALES
 
     public void PlayOneShot(AudioSource source, AudioClip sound)
@@ -117,5 +121,15 @@ public class PlayerSoundsController : MonoBehaviour
     public void PlayReload()
     {
         PlayOneShot(generalSource, reload);
+    }
+
+    public void PlayCount()
+    {
+        PlayOneShot(generalSource, count);
+    }
+
+    public void PlayExplotion()
+    {
+        PlayOneShot(generalSource, explotion);
     }
 }

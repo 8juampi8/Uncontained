@@ -448,7 +448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f878c9a64f2104ab6f1a7da9b81174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  player: {fileID: 170572215}
   toScene: Level 10
 --- !u!19719996 &169646729
 TilemapCollider2D:
@@ -549,17 +548,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 329e7032cf62787418f1a86991f92384, type: 3}
---- !u!114 &170572215 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -8248357436384275857, guid: 329e7032cf62787418f1a86991f92384, type: 3}
-  m_PrefabInstance: {fileID: 170572214}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 826a2010cf1d68941b36d15216d4c490, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemInteraction_player
 --- !u!4 &170572216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8941995726687171805, guid: 329e7032cf62787418f1a86991f92384, type: 3}
@@ -1540,6 +1528,11 @@ PrefabInstance:
 --- !u!224 &603140126 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1371908951166120193, guid: fd251bfd72ecd5944981560f24b74ffb, type: 3}
+  m_PrefabInstance: {fileID: 603140125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &603140127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9088194531181777345, guid: fd251bfd72ecd5944981560f24b74ffb, type: 3}
   m_PrefabInstance: {fileID: 603140125}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &659588739
@@ -18543,6 +18536,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1860165344}
     m_Modifications:
+    - target: {fileID: 1437840386668700224, guid: 797e0dea03f5bdd4c8f15d4bd47ab7ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 603140127}
     - target: {fileID: 2510661747262052528, guid: 797e0dea03f5bdd4c8f15d4bd47ab7ad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
