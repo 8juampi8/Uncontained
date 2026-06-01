@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 559801113823870487}
   - component: {fileID: 6911344380955925041}
+  - component: {fileID: 3522539695675443959}
   - component: {fileID: 1919008997404726145}
   - component: {fileID: 345448121994330374}
-  - component: {fileID: 3522539695675443959}
   m_Layer: 8
   m_Name: Rifle
   m_TagString: Gun
@@ -94,35 +94,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1919008997404726145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5712464755456152969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 140117a1b31c0d341b1c206c186c9d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Rifle
-  prefab: {fileID: 5712464755456152969}
---- !u!114 &345448121994330374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5712464755456152969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de207830342ec4b4493150c116d74900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Rifle_gun
-  bullet: {fileID: 8849977828140942067, guid: 03a978157374ee14fbc191e76a78f4e4, type: 3}
-  shootCooldown: 0.75
-  maxCharger: 5
 --- !u!60 &3522539695675443959
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -216,3 +187,32 @@ PolygonCollider2D:
       - {x: 1.1, y: 0.02}
       - {x: 1.1, y: 0.03}
   m_UseDelaunayMesh: 1
+--- !u!114 &1919008997404726145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5712464755456152969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140117a1b31c0d341b1c206c186c9d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  itemName: Rifle
+  prefab: {fileID: 5712464755456152969}
+--- !u!114 &345448121994330374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5712464755456152969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de207830342ec4b4493150c116d74900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rifle_gun
+  bullet: {fileID: 8849977828140942067, guid: 03a978157374ee14fbc191e76a78f4e4, type: 3}
+  shootCooldown: 0.75
+  maxCharger: 5

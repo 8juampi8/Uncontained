@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6683206204987922014}
   - component: {fileID: 1951542507980129140}
+  - component: {fileID: 1980932215349475466}
   - component: {fileID: 8171959923946553032}
   - component: {fileID: -8798914651461350846}
-  - component: {fileID: 1980932215349475466}
   m_Layer: 0
   m_Name: PistolBullet
   m_TagString: Untagged
@@ -94,33 +94,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &8171959923946553032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8120399556643160100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49a46fd3a4cceb3408a389f658593e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Create_bullet
-  speed: 15
-  destroyTime: 2
---- !u!114 &-8798914651461350846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8120399556643160100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ecad42a1cde26648ad742b73e8e63c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Collision_bullet
-  damage: 35
 --- !u!60 &1980932215349475466
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -180,3 +153,30 @@ PolygonCollider2D:
       - {x: 0.085, y: -0.185}
       - {x: 0.074999996, y: 0.13499999}
   m_UseDelaunayMesh: 1
+--- !u!114 &8171959923946553032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120399556643160100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a46fd3a4cceb3408a389f658593e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Create_bullet
+  speed: 15
+  destroyTime: 2
+--- !u!114 &-8798914651461350846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120399556643160100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecad42a1cde26648ad742b73e8e63c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collision_bullet
+  damage: 35

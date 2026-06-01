@@ -1,10 +1,34 @@
 fileFormatVersion: 2
-guid: a7dd465f0b1755e42bdcce8113777afe
+guid: ecf117fef71fd014caa7c8fc7a96ff86
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2750298860172458669
-    second: 04_0
+      213: -6686116917661018716
+    second: PistolSS_0
+  - first:
+      213: 2602108387471017958
+    second: PistolSS_1
+  - first:
+      213: -3262830441776265652
+    second: PistolSS_2
+  - first:
+      213: -609180906842336756
+    second: PistolSS_3
+  - first:
+      213: 1266673301058534071
+    second: PistolSS_4
+  - first:
+      213: -3969681188502471348
+    second: PistolSS_5
+  - first:
+      213: -6982281433989810490
+    second: PistolSS_6
+  - first:
+      213: -7249821991840596915
+    second: PistolSS_7
+  - first:
+      213: 2433664290392224394
+    second: PistolSS_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 600
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +124,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 04_0
+      name: PistolSS_0
       rect:
         serializedVersion: 2
-        x: 285
-        y: 628
-        width: 469
-        height: 856
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 957
+        height: 1643
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: daabdbadd360b2620800000000000000
-      internalID: 2750298860172458669
+      spriteID: e5957c80a6e4a694aabc5c6ddd16eadb
+      internalID: -973359421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistolSS_1
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 0
+        width: 957
+        height: 1643
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73edcfd59bc899d4e8c97a8b57c928a3
+      internalID: 703482241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistolSS_2
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 0
+        width: 957
+        height: 1643
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26eef052011566341bbdbdb4466e7785
+      internalID: 1823666131
       vertices: []
       indices: 
       edges: []
@@ -125,7 +193,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d86fcf26c16ded64dbd00778064c29f1
     internalID: 0
     vertices: []
     indices: 
@@ -133,9 +201,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":957.0,"y":1643.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":1.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":2,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: False
     nameFileIdTable:
-      04_0: 2750298860172458669
+      PistolSS_0: -973359421
+      PistolSS_1: 703482241
+      PistolSS_2: 1823666131
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

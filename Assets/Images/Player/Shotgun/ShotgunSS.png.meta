@@ -1,19 +1,61 @@
 fileFormatVersion: 2
-guid: ed16902872802c441a9be9432a3848b1
+guid: 6e92bdc677fcc0d46a428b8a5ff41ea9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3164809056393425246
-    second: 01_0
+      213: -4288517722871451775
+    second: ShotgunSS_0
   - first:
-      213: -8314853801317715943
-    second: 01_1
+      213: -4546138952057653791
+    second: ShotgunSS_1
   - first:
-      213: -6316419149885394363
-    second: 01_2
+      213: 3960405342294251662
+    second: ShotgunSS_2
   - first:
-      213: 4552446279970383544
-    second: 01_3
+      213: 3296690458601770756
+    second: ShotgunSS_3
+  - first:
+      213: -4482714459629987434
+    second: ShotgunSS_4
+  - first:
+      213: 3378345855284418818
+    second: ShotgunSS_5
+  - first:
+      213: -425385880065473756
+    second: ShotgunSS_6
+  - first:
+      213: -2979300411209931121
+    second: ShotgunSS_7
+  - first:
+      213: -2172328047426000560
+    second: ShotgunSS_8
+  - first:
+      213: -4764966677359712405
+    second: ShotgunSS_9
+  - first:
+      213: -6311476642479357770
+    second: ShotgunSS_10
+  - first:
+      213: -7130715242931628944
+    second: ShotgunSS_11
+  - first:
+      213: -128952360988771001
+    second: ShotgunSS_12
+  - first:
+      213: 5230216722041963282
+    second: ShotgunSS_13
+  - first:
+      213: 6341360441004380512
+    second: ShotgunSS_14
+  - first:
+      213: -8673826746968720247
+    second: ShotgunSS_15
+  - first:
+      213: 2147335019627324290
+    second: ShotgunSS_16
+  - first:
+      213: 112592876363108032
+    second: ShotgunSS_17
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +102,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 600
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,89 +151,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 01_0
+      name: ShotgunSS_0
       rect:
         serializedVersion: 2
-        x: 228
-        y: 544
-        width: 583
-        height: 911
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 1039
+        height: 1514
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2ae0bbb5ee65414d0800000000000000
-      internalID: -3164809056393425246
+      spriteID: 18fa7434adf1c74c0800000000000000
+      internalID: -4288517722871451775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_1
+      name: ShotgunSS_1
       rect:
         serializedVersion: 2
-        x: 348
-        y: 345
-        width: 112
-        height: 204
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1039
+        y: 0
+        width: 1039
+        height: 1514
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 910b62d8584bb9c80800000000000000
-      internalID: -8314853801317715943
+      spriteID: 1e57907a5bed8e0c0800000000000000
+      internalID: -4546138952057653791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_2
+      name: ShotgunSS_2
       rect:
         serializedVersion: 2
-        x: 420
-        y: 456
-        width: 136
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2078
+        y: 0
+        width: 1039
+        height: 1514
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5423b9ebf329758a0800000000000000
-      internalID: -6316419149885394363
+      spriteID: e88120afcaf26f630800000000000000
+      internalID: 3960405342294251662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_3
+      name: ShotgunSS_3
       rect:
         serializedVersion: 2
-        x: 279
-        y: 453
-        width: 95
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3117
+        y: 0
+        width: 1039
+        height: 1514
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b6eea095c98d2f30800000000000000
-      internalID: 4552446279970383544
+      spriteID: 40fc067618230cd20800000000000000
+      internalID: 3296690458601770756
       vertices: []
       indices: 
       edges: []
@@ -200,7 +242,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: df126ffef09a31a479f859eefa9a9057
     internalID: 0
     vertices: []
     indices: 
@@ -208,12 +250,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1039.0,"y":1514.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      01_0: -3164809056393425246
-      01_1: -8314853801317715943
-      01_2: -6316419149885394363
-      01_3: 4552446279970383544
+      ShotgunSS_0: -4288517722871451775
+      ShotgunSS_1: -4546138952057653791
+      ShotgunSS_2: 3960405342294251662
+      ShotgunSS_3: 3296690458601770756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
