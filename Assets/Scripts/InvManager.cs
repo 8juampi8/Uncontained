@@ -2,24 +2,17 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-
 public class InvManager : MonoBehaviour
 {
     static private InvManager instance;
     static public InvManager Instance => instance;
 
-
     private string slotItem;
     public string SlotItem => slotItem;
 
-
     [SerializeField] private List<Item> items;
 
-
-    private Dictionary<string, GameObject> itemDictionary;
-
-
-    private GameObject hand;
+    private Dictionary<string, (GameObject Prefab, Guns_gun GunScript)> itemDictionary;
 
     private GameObject obj;
     public GameObject Obj => obj;
@@ -33,11 +26,25 @@ public class InvManager : MonoBehaviour
     private int savedCharger = 0;
     public int SavedCharger => savedCharger;
 
-    private int pistolAmmo = 0;
-    public int PistolAmmo => pistolAmmo;
+    private int smallAmmo = 0;
+    public int SmallAmmo => smallAmmo;
 
     private int shotgunAmmo = 0;
     public int ShotgunAmmo => shotgunAmmo;
+
+    private int rifleAmmo = 0;
+    public int RifleAmmo => rifleAmmo;
+
+    private Animator animator;
+
+    private GameObject player;
+
+    private GameObject cannon;
+
+    private PlayerSoundsController soundsController;
+    public PlayerSoundsController SoundsController => soundsController;
+
+    private AudioClip shootSound;
 
     void Awake()
     {
@@ -52,27 +59,28 @@ public class InvManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        itemDictionary = new Dictionary<string, GameObject>();
+        itemDictionary = new Dictionary<string, (GameObject, Guns_gun)>();
 
-
-        foreach (var item in items)
+        foreach (Item item in items)
         {
-            itemDictionary[item.ItemName] = item.Prefab;
+            if (item.Prefab != null)
+            {
+                Guns_gun gunComp = item.Prefab.GetComponent<Guns_gun>();
+
+                itemDictionary[item.ItemName] = (item.Prefab, gunComp);
+            }
         }
     }
-
 
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -80,72 +88,99 @@ public class InvManager : MonoBehaviour
         currentGun = null;
         isEquipped = false;
 
-        SpawnGun();
+        player = GameObject.FindWithTag("Player");
+
+        if (player == null) return;
+
+        animator = player.GetComponent<Animator>();
+        soundsController = player.GetComponent<PlayerSoundsController>();
+
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            slotItem = null;
+            smallAmmo = 0;
+            shotgunAmmo = 0;
+            rifleAmmo = 0;
+        }
+
+        EquipGun();
+
+        if (GameManager.Instance.PlayerDied)
+        {
+            smallAmmo = GameManager.Instance.SmallAmmoOD;
+            shotgunAmmo = GameManager.Instance.ShotgunAmmoOD;
+            rifleAmmo = GameManager.Instance.RifleAmmoOD;
+
+            if (currentGun != null)
+            {
+                savedCharger = currentGun.MaxCharger;
+                currentGun.setAmmo(savedCharger);
+            }
+
+            GameManager.Instance.ResetDeathState();
+        }
     }
-
-    public void SpawnGun()
-
-    {
-        if (string.IsNullOrEmpty(slotItem)) return;
-
-
-        GameObject prefab = GetPrefab(slotItem);
-
-
-        if (prefab == null) return;
-
-
-        obj = Instantiate(prefab);
-        currentGun = obj.GetComponent<Guns_gun>();
-
-        if (currentGun == null) return;
-
-        currentGun.setAmmo(savedCharger);
-        isEquipped = true;
-
-        hand = GameObject.FindWithTag("GunPos");
-
-
-        if (hand == null) return;
-
-
-        obj.transform.SetParent(hand.transform);
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.rotation = hand.transform.rotation;
-
-        Collider2D col = obj.GetComponent<Collider2D>();
-
-        if (col != null) col.enabled = false;
-
-        GameManager.Instance.UpdateAmmo();
-        GameManager.Instance.UpdateMoreAmmo();
-    }
-
 
     public void AddItem(string item)
     {
         slotItem = item;
     }
 
-    public void EquipGun(GameObject item)
+    private void ResetWeaponBools()
     {
-        hand = GameObject.FindWithTag("GunPos");
+        if (animator == null) return;
+        animator.SetBool("equipPistol", false);
+        animator.SetBool("equipShotgun", false);
+        animator.SetBool("equipSMG", false);
+        animator.SetBool("equipRifle", false);
+    }
 
-        if (hand == null) return;
+    public void EquipGun()
+    {
+        if (string.IsNullOrEmpty(slotItem)) return;
 
-        item.transform.SetParent(hand.transform);
-        item.transform.localPosition = Vector3.zero;
-        item.transform.rotation = hand.transform.rotation;
+        obj = GetPrefab(slotItem);
 
-        Collider2D col = item.GetComponent<Collider2D>();
-
-        if (col != null) col.enabled = false;
+        if (obj == null) return;
 
         isEquipped = true;
-        obj = item;
 
-        Guns_gun ammo = obj.GetComponent<Guns_gun>();
-        savedCharger = ammo.GunCharger;
+        ResetWeaponBools();
+
+        if (obj.GetComponent<Pistol_gun>() != null)
+        {
+            cannon = GameObject.FindWithTag("PistolCannon");
+            animator.SetBool("equipPistol", true);
+            shootSound = soundsController.PistolShoot;
+        }
+        else if (obj.GetComponent<Shotgun_gun>() != null)
+        {
+            cannon = GameObject.FindWithTag("ShotgunCannon");
+            animator.SetBool("equipShotgun", true);
+            shootSound = soundsController.ShotgunShoot;
+        }
+        else if (obj.GetComponent<SMG_gun>() != null)
+        {
+            cannon = GameObject.FindWithTag("SMGCannon");
+            animator.SetBool("equipSMG", true);
+            shootSound = soundsController.SmgShoot;
+        }
+        else if (obj.GetComponent<Rifle_gun>() != null)
+        {
+            cannon = GameObject.FindWithTag("RifleCannon");
+            animator.SetBool("equipRifle", true);
+            shootSound = soundsController.RifleShoot;
+        }
+
+        currentGun = obj.GetComponent<Guns_gun>();
+
+        if (currentGun == null) return;
+
+        savedCharger = GetGunScript(slotItem).GunCharger;
+
+        currentGun.setCannon(cannon);
+        currentGun.setAmmo(savedCharger);
+        currentGun.setShootSound(shootSound);
 
         GameManager.Instance.UpdateAmmo();
         GameManager.Instance.UpdateMoreAmmo();
@@ -155,33 +190,73 @@ public class InvManager : MonoBehaviour
     {
         if (obj != null)
         {
-            Collider2D col = obj.GetComponent<Collider2D>();
+            ResetWeaponBools();
 
-            if (col != null) col.enabled = true;
+            isEquipped = false;
 
+            if (!string.IsNullOrEmpty(slotItem) && currentGun != null)
+            {
+                var currentSlot = itemDictionary[slotItem];
+                currentSlot.GunScript.setAmmo(currentGun.GunCharger);
 
+                itemDictionary[slotItem] = (currentSlot.Prefab, currentSlot.GunScript);
+            }
 
+            GameObject droppedItem = Instantiate(obj, player.transform.position, player.transform.rotation);
+            Guns_gun droppedGunScript = droppedItem.GetComponent<Guns_gun>();
 
-            obj.transform.SetParent(null);
+            if (droppedGunScript != null)
+            {
+                droppedGunScript.setAmmo(currentGun.GunCharger);
+            }
+
+            slotItem = null;
+            cannon = null;
+            shootSound = null;
+            obj = null;
+
+            GameManager.Instance.UpdateAmmo();
+            GameManager.Instance.UpdateMoreAmmo();
         }
-
-        isEquipped = false;
-
-        currentGun = null;
-        slotItem = null;
-        obj = null;
-        GameManager.Instance.UpdateAmmo();
-        GameManager.Instance.UpdateMoreAmmo();
     }
 
+    public void TriggerShootAnimation()
+    {
+        if (animator == null || obj == null) return;
+
+        if (obj.GetComponent<Pistol_gun>() != null)
+        {
+            animator.SetTrigger("shootPistol");
+        }
+        else if (obj.GetComponent<Shotgun_gun>() != null)
+        {
+            animator.SetTrigger("shootShotgun");
+        }
+        else if (obj.GetComponent<SMG_gun>() != null)
+        {
+            animator.SetTrigger("shootSMG");
+        }
+        else if (obj.GetComponent<Rifle_gun>() != null)
+        {
+            animator.SetTrigger("shootRifle");
+        }
+    }
 
     public GameObject GetPrefab(string id)
     {
-        if (itemDictionary.TryGetValue(id, out GameObject prefab))
+        if (itemDictionary.TryGetValue(id, out var weaponData))
         {
-            return prefab;
+            return weaponData.Prefab;
         }
+        return null;
+    }
 
+    public Guns_gun GetGunScript(string id)
+    {
+        if (itemDictionary.TryGetValue(id, out var weaponData))
+        {
+            return weaponData.GunScript;
+        }
         return null;
     }
 
@@ -197,33 +272,36 @@ public class InvManager : MonoBehaviour
 
     public void PickPistolAmmo()
     {
-        pistolAmmo += 7;
-        Debug.Log("Ahora tenes " + pistolAmmo + " balas de pistola en el inventario: ");
+        smallAmmo += 7;
     }
 
     public void PickShotgunAmmo()
     {
         shotgunAmmo += 2;
-        Debug.Log("Ahora tenes " + shotgunAmmo + " balas de escopeta en el inventario: ");
+    }
+
+    public void PickRifleAmmo()
+    {
+        rifleAmmo += 3;
     }
 
     public void UseAmmo(int ammo)
     {
         if (obj == null) return;
 
-        Pistol_gun pistol = obj.GetComponent<Pistol_gun>();
-
-        if (pistol != null)
+        if (obj.GetComponent<Pistol_gun>() != null || obj.GetComponent<SMG_gun>() != null)
         {
-            pistolAmmo -= ammo;
-            Debug.Log("Balas restantes de pistola en el inventario: " + pistolAmmo);
-
-            return;        
+            smallAmmo -= ammo;
         }
 
-        shotgunAmmo -= ammo;
-        Debug.Log("Balas restantes de escopeta en el inventario: " + shotgunAmmo);
+        if (obj.GetComponent<Shotgun_gun>() != null)
+        {
+            shotgunAmmo -= ammo;
+        }
 
-
+        if (obj.GetComponent<Rifle_gun>() != null)
+        {
+            rifleAmmo -= ammo;
+        }
     }
 }

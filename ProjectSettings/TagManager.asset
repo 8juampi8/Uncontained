@@ -7,19 +7,24 @@ TagManager:
   - Enemy
   - Gun
   - KeyCard
-  - CloseWallTutorial
-  - FinalTutorial
   - Defeat
   - Victory
   - Pause
   - Light
-  - GunPos
   - Flashlight
   - Item
   - Battery
   - PistolBullet
   - ShotgunBullet
   - HUD
+  - Tutorial
+  - PistolCannon
+  - ShotgunCannon
+  - SMGCannon
+  - RifleCannon
+  - RifleBullet
+  - Button
+  - ButtonEvent
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,8 @@ public class Combat_enemy : MonoBehaviour
     private float hitTimer = 0;
     private float hitCooldown = 1.5f;
 
+    [SerializeField] private Animator anim;
+
     void Update()
     {
         hitTimer += Time.deltaTime;

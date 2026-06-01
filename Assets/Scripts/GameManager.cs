@@ -8,12 +8,29 @@ public class GameManager : MonoBehaviour
     static public GameManager instance;
     static public GameManager Instance => instance;
 
-    public float flashlightPower = 100;
-    int playerHealth = 3;
+    [SerializeField] private float flashlightPower = 100;
+    public float FlashlightPower => flashlightPower;
+
+    private int playerHealth = 3;
+    public int PlayerHealth => playerHealth;
+
+    private bool playerDied = false;
+    public bool PlayerDied => playerDied;
+
+    private int smallAmmoOD;
+    public int SmallAmmoOD => smallAmmoOD;
+
+    private int shotgunAmmoOD;
+    public int ShotgunAmmoOD => shotgunAmmoOD;
+
+    private int rifleAmmoOD;
+    public int RifleAmmoOD => rifleAmmoOD;
 
     GameObject defeatScreen;
     GameObject victoryScreen;
     GameObject pauseScreen;
+    GameObject tutorialScreen;
+    GameObject dialogue;
     GameObject player;
 
     [SerializeField] private Guns_gun[] gunPrefabs;
@@ -25,6 +42,8 @@ public class GameManager : MonoBehaviour
     private Slider powerSlider;
 
     private GameObject hud;
+
+    private PlayerSoundsController soundsController;
 
     void Awake()
     {
@@ -43,14 +62,42 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pauseScreen != null)
+            if (dialogue == null)
             {
-                pauseScreen.SetActive(true);
+                if (pauseScreen != null)
+                {
+                    pauseScreen.SetActive(true);
+                }
+            }
+            else
+            {
+                if (!dialogue.activeSelf)
+                {
+                    if (pauseScreen != null)
+                    {
+                        pauseScreen.SetActive(true);
+                    }
+                }
             }
         }
-        if (victoryScreen != null && defeatScreen != null && pauseScreen != null)
+
+        if (pauseScreen != null)
         {
-            if (victoryScreen.activeSelf || defeatScreen.activeSelf || pauseScreen.activeSelf)
+            if (pauseScreen.activeSelf)
+            {
+                Time.timeScale = 0f;
+
+                hud.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
+        }
+
+        if (defeatScreen != null)
+        {
+            if (defeatScreen.activeSelf)
             {
                 Time.timeScale = 0f;
 
@@ -61,6 +108,40 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1f;
 
                 hud.SetActive(true);
+            }
+        }
+
+        if (victoryScreen != null)
+        {
+            if (victoryScreen.activeSelf)
+            {
+                Time.timeScale = 0f;
+
+                hud.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 1f;
+
+                hud.SetActive(true);
+
+            }
+        }
+
+        if (tutorialScreen != null)
+        {
+            if (tutorialScreen.activeSelf)
+            {
+                Time.timeScale = 0f;
+
+                hud.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 1f;
+
+                hud.SetActive(true);
+
             }
         }
     }
@@ -78,30 +159,48 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         player = GameObject.FindWithTag("Player");
-        hud = GameObject.FindWithTag("HUD");
 
-        defeatScreen = FindAnyObjectByType<Defeat>(
-            FindObjectsInactive.Include)?.gameObject;
+        if (player != null)
+        {
+            soundsController = player.GetComponent<PlayerSoundsController>();
+        }
 
-        victoryScreen = FindAnyObjectByType<Victory>(
-            FindObjectsInactive.Include)?.gameObject;
+        defeatScreen = FindAnyObjectByType<Defeat>(FindObjectsInactive.Include)?.gameObject;
 
-        pauseScreen = FindAnyObjectByType<Pause>(
-            FindObjectsInactive.Include)?.gameObject;
+        victoryScreen = FindAnyObjectByType<Victory>(FindObjectsInactive.Include)?.gameObject;
+
+        pauseScreen = FindAnyObjectByType<Pause>(FindObjectsInactive.Include)?.gameObject;
+
+        tutorialScreen = FindAnyObjectByType<Tutorial>(FindObjectsInactive.Include)?.gameObject;
+
+        hud = FindAnyObjectByType<HUD>(FindObjectsInactive.Include)?.gameObject;
+
+        dialogue = FindAnyObjectByType<Dialogue>(FindObjectsInactive.Include)?.gameObject;
+
+        if (SceneManager.GetActiveScene().name == "Level 1") flashlightPower = 100;
+
+        smallAmmoOD = InvManager.Instance.SmallAmmo;
+        shotgunAmmoOD = InvManager.Instance.ShotgunAmmo;
+        rifleAmmoOD = InvManager.Instance.RifleAmmo;
     }
 
     public void getDamage(int damage)
     {
+        soundsController.PlayOneShot(soundsController.GeneralSource, soundsController.GetDamage);
+
         playerHealth -= damage;
         UpdateHealth();
-
 
         if (playerHealth <= 0)
         {
             playerHealth = 0;
 
-            if (player != null)
-                Destroy(player);
+            soundsController.PlayOneShot(soundsController.GeneralSource, soundsController.Death);
+
+            playerDied = true;
+
+            // if (player != null)
+            //     Destroy(player);
 
             PlayerPrefs.DeleteKey("equippedGun");
 
@@ -110,6 +209,11 @@ public class GameManager : MonoBehaviour
 
             playerHealth = 3;
         }
+    }
+
+    public void ResetDeathState()
+    {
+        playerDied = false;
     }
 
     public void Win()
@@ -133,7 +237,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateAmmo()
     {
-        if(InvManager.Instance.Obj == null)
+        if (InvManager.Instance.Obj == null)
         {
             ammoTxt.text = "";
             return;
@@ -151,21 +255,29 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Pistol_gun pistol = InvManager.Instance.Obj.GetComponent<Pistol_gun>();
-
-        if (pistol != null)
+        if (InvManager.Instance.Obj.GetComponent<Pistol_gun>() != null || InvManager.Instance.Obj.GetComponent<SMG_gun>())
         {
-            moreAmmoTxt.text = InvManager.Instance.PistolAmmo.ToString();
+            moreAmmoTxt.text = InvManager.Instance.SmallAmmo.ToString();
 
-            return;        
+            return;
         }
+        if (InvManager.Instance.Obj.GetComponent<Shotgun_gun>() != null)
+        {
+            moreAmmoTxt.text = InvManager.Instance.ShotgunAmmo.ToString();
 
-        moreAmmoTxt.text = InvManager.Instance.ShotgunAmmo.ToString();
+            return;
+        }
+        if (InvManager.Instance.Obj.GetComponent<Rifle_gun>() != null)
+        {
+            moreAmmoTxt.text = InvManager.Instance.RifleAmmo.ToString();
+
+            return;
+        }
     }
 
     public void UpdateFLpower()
     {
-        powerSlider.value = flashlightPower;
+        if (powerSlider != null) powerSlider.value = flashlightPower;
     }
 
     // SAVES

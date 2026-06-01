@@ -3,7 +3,7 @@ using UnityEngine;
 public class Guns_gun : MonoBehaviour
 {
     [SerializeField] protected GameObject bullet;
-    [SerializeField] protected GameObject cannon;
+    private GameObject cannon;
 
     [SerializeField] protected float shootCooldown;
     protected float shootTimer;
@@ -16,9 +16,19 @@ public class Guns_gun : MonoBehaviour
 
     private int bulletsNedeed;
 
+    private bool wasEquipped = false;
+    public bool WasEquipped => wasEquipped;
+
+    private AudioClip shootSound;
+
     void Awake()
     {
         gunCharger = maxCharger;
+    }
+
+    public void UpdateShootTimer()
+    {
+        shootTimer += Time.deltaTime;
     }
 
     public void setAmmo(int ammo)
@@ -26,16 +36,27 @@ public class Guns_gun : MonoBehaviour
         gunCharger = ammo;
     }
 
+    public void setCannon(GameObject newCannon)
+    {
+        cannon = newCannon;
+    }
+
+    public void setShootSound(AudioClip sound)
+    {
+        shootSound = sound;
+    }
+
     public void Shoot()
     {
-        if(shootTimer <= shootCooldown) return;
+        if (shootTimer <= shootCooldown) return;
+
+        InvManager.Instance.SoundsController.PlayShootSound(shootSound);
 
         Instantiate(bullet, cannon.transform.position, cannon.transform.rotation);
 
         gunCharger--;
         InvManager.Instance.RemoveBullet();
-        Debug.Log(gunCharger);
-
+        
         GameManager.Instance.UpdateAmmo();
 
         shootTimer = 0;
@@ -43,34 +64,36 @@ public class Guns_gun : MonoBehaviour
 
     public void Reload()
     {
-        if(gunCharger == maxCharger) return;
+        if (gunCharger == maxCharger) return;
 
         bulletsNedeed = maxCharger - gunCharger;
 
-        Pistol_gun pistol = InvManager.Instance.Obj.GetComponent<Pistol_gun>();
+        int bulletsToReload = 0;
 
-        int bulletsToReload;
-
-        if (pistol != null)
+        if (InvManager.Instance.Obj.GetComponent<Pistol_gun>() != null || InvManager.Instance.Obj.GetComponent<SMG_gun>() != null)
         {
-            bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.PistolAmmo);       
+            bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.SmallAmmo);
         }
-        else
+        if (InvManager.Instance.Obj.GetComponent<Shotgun_gun>() != null)
         {
             bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.ShotgunAmmo);
         }
-
-        if(bulletsToReload <= 0)
+        if (InvManager.Instance.Obj.GetComponent<Rifle_gun>() != null)
         {
-            Debug.Log("No tenes balas para poder recargar");
+            bulletsToReload = Mathf.Min(bulletsNedeed, InvManager.Instance.RifleAmmo);
+        }
+
+        if (bulletsToReload <= 0)
+        {
             return;
         }
+
+        InvManager.Instance.SoundsController.PlayReload();
 
         gunCharger += bulletsToReload;
         InvManager.Instance.AddBullet(bulletsToReload);
 
         InvManager.Instance.UseAmmo(bulletsToReload);
-        Debug.Log("Recargaste");
 
         GameManager.Instance.UpdateAmmo();
         GameManager.Instance.UpdateMoreAmmo();

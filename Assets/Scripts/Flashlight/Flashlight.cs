@@ -6,18 +6,30 @@ public class Flashlight : MonoBehaviour
     private float power;
     Light2D lght;
 
+    private GameObject player;
+    private PlayerSoundsController soundsController;
+
     void Start()
     {
         lght = GetComponent<Light2D>();
 
-        power = GameManager.Instance.flashlightPower;
+        power = GameManager.Instance.FlashlightPower;
+
+        player = GameObject.FindWithTag("Player");
+
+        if (player != null) soundsController = player.GetComponent<PlayerSoundsController>();
     }
 
     public void Toggle()
     {
         if (Time.timeScale > 0)
         {
-            lght.enabled = !lght.enabled;
+            if (lght != null)
+            {    
+                lght.enabled = !lght.enabled;
+
+                soundsController.PlayToggleFL();
+            }
         }
     }
 
@@ -51,6 +63,6 @@ public class Flashlight : MonoBehaviour
     public void AddPower()
     {
         power += 25;
-        GameManager.Instance.ChangePower(power); 
+        GameManager.Instance.ChangePower(power);
     }
 }

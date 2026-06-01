@@ -13,6 +13,15 @@ public class SilenceHab_player : MonoBehaviour
 
     public bool inSilence => silence;
 
+    private PlayerSoundsController soundsController;
+
+    [SerializeField] private GameObject dialogue;
+
+    void Start()
+    {
+        soundsController = gameObject.GetComponent<PlayerSoundsController>();
+    }
+
     void Update()
     {
         // VERIFICAR QUE SILENCE NO ESTE EN COOLDOWN
@@ -26,14 +35,27 @@ public class SilenceHab_player : MonoBehaviour
         }
 
         // SI APRETA X Y SILENCE NO ESTA EN COOLDOWN, SE ACTIVA
-        if (Input.GetKeyDown(KeyCode.X) && canSilence)
+        if (dialogue != null)
         {
-            silence = true;
+            if (Input.GetKeyDown(KeyCode.X) && canSilence && !dialogue.activeSelf)
+            {
+                silence = true;
+                soundsController.PlaySilence();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.X) && canSilence)
+            {
+                silence = true;
+                soundsController.PlaySilence();
+            }
         }
 
         // MIENTRAS SILENCE ESTE ACTIVO
         if (silence)
         {
+
             playerSprite.color = Color.gray4;
 
             silenceTimer += Time.deltaTime;
@@ -42,6 +64,8 @@ public class SilenceHab_player : MonoBehaviour
 
             if (silenceTimer >= silenceDuration)
             {
+                soundsController.PlaySilence();
+
                 silence = false;
                 silenceTimer = 0;
             }
@@ -52,5 +76,10 @@ public class SilenceHab_player : MonoBehaviour
 
             playerSprite.color = Color.white;
         }
+    }
+
+    public void ResetWait()
+    {
+        silenceWait = 20;
     }
 }

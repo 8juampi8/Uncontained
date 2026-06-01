@@ -5,6 +5,7 @@ public class Health_enemy : MonoBehaviour
     private int health = 100;
 
     [SerializeField] private GameObject keyCard;
+    [SerializeField] private GameObject item;
 
     public void getDamage(int damage)
     {
@@ -17,6 +18,10 @@ public class Health_enemy : MonoBehaviour
             if (keyCard != null)
             {
                 Instantiate(keyCard, transform.position, transform.rotation);
+            }
+            if (item != null)
+            {
+                Instantiate(item, transform.position, transform.rotation);
             }
         }
     }
