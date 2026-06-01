@@ -813,6 +813,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4385855970214506266, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 59689673}
     - target: {fileID: 7734105748122799297, guid: 329e7032cf62787418f1a86991f92384, type: 3}
       propertyPath: cam
       value: 
@@ -892,6 +896,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826a2010cf1d68941b36d15216d4c490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInteraction_player
+--- !u!114 &336945153 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8827419784266127160, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+  m_PrefabInstance: {fileID: 336945150}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf0aa2f535cab74ea65458330b8f8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSoundsController
 --- !u!1001 &357501892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2793,7 +2808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f878c9a64f2104ab6f1a7da9b81174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  player: {fileID: 336945152}
+  playerPickUp: {fileID: 336945152}
   toScene: Level 2
 --- !u!1 &698261310
 GameObject:
@@ -8715,6 +8730,7 @@ MonoBehaviour:
   freeLight: {fileID: 336945151}
   startingPanel: {fileID: 59689673}
   movement: {fileID: 2002301563}
+  soundsController: {fileID: 336945153}
 --- !u!1 &1821908027
 GameObject:
   m_ObjectHideFlags: 0

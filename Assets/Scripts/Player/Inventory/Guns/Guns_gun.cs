@@ -19,7 +19,8 @@ public class Guns_gun : MonoBehaviour
     private bool wasEquipped = false;
     public bool WasEquipped => wasEquipped;
 
-    // CAMBIADO: Usamos Awake para establecer las balas iniciales por defecto antes de que el InvManager las lea
+    private AudioClip shootSound;
+
     void Awake()
     {
         gunCharger = maxCharger;
@@ -40,16 +41,22 @@ public class Guns_gun : MonoBehaviour
         cannon = newCannon;
     }
 
+    public void setShootSound(AudioClip sound)
+    {
+        shootSound = sound;
+    }
+
     public void Shoot()
     {
         if (shootTimer <= shootCooldown) return;
+
+        InvManager.Instance.SoundsController.PlayShootSound(shootSound);
 
         Instantiate(bullet, cannon.transform.position, cannon.transform.rotation);
 
         gunCharger--;
         InvManager.Instance.RemoveBullet();
-        Debug.Log(gunCharger);
-
+        
         GameManager.Instance.UpdateAmmo();
 
         shootTimer = 0;
@@ -78,15 +85,15 @@ public class Guns_gun : MonoBehaviour
 
         if (bulletsToReload <= 0)
         {
-            Debug.Log("No tenes balas para poder recargar");
             return;
         }
+
+        InvManager.Instance.SoundsController.PlayReload();
 
         gunCharger += bulletsToReload;
         InvManager.Instance.AddBullet(bulletsToReload);
 
         InvManager.Instance.UseAmmo(bulletsToReload);
-        Debug.Log("Recargaste");
 
         GameManager.Instance.UpdateAmmo();
         GameManager.Instance.UpdateMoreAmmo();

@@ -216,3 +216,4 @@ MonoBehaviour:
   bullet: {fileID: 8849977828140942067, guid: 03a978157374ee14fbc191e76a78f4e4, type: 3}
   shootCooldown: 0.75
   maxCharger: 5
+  shootSound: {fileID: 8300000, guid: 194cd8f4000587b46b6cbe7f6efa2535, type: 3}

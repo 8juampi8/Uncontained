@@ -41,6 +41,11 @@ public class InvManager : MonoBehaviour
 
     private GameObject cannon;
 
+    private PlayerSoundsController soundsController;
+    public PlayerSoundsController SoundsController => soundsController;
+
+    private AudioClip shootSound;
+
     void Awake()
     {
         if (instance != null)
@@ -88,6 +93,7 @@ public class InvManager : MonoBehaviour
         if (player == null) return;
 
         animator = player.GetComponent<Animator>();
+        soundsController = player.GetComponent<PlayerSoundsController>();
 
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
@@ -145,21 +151,25 @@ public class InvManager : MonoBehaviour
         {
             cannon = GameObject.FindWithTag("PistolCannon");
             animator.SetBool("equipPistol", true);
+            shootSound = soundsController.PistolShoot;
         }
         else if (obj.GetComponent<Shotgun_gun>() != null)
         {
             cannon = GameObject.FindWithTag("ShotgunCannon");
             animator.SetBool("equipShotgun", true);
+            shootSound = soundsController.ShotgunShoot;
         }
         else if (obj.GetComponent<SMG_gun>() != null)
         {
             cannon = GameObject.FindWithTag("SMGCannon");
             animator.SetBool("equipSMG", true);
+            shootSound = soundsController.SmgShoot;
         }
         else if (obj.GetComponent<Rifle_gun>() != null)
         {
             cannon = GameObject.FindWithTag("RifleCannon");
             animator.SetBool("equipRifle", true);
+            shootSound = soundsController.RifleShoot;
         }
 
         currentGun = obj.GetComponent<Guns_gun>();
@@ -170,6 +180,7 @@ public class InvManager : MonoBehaviour
 
         currentGun.setCannon(cannon);
         currentGun.setAmmo(savedCharger);
+        currentGun.setShootSound(shootSound);
 
         GameManager.Instance.UpdateAmmo();
         GameManager.Instance.UpdateMoreAmmo();
@@ -201,6 +212,7 @@ public class InvManager : MonoBehaviour
 
             slotItem = null;
             cannon = null;
+            shootSound = null;
             obj = null;
 
             GameManager.Instance.UpdateAmmo();
@@ -261,19 +273,16 @@ public class InvManager : MonoBehaviour
     public void PickPistolAmmo()
     {
         smallAmmo += 7;
-        Debug.Log("Ahora tenes " + smallAmmo + " balas de pistola en el inventario");
     }
 
     public void PickShotgunAmmo()
     {
         shotgunAmmo += 2;
-        Debug.Log("Ahora tenes " + shotgunAmmo + " balas de escopeta en el inventario");
     }
 
     public void PickRifleAmmo()
     {
-        rifleAmmo += 5;
-        Debug.Log("Ahora tenes " + rifleAmmo + " balas de rifle en el inventario");
+        rifleAmmo += 3;
     }
 
     public void UseAmmo(int ammo)
@@ -283,19 +292,16 @@ public class InvManager : MonoBehaviour
         if (obj.GetComponent<Pistol_gun>() != null || obj.GetComponent<SMG_gun>() != null)
         {
             smallAmmo -= ammo;
-            Debug.Log("Balas restantes chicas en el inventario: " + smallAmmo);
         }
 
         if (obj.GetComponent<Shotgun_gun>() != null)
         {
             shotgunAmmo -= ammo;
-            Debug.Log("Balas restantes de escopeta en el inventario: " + shotgunAmmo);
         }
 
         if (obj.GetComponent<Rifle_gun>() != null)
         {
             rifleAmmo -= ammo;
-            Debug.Log("Balas restantes de rifle en el inventario: " + rifleAmmo);
         }
     }
 }
