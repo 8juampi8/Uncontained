@@ -358,6 +358,7 @@ MonoBehaviour:
   door: {fileID: 8300000, guid: 2e0b04c41edbef543b089113711150fd, type: 3}
   reload: {fileID: 8300000, guid: 7ed1cbc682276f541a674c8ad8b9797d, type: 3}
   count: {fileID: 8300000, guid: 3abda7acf56d564428a2ad7aa2ed476a, type: 3}
+  explotion: {fileID: 0}
 --- !u!82 &4700653626060386727
 AudioSource:
   m_ObjectHideFlags: 0
@@ -675,7 +676,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5900127456407478030}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
@@ -828,7 +829,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8508879442654253282}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
