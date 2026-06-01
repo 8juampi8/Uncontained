@@ -208,6 +208,28 @@ public class InvManager : MonoBehaviour
         }
     }
 
+    public void TriggerShootAnimation()
+    {
+        if (animator == null || obj == null) return;
+
+        if (obj.GetComponent<Pistol_gun>() != null)
+        {
+            animator.SetTrigger("shootPistol");
+        }
+        else if (obj.GetComponent<Shotgun_gun>() != null)
+        {
+            animator.SetTrigger("shootShotgun");
+        }
+        else if (obj.GetComponent<SMG_gun>() != null)
+        {
+            animator.SetTrigger("shootSMG");
+        }
+        else if (obj.GetComponent<Rifle_gun>() != null)
+        {
+            animator.SetTrigger("shootRifle");
+        }
+    }
+
     public GameObject GetPrefab(string id)
     {
         if (itemDictionary.TryGetValue(id, out var weaponData))
