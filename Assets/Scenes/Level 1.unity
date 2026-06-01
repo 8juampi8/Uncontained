@@ -813,6 +813,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4385855970214506266, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 59689673}
     - target: {fileID: 7734105748122799297, guid: 329e7032cf62787418f1a86991f92384, type: 3}
       propertyPath: cam
       value: 
@@ -2804,7 +2808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f878c9a64f2104ab6f1a7da9b81174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  player: {fileID: 336945152}
+  playerPickUp: {fileID: 336945152}
   toScene: Level 2
 --- !u!1 &698261310
 GameObject:

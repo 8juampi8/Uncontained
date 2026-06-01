@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SilenceHab_player
   playerSprite: {fileID: 1391675941740519288}
+  dialogue: {fileID: 0}
 --- !u!114 &-8248357436384275857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +375,10 @@ MonoBehaviour:
   pickKey: {fileID: 8300000, guid: 76923eb4b567bae409b96e6339809e80, type: 3}
   pickAmmo: {fileID: 8300000, guid: ebc36193502163346a1f3fca04d336c8, type: 3}
   pickBattery: {fileID: 8300000, guid: e510a7540b14aea47b83d8eb07b3bf43, type: 3}
+  toggleFL: {fileID: 8300000, guid: 625fd5c63309db7438937576bd7092df, type: 3}
+  silence: {fileID: 8300000, guid: 99e5b45b411a8a04e8cf31b7f7b32c0e, type: 3}
+  door: {fileID: 8300000, guid: 2e0b04c41edbef543b089113711150fd, type: 3}
+  reload: {fileID: 8300000, guid: 7ed1cbc682276f541a674c8ad8b9797d, type: 3}
 --- !u!82 &4700653626060386727
 AudioSource:
   m_ObjectHideFlags: 0

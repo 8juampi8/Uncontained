@@ -88,6 +88,8 @@ public class Guns_gun : MonoBehaviour
             return;
         }
 
+        InvManager.Instance.SoundsController.PlayReload();
+
         gunCharger += bulletsToReload;
         InvManager.Instance.AddBullet(bulletsToReload);
 

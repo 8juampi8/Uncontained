@@ -37,6 +37,14 @@ public class PlayerSoundsController : MonoBehaviour
 
     [SerializeField] private AudioClip pickBattery;
 
+    [SerializeField] private AudioClip toggleFL;
+
+    [SerializeField] private AudioClip silence;
+
+    [SerializeField] private AudioClip door;
+
+    [SerializeField] private AudioClip reload;
+
     // GENERALES
 
     public void PlayOneShot(AudioSource source, AudioClip sound)
@@ -86,8 +94,28 @@ public class PlayerSoundsController : MonoBehaviour
         PlayOneShot(generalSource, pickAmmo);
     }
 
-        public void PlayPickBattery()
+    public void PlayPickBattery()
     {
         PlayOneShot(generalSource, pickBattery);
+    }
+
+    public void PlayToggleFL()
+    {
+        PlayOneShot(generalSource, toggleFL);
+    }
+
+    public void PlaySilence()
+    {
+        PlayOneShot(generalSource, silence);
+    }
+
+    public void PlayDoor()
+    {
+        PlayOneShot(generalSource, door);
+    }
+
+    public void PlayReload()
+    {
+        PlayOneShot(generalSource, reload);
     }
 }
