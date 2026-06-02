@@ -84,6 +84,12 @@ public class InvManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        slotItem = null;
+        obj = null;
+        currentGun = null;
+        isEquipped = false;
+        savedCharger = 0;
+
         player = GameObject.FindWithTag("Player");
 
         if (player == null) return;
@@ -97,11 +103,6 @@ public class InvManager : MonoBehaviour
             shotgunAmmo = 0;
             rifleAmmo = 0;
 
-            slotItem = null;
-            obj = null;
-            currentGun = null;
-            isEquipped = false;
-
             return;
         }
 
@@ -111,10 +112,12 @@ public class InvManager : MonoBehaviour
             shotgunAmmo = GameManager.Instance.ShotgunAmmoOD;
             rifleAmmo = GameManager.Instance.RifleAmmoOD;
 
-            GameManager.Instance.ChangePower(GameManager.Instance.FlashlightPowerOD);
-
             slotItem = GameManager.Instance.GunID;
-            EquipGun();
+
+            if (!string.IsNullOrEmpty(slotItem))
+            {
+                EquipGun();
+            }
 
             if (currentGun != null)
             {
