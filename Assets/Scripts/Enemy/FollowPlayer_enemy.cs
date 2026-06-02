@@ -3,7 +3,7 @@ using UnityEngine;
 public class FollowPlayer_enemy : MonoBehaviour
 {
     private GameObject player;
-    private int viewDistance = 15;
+    private int viewDistance = 10;
     private float speed = 2f;
 
     private SilenceHab_player silenceHab;

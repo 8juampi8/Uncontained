@@ -26,6 +26,12 @@ public class GameManager : MonoBehaviour
     private int rifleAmmoOD;
     public int RifleAmmoOD => rifleAmmoOD;
 
+    private float flashlightPowerOD;
+    public float FlashlightPowerOD => flashlightPowerOD;
+
+    private string gunID;
+    public string GunID => gunID;
+
     GameObject defeatScreen;
     GameObject victoryScreen;
     GameObject pauseScreen;
@@ -179,6 +185,8 @@ public class GameManager : MonoBehaviour
         smallAmmoOD = InvManager.Instance.SmallAmmo;
         shotgunAmmoOD = InvManager.Instance.ShotgunAmmo;
         rifleAmmoOD = InvManager.Instance.RifleAmmo;
+        flashlightPowerOD = flashlightPower;
+        gunID = InvManager.Instance.SlotItem;
     }
 
     public void getDamage(int damage)
@@ -198,8 +206,6 @@ public class GameManager : MonoBehaviour
 
             // if (player != null)
             //     Destroy(player);
-
-            PlayerPrefs.DeleteKey("equippedGun");
 
             if (defeatScreen != null)
                 defeatScreen.SetActive(true);
