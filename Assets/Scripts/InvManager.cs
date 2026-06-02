@@ -84,10 +84,6 @@ public class InvManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        obj = null;
-        currentGun = null;
-        isEquipped = false;
-
         player = GameObject.FindWithTag("Player");
 
         if (player == null) return;
@@ -97,19 +93,28 @@ public class InvManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
-            slotItem = null;
             smallAmmo = 0;
             shotgunAmmo = 0;
             rifleAmmo = 0;
-        }
 
-        EquipGun();
+            slotItem = null;
+            obj = null;
+            currentGun = null;
+            isEquipped = false;
+
+            return;
+        }
 
         if (GameManager.Instance.PlayerDied)
         {
             smallAmmo = GameManager.Instance.SmallAmmoOD;
             shotgunAmmo = GameManager.Instance.ShotgunAmmoOD;
             rifleAmmo = GameManager.Instance.RifleAmmoOD;
+
+            GameManager.Instance.ChangePower(GameManager.Instance.FlashlightPowerOD);
+
+            slotItem = GameManager.Instance.GunID;
+            EquipGun();
 
             if (currentGun != null)
             {
@@ -118,7 +123,11 @@ public class InvManager : MonoBehaviour
             }
 
             GameManager.Instance.ResetDeathState();
+
+            return;
         }
+
+        EquipGun();
     }
 
     public void AddItem(string item)
