@@ -84,11 +84,9 @@ public class InvManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        slotItem = null;
         obj = null;
         currentGun = null;
         isEquipped = false;
-        savedCharger = 0;
 
         player = GameObject.FindWithTag("Player");
 
