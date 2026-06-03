@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
 
         dialogue = FindAnyObjectByType<Dialogue>(FindObjectsInactive.Include)?.gameObject;
 
-        if (SceneManager.GetActiveScene().name == "Level 1") flashlightPower = 100;
+        if (SceneManager.GetActiveScene().name == "Menu") flashlightPower = 100;
 
         if (SceneManager.GetActiveScene().name == "Tutorial")
         {
