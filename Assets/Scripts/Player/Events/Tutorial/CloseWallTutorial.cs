@@ -20,10 +20,20 @@ public class CollisionEvents_player : Events
     {
         if (collision.gameObject == player)
         {
+            GameManager.Instance.SetSpawn(transform.position);
+
             panel.SetActive(true);
+            typePanel.SetActive(true);
+
             wallTut.SetActive(true);
 
             silence.ResetWait();
+
+            if (typePanel != movementPanel)
+            {
+                movementPanel.SetActive(false);
+            }
+
             Destroy(gameObject);
         }
     }

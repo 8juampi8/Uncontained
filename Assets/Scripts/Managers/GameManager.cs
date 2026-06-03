@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
 
     private PlayerSoundsController soundsController;
 
+    private Vector3 spawn;
+    public Vector3 Spawn => spawn;
+
     void Awake()
     {
         if (instance != null)
@@ -182,6 +185,11 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level 1") flashlightPower = 100;
 
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            player.transform.position = spawn;
+        }
+
         smallAmmoOD = InvManager.Instance.SmallAmmo;
         shotgunAmmoOD = InvManager.Instance.ShotgunAmmo;
         rifleAmmoOD = InvManager.Instance.RifleAmmo;
@@ -212,6 +220,11 @@ public class GameManager : MonoBehaviour
 
             playerHealth = 3;
         }
+    }
+
+    public void SetSpawn(Vector3 newSpawn)
+    {
+        spawn = newSpawn;
     }
 
     public void ResetDeathState()
