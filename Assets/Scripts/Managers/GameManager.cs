@@ -183,10 +183,16 @@ public class GameManager : MonoBehaviour
 
         dialogue = FindAnyObjectByType<Dialogue>(FindObjectsInactive.Include)?.gameObject;
 
-        if (SceneManager.GetActiveScene().name == "Level 1") flashlightPower = 100;
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            flashlightPower = 100;
+            playerHealth = 3;
+        }
 
         if (SceneManager.GetActiveScene().name == "Tutorial")
         {
+            flashlightPower = 100;
+            playerHealth = 3;
             player.transform.position = spawn;
         }
 
