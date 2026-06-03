@@ -2685,6 +2685,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1428559473178132555, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+      propertyPath: panels.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428559473178132555, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+      propertyPath: 'panels.Array.data[3]'
+      value: 
+      objectReference: {fileID: 339890726}
     - target: {fileID: 2009477315645215261, guid: 329e7032cf62787418f1a86991f92384, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6638,6 +6646,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a45d9588b0a07b49938b245842d18e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+  typePanel: {fileID: 0}
+  movementPanel: {fileID: 0}
   countTxt: {fileID: 809248409}
   victory: {fileID: 591707848}
   black: {fileID: 339890726}

@@ -1110,6 +1110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bd75017589da946aab85382d132b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionEvents_player
+  typePanel: {fileID: 520982653}
+  movementPanel: {fileID: 472897135}
   wallTut: {fileID: 1982271852}
   panel: {fileID: 1972796815}
 --- !u!1001 &360330444
@@ -1220,6 +1222,11 @@ PrefabInstance:
 --- !u!224 &360330445 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4681958121240222931, guid: d576f9747d88a1a4d91f513e82d73b97, type: 3}
+  m_PrefabInstance: {fileID: 360330444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &360330446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7000981586492112441, guid: d576f9747d88a1a4d91f513e82d73b97, type: 3}
   m_PrefabInstance: {fileID: 360330444}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &364386472
@@ -2558,6 +2565,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1428559473178132555, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+      propertyPath: panels.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428559473178132555, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+      propertyPath: 'panels.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8905463250852947170}
+    - target: {fileID: 1428559473178132555, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+      propertyPath: 'panels.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2987316643290567710}
+    - target: {fileID: 1428559473178132555, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+      propertyPath: 'panels.Array.data[2]'
+      value: 
+      objectReference: {fileID: 360330446}
+    - target: {fileID: 1428559473178132555, guid: 329e7032cf62787418f1a86991f92384, type: 3}
+      propertyPath: 'panels.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1972796815}
     - target: {fileID: 3196935030766414802, guid: 329e7032cf62787418f1a86991f92384, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -16243,7 +16270,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6513cf420fc0db648b748b644c2e0691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultEventTutorial
+  typePanel: {fileID: 544752229}
+  movementPanel: {fileID: 472897135}
   panel: {fileID: 1972796815}
+  globalLight: {fileID: 230758594}
+  freeLight: {fileID: 118764484}
+  powerSlider: {fileID: 7054136071621800904}
 --- !u!1 &1186203956
 GameObject:
   m_ObjectHideFlags: 0
@@ -17168,7 +17200,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6513cf420fc0db648b748b644c2e0691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultEventTutorial
+  typePanel: {fileID: 1490628455}
+  movementPanel: {fileID: 472897135}
   panel: {fileID: 1972796815}
+  globalLight: {fileID: 230758594}
+  freeLight: {fileID: 118764484}
+  powerSlider: {fileID: 7054136071621800904}
 --- !u!1 &1250828974
 GameObject:
   m_ObjectHideFlags: 0
@@ -17393,7 +17430,7 @@ Transform:
   m_GameObject: {fileID: 1253699147}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 14.16044, y: -12.65753, z: 0}
+  m_LocalPosition: {x: 14.16044, y: -11.49, z: 0}
   m_LocalScale: {x: 2.502078, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19243,7 +19280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6513cf420fc0db648b748b644c2e0691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultEventTutorial
+  typePanel: {fileID: 1595211404}
+  movementPanel: {fileID: 472897135}
   panel: {fileID: 1972796815}
+  globalLight: {fileID: 230758594}
+  freeLight: {fileID: 118764484}
+  powerSlider: {fileID: 7054136071621800904}
 --- !u!1 &1595211404
 GameObject:
   m_ObjectHideFlags: 0
@@ -19544,7 +19586,7 @@ Transform:
   m_GameObject: {fileID: 1628132538}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 14.16044, y: -6.73753, z: 0}
+  m_LocalPosition: {x: 14.16044, y: -6.08, z: 0}
   m_LocalScale: {x: 2.502078, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95216,13 +95258,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2028964499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edd46f07cf2eb204aa01b5e432112cb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6513cf420fc0db648b748b644c2e0691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightsOffTutorial
+  typePanel: {fileID: 270946874}
+  movementPanel: {fileID: 472897135}
+  panel: {fileID: 1972796815}
   globalLight: {fileID: 230758594}
   freeLight: {fileID: 118764484}
   powerSlider: {fileID: 7054136071621800904}
-  panel: {fileID: 1972796815}
 --- !u!61 &2028964503
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -96233,6 +96277,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
+--- !u!1 &2987316643290567710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3077089357321430523, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
+  m_PrefabInstance: {fileID: 2987316643290567709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3530379096495001087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96243,11 +96292,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4339213884742258789, guid: ac1acd136f8aedd48a3353b1c562b75c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.89
+      value: 1.71
       objectReference: {fileID: 0}
     - target: {fileID: 4339213884742258789, guid: ac1acd136f8aedd48a3353b1c562b75c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.62
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4339213884742258789, guid: ac1acd136f8aedd48a3353b1c562b75c, type: 3}
       propertyPath: m_LocalPosition.z
