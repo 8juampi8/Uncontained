@@ -7,6 +7,8 @@ public class Combat_player : MonoBehaviour
     private float meleRadius = 1.5f;
     private int meleDamage = 10;
 
+    [SerializeField] private GameObject[] panels;
+
     void Update()
     {
         if (InvManager.Instance.CurrentGun != null)
@@ -14,6 +16,11 @@ public class Combat_player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
+            for (int i = 0; i < panels.Length; i++)
+            {
+                if (panels[i].activeSelf) return;
+            }
+
             if (InvManager.Instance.IsEquipped)
             {
                 if (InvManager.Instance.CurrentGun.GunCharger > 0)

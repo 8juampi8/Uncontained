@@ -4,6 +4,9 @@ public class Events : MonoBehaviour
 {
     protected GameObject player;
 
+    [SerializeField] protected GameObject typePanel;
+    [SerializeField] protected GameObject movementPanel;
+
     protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -13,6 +16,7 @@ public class Events : MonoBehaviour
     {
         if (collision.gameObject == player)
         {
+            GameManager.Instance.SetSpawn(transform.position);
             Destroy(gameObject);
         }
     }

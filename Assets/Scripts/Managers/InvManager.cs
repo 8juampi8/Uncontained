@@ -84,11 +84,9 @@ public class InvManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        slotItem = null;
         obj = null;
         currentGun = null;
         isEquipped = false;
-        savedCharger = 0;
 
         player = GameObject.FindWithTag("Player");
 
@@ -96,15 +94,6 @@ public class InvManager : MonoBehaviour
 
         animator = player.GetComponent<Animator>();
         soundsController = player.GetComponent<PlayerSoundsController>();
-
-        if (SceneManager.GetActiveScene().name == "Level 1")
-        {
-            smallAmmo = 0;
-            shotgunAmmo = 0;
-            rifleAmmo = 0;
-
-            return;
-        }
 
         if (GameManager.Instance.PlayerDied)
         {
@@ -126,6 +115,19 @@ public class InvManager : MonoBehaviour
             }
 
             GameManager.Instance.ResetDeathState();
+
+            GameManager.Instance.ChangePower(GameManager.Instance.FlashlightPowerOD);
+
+            return;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Level 1" || SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            smallAmmo = 0;
+            shotgunAmmo = 0;
+            rifleAmmo = 0;
+
+            slotItem = null;
 
             return;
         }

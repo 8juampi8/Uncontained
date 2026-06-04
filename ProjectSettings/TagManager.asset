@@ -25,6 +25,7 @@ TagManager:
   - RifleBullet
   - Button
   - ButtonEvent
+  - Spawn
   layers:
   - Default
   - TransparentFX
