@@ -1,0 +1,67 @@
+[33mc568973[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mantes[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Beta (errores a solucionar)
+[33m0ac8235[m Menu
+[33m3963bcf[m[33m ([m[1;31morigin/audio[m[33m, [m[1;32maudio[m[33m)[m Resolve Font conflict
+[33m27c24e9[m Merge
+[33mc70c60a[m[33m ([m[1;31morigin/cura-pruebas[m[33m)[m posiciones de cañones
+[33mb2bc834[m Sonidos y nivel 20 terminados
+[33m515335d[m Merge branch 'main' of https://github.com/8juampi8/Uncontained
+[33maf8ac2a[m Arreglo de animaciones
+[33m9cf9906[m[33m ([m[1;32mchanges[m[33m)[m Agrego sonidos al juego
+[33m91a904e[m Agrego sonidos (falta on/off de linterna, enemigos y recargar)
+[33ma16cde1[m Merge animations
+[33mbebdb7d[m Font
+[33m8a03eb6[m Animacion zombies y disparo
+[33mf000581[m Implementacion de animaciones(faltan disparo y zombie)
+[33m6bd38bf[m Animaciones (falta conectar a codigo)
+[33md73fa38[m Solucion de no poder abrir menu in-game con ESC
+[33mc95bf0f[m Niveles 18 y 19 terminados
+[33mba984c4[m Nivel 17 terminado
+[33m52eb3bb[m Arreglo la confirmacion de salir al menu desde el menu de pausa
+[33m0bf1477[m Arreglo el tutorial
+[33m93e8c64[m Arreglo errores en los niveles. Agrego sprite para la bala de pistola y agrando el cargador de la SMG
+[33m2b32979[m Niveles del 1 al 16 terminados (falta agregar balas de las nuevas armas)
+[33m28af59f[m Agrego las 2 armas restantes (falta agregar sus balas)
+[33mc9cf8ea[m Agrego prefabs de Tilemaps a los niveles restantes
+[33mbfc3a3f[m Agrego nivel 13, 14 y 15
+[33m1bf63ee[m Agrego sprites de nuevas armas y agrego animacion al enemigo (los elimino de todas las escenas)
+[33m9d1961e[m Agrego nivel 11 y 12 (soluciono errores anteriores)
+[33m5f7127f[m Nivel del 1 al 10 terminado
+[33m99c3f6a[m Agrego nivel 2, 3, 4, 8 y 10
+[33m0585f77[m Nivel 1 terminado
+[33m8901c87[m Agrego primer nivel
+[33mf29aa11[m Tutorial completado (Faltan sprites de enemigos)
+[33m05637ca[m Cambio la fuente de las pantallas del tutorial
+[33m327179b[m Arreglo colores
+[33m69cc729[m Cambio la fuente de los textos. Agrego paredes al tutorial
+[33mc257988[m Merge funcionando
+[33ma2c27c8[m Tutorial terminado (sin sprites)
+[33mdd4694e[m Agrego el tutorial terminado (sin sprites de nada)
+[33m456c771[m Carpetas del editor de niveles y selector de nivel funcional
+[33m4b6cb8c[m Agregados templates de lvl 1,2,3 y 4
+[33m1aacd84[m Tiles
+[33m509467b[m Arreglo las capas
+[33mfc68a6b[m Agrego un HUD basico sin arte para tener referencias
+[33m5c8ea0b[m Agrego una luz para que el jugador pueda ver lo minimo sin linterna
+[33mabca7a6[m Arreglo los errores entre los Merges
+[33m8b80fe2[m Merge nuevo
+[33m0993640[m[33m ([m[1;31morigin/juampi-pruebas[m[33m)[m Merge branch 'main' into juampi-pruebas
+[33m6e234b0[m Para mergear
+[33m6363bf1[m Revert "Merge branch 'main' into cura-pruebas"
+[33mdfc00d4[m Merge branch 'main' into cura-pruebas
+[33m4410156[m Linterna se mantiene entre escenas
+[33m769b61f[m Merge a main (Sistema de Recarga de munición)
+[33mb866a01[m Sistema de recarga y municion terminado
+[33m256fb64[m Error en ItemInteraction solucionado
+[33ma536e94[m Cambio en las municiones
+[33m3325e91[m Municion funcionando (Falta recarga)
+[33me92ac2b[m Battery Sistem
+[33mb6b51c7[m Sistema de objetos entre escenas solucionado
+[33mc26f7a0[m Sistema de armas sigue entre escenas funcionando.
+[33m2ad0fd6[m Sistema de combate e Inventario completado. Falta: Mantener inventario al pasar de escena. Al morir el inventario se reinicia.
+[33mbde7b89[m Problema de linterna solucionador
+[33mf781fb0[m Sistema de combate solucionado, problemas para prender o apagar la linterna (a solucionar)
+[33m500c551[m Sistema de recoger objetos funcionando, bugs en el combate (a solucionar)
+[33m93ef411[m Ordeno el sistema de Pickear y Dropear items, error en el disparo (a solucionar)
+[33mebe822b[m Mejoro la relación de aspecto y errores de Colliders con eventos
+[33m114e938[m Agrego MVP y linterna nueva (sin funcion)
+[33m0d045fb[m Initial commit
