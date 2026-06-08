@@ -231,9 +231,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   panels:
-  - {fileID: 6122732201608084804, guid: 797e0dea03f5bdd4c8f15d4bd47ab7ad, type: 3}
-  - {fileID: 3077089357321430523, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
-  - {fileID: 7000981586492112441, guid: d576f9747d88a1a4d91f513e82d73b97, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &8335012604583236615
 AudioSource:
   m_ObjectHideFlags: 0

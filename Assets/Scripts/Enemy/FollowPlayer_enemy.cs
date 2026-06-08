@@ -3,12 +3,14 @@ using UnityEngine;
 public class FollowPlayer_enemy : MonoBehaviour
 {
     private GameObject player;
-    private int viewDistance = 10;
+    private int viewDistance;
     private float speed = 2f;
 
     private SilenceHab_player silenceHab;
 
     [SerializeField] private LayerMask focusObjects;
+
+    [SerializeField] private SpriteRenderer eyeSprite;
 
     void Start()
     {
@@ -21,7 +23,11 @@ public class FollowPlayer_enemy : MonoBehaviour
         // SI SILENCE ESTA ACTIVO, NO LO SIGUE
         if (silenceHab.inSilence)
         {
-            return;
+            viewDistance = 3;
+        }
+        else
+        {
+            viewDistance = 10;
         }
 
         // SI SILENCE NO ESTA ACTIVO Y EXISTE UN PLAYER, CALCULA DONDE ESTA
@@ -42,9 +48,16 @@ public class FollowPlayer_enemy : MonoBehaviour
                 {
                     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
 
+                    eyeSprite.enabled = true;
+
                     transform.rotation = Quaternion.Euler(0, 0, angle);
                     transform.Translate(0, 1 * speed * Time.deltaTime, 0);
                 }
+            }
+
+            else
+            {
+                eyeSprite.enabled = false;
             }
         }
     }
