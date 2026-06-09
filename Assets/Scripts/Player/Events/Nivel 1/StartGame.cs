@@ -38,6 +38,9 @@ public class StartGame : Events
 
             globalLight.color = Color.white;
             yield return new WaitForSeconds(intvl);
+
+            globalLight.color = Color.black;
+            yield return new WaitForSeconds(intvl);
         }
 
         soundsController.Stop(soundsController.GeneralSource);

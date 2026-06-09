@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,6 +54,11 @@ public class GameManager : MonoBehaviour
 
     private Vector3 spawn;
     public Vector3 Spawn => spawn;
+
+    private static int enemiesFollowing = 0;
+    public static bool IsFollowing => enemiesFollowing > 0;
+
+    private SpriteRenderer playerSpt;
 
     void Awake()
     {
@@ -166,6 +172,8 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 
+        if (player != null) playerSpt = player.GetComponent<SpriteRenderer>();
+
         if (player != null)
         {
             soundsController = player.GetComponent<PlayerSoundsController>();
@@ -208,6 +216,7 @@ public class GameManager : MonoBehaviour
         soundsController.PlayOneShot(soundsController.GeneralSource, soundsController.GetDamage);
 
         playerHealth -= damage;
+        StartCoroutine(Damage());
         UpdateHealth();
 
         if (playerHealth <= 0)
@@ -226,6 +235,15 @@ public class GameManager : MonoBehaviour
 
             playerHealth = 3;
         }
+    }
+
+    IEnumerator Damage()
+    {
+        float dly = 0.2f;
+
+        playerSpt.color = Color.red;
+        yield return new WaitForSeconds(dly);
+        playerSpt.color = Color.white;
     }
 
     public void SetSpawn(Vector3 newSpawn)
@@ -247,6 +265,21 @@ public class GameManager : MonoBehaviour
     public void ChangePower(float value)
     {
         flashlightPower = value;
+    }
+
+    public void OnFollowing()
+    {
+        enemiesFollowing++;
+        Debug.Log(enemiesFollowing);
+    }
+
+    public void OffFollowing()
+    {
+        enemiesFollowing--;
+        Debug.Log(enemiesFollowing);
+
+        if (enemiesFollowing < 0)
+            enemiesFollowing = 0;
     }
 
     // UPDATES

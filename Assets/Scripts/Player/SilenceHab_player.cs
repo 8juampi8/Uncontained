@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SilenceHab_player : MonoBehaviour
@@ -17,6 +18,8 @@ public class SilenceHab_player : MonoBehaviour
 
     [SerializeField] private GameObject dialogue;
 
+    [SerializeField] private SpriteRenderer sign;
+
     void Start()
     {
         soundsController = gameObject.GetComponent<PlayerSoundsController>();
@@ -24,6 +27,8 @@ public class SilenceHab_player : MonoBehaviour
 
     void Update()
     {
+        sign.enabled = GameManager.IsFollowing;
+
         // VERIFICAR QUE SILENCE NO ESTE EN COOLDOWN
         if (silenceWait >= silenceCooldown)
         {
