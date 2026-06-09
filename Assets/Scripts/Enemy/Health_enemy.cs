@@ -26,6 +26,8 @@ public class Health_enemy : MonoBehaviour
         {
             Destroy(gameObject);
 
+            GameManager.Instance.OffFollowing();
+
             if (keyCard != null)
             {
                 Instantiate(keyCard, transform.position, transform.rotation);

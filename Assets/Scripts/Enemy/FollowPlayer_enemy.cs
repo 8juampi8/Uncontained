@@ -12,6 +12,11 @@ public class FollowPlayer_enemy : MonoBehaviour
 
     [SerializeField] private SpriteRenderer eyeSprite;
 
+    private bool isFollowing = false;
+    public bool IsFollowing => isFollowing;
+
+    private bool wasFollowing = false;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -20,7 +25,6 @@ public class FollowPlayer_enemy : MonoBehaviour
 
     void Update()
     {
-        // SI SILENCE ESTA ACTIVO, NO LO SIGUE
         if (silenceHab.inSilence)
         {
             viewDistance = 3;
@@ -30,35 +34,69 @@ public class FollowPlayer_enemy : MonoBehaviour
             viewDistance = 10;
         }
 
-        // SI SILENCE NO ESTA ACTIVO Y EXISTE UN PLAYER, CALCULA DONDE ESTA
+        bool currentlyFollowing = false;
+
         if (player != null)
         {
             Vector2 direction = player.transform.position - transform.position;
 
-            // SI ESTA DENTRO DE SU RANGO DE VISION, VERIFICA QUE NO HAYA UN OBSTACULO EN MEDIO
             if (direction.magnitude < viewDistance)
             {
                 float distanceToPlayer = direction.magnitude;
 
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, distanceToPlayer, focusObjects);
+                RaycastHit2D hit = Physics2D.Raycast(
+                    transform.position,
+                    direction.normalized,
+                    distanceToPlayer,
+                    focusObjects
+                );
 
-                Debug.DrawRay(transform.position, direction.normalized * distanceToPlayer, Color.red);
+                Debug.DrawRay(
+                    transform.position,
+                    direction.normalized * distanceToPlayer,
+                    Color.red
+                );
 
-                if (hit.collider != null && hit.collider.CompareTag("Player"))
+                if (hit.collider != null &&
+                    hit.collider.CompareTag("Player"))
                 {
-                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+                    currentlyFollowing = true;
 
-                    eyeSprite.enabled = true;
+                    float angle =
+                        Mathf.Atan2(direction.y, direction.x) *
+                        Mathf.Rad2Deg - 90;
 
-                    transform.rotation = Quaternion.Euler(0, 0, angle);
-                    transform.Translate(0, 1 * speed * Time.deltaTime, 0);
+                    transform.rotation =
+                        Quaternion.Euler(0, 0, angle);
+
+                    transform.Translate(
+                        0,
+                        speed * Time.deltaTime,
+                        0
+                    );
                 }
             }
-
-            else
-            {
-                eyeSprite.enabled = false;
-            }
         }
+
+        if (currentlyFollowing)
+        {
+            eyeSprite.enabled = true;
+        }
+        else
+        {
+            eyeSprite.enabled = false;
+        }
+
+        if (currentlyFollowing && !wasFollowing)
+        {
+            GameManager.Instance.OnFollowing();
+        }
+
+        if (!currentlyFollowing && wasFollowing)
+        {
+            GameManager.Instance.OffFollowing();
+        }
+
+        wasFollowing = currentlyFollowing;
     }
 }

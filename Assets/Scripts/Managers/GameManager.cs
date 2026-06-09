@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
-using System;
-using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -56,6 +54,9 @@ public class GameManager : MonoBehaviour
 
     private Vector3 spawn;
     public Vector3 Spawn => spawn;
+
+    private static int enemiesFollowing = 0;
+    public static bool IsFollowing => enemiesFollowing > 0;
 
     private SpriteRenderer playerSpt;
 
@@ -171,7 +172,7 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 
-        if(player != null) playerSpt = player.GetComponent<SpriteRenderer>();
+        if (player != null) playerSpt = player.GetComponent<SpriteRenderer>();
 
         Debug.Log(player);
         Debug.Log(playerSpt);
@@ -267,6 +268,19 @@ public class GameManager : MonoBehaviour
     public void ChangePower(float value)
     {
         flashlightPower = value;
+    }
+
+    public void OnFollowing()
+    {
+        enemiesFollowing++;
+    }
+
+    public void OffFollowing()
+    {
+        enemiesFollowing--;
+
+        if (enemiesFollowing < 0)
+            enemiesFollowing = 0;
     }
 
     // UPDATES
