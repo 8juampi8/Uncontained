@@ -363,7 +363,9 @@ MonoBehaviour:
   door: {fileID: 8300000, guid: 2e0b04c41edbef543b089113711150fd, type: 3}
   reload: {fileID: 8300000, guid: 7ed1cbc682276f541a674c8ad8b9797d, type: 3}
   count: {fileID: 8300000, guid: 3abda7acf56d564428a2ad7aa2ed476a, type: 3}
-  explotion: {fileID: 0}
+  explotion: {fileID: 8300000, guid: 20e56c1ba5b2f7f4f8eb8d69a75e8ed5, type: 3}
+  hitEnemy: {fileID: 8300000, guid: 864dbf96c49284449a868dc381024e85, type: 3}
+  deathEnemy: {fileID: 8300000, guid: feee5a27a6818b1418e7d33633182a26, type: 3}
 --- !u!82 &4700653626060386727
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System;
-using UnityEngine.Rendering.Universal;
 
 public class Health_enemy : MonoBehaviour
 {
@@ -12,14 +10,21 @@ public class Health_enemy : MonoBehaviour
 
     private SpriteRenderer sprite;
 
+    private PlayerSoundsController soundsController;
+
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+
+        soundsController = GameObject.FindWithTag("Player").GetComponent<PlayerSoundsController>();
     }
 
     public void getDamage(int damage)
     {
         health -= damage;
+
+        soundsController.PlayHitEnemy();
+
         StartCoroutine(Damage());
 
         if (health <= 0)
@@ -27,6 +32,8 @@ public class Health_enemy : MonoBehaviour
             Destroy(gameObject);
 
             GameManager.Instance.OffFollowing();
+
+            soundsController.PlayDeathEnemy();
 
             if (keyCard != null)
             {

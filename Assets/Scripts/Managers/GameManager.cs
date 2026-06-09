@@ -174,9 +174,6 @@ public class GameManager : MonoBehaviour
 
         if (player != null) playerSpt = player.GetComponent<SpriteRenderer>();
 
-        Debug.Log(player);
-        Debug.Log(playerSpt);
-
         if (player != null)
         {
             soundsController = player.GetComponent<PlayerSoundsController>();
@@ -273,11 +270,13 @@ public class GameManager : MonoBehaviour
     public void OnFollowing()
     {
         enemiesFollowing++;
+        Debug.Log(enemiesFollowing);
     }
 
     public void OffFollowing()
     {
         enemiesFollowing--;
+        Debug.Log(enemiesFollowing);
 
         if (enemiesFollowing < 0)
             enemiesFollowing = 0;

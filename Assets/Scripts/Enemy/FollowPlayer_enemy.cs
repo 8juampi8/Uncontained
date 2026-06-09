@@ -12,9 +12,6 @@ public class FollowPlayer_enemy : MonoBehaviour
 
     [SerializeField] private SpriteRenderer eyeSprite;
 
-    private bool isFollowing = false;
-    public bool IsFollowing => isFollowing;
-
     private bool wasFollowing = false;
 
     void Start()
