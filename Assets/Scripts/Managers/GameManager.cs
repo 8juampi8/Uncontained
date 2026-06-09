@@ -204,11 +204,17 @@ public class GameManager : MonoBehaviour
             player.transform.position = spawn;
         }
 
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            spawn = Vector3.zero;
+        }
+
         smallAmmoOD = InvManager.Instance.SmallAmmo;
         shotgunAmmoOD = InvManager.Instance.ShotgunAmmo;
         rifleAmmoOD = InvManager.Instance.RifleAmmo;
         flashlightPowerOD = flashlightPower;
         gunID = InvManager.Instance.SlotItem;
+        enemiesFollowing = 0;
     }
 
     public void getDamage(int damage)
