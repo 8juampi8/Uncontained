@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections;
+using System;
+using UnityEngine.Rendering.Universal;
 
 public class Health_enemy : MonoBehaviour
 {
@@ -7,9 +10,17 @@ public class Health_enemy : MonoBehaviour
     [SerializeField] private GameObject keyCard;
     [SerializeField] private GameObject item;
 
+    private SpriteRenderer sprite;
+
+    void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+    }
+
     public void getDamage(int damage)
     {
         health -= damage;
+        StartCoroutine(Damage());
 
         if (health <= 0)
         {
@@ -24,5 +35,14 @@ public class Health_enemy : MonoBehaviour
                 Instantiate(item, transform.position, transform.rotation);
             }
         }
+    }
+
+    IEnumerator Damage()
+    {
+        float dly = 0.2f;
+
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(dly);
+        sprite.color = Color.white;
     }
 }
