@@ -758,7 +758,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!43 &648491345
+--- !u!43 &695868868
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24193,7 +24193,7 @@ MonoBehaviour:
     rid: 6648279587938893910
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 648491345}
+    m_Mesh: {fileID: 695868868}
     m_LocalBounds:
       m_Center: {x: -1.5, y: -12, z: 0}
       m_Extent: {x: 15.5, y: 9, z: 0}
@@ -30675,7 +30675,7 @@ PrefabInstance:
     - target: {fileID: 3422452037612586862, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 972178496}
+      objectReference: {fileID: 2987316643290567711}
     - target: {fileID: 4026331461512903349, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -30700,6 +30700,11 @@ PrefabInstance:
 --- !u!1 &2987316643290567710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3077089357321430523, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
+  m_PrefabInstance: {fileID: 2987316643290567709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2987316643290567711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8466720313927215864, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
   m_PrefabInstance: {fileID: 2987316643290567709}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7054136071621800903
