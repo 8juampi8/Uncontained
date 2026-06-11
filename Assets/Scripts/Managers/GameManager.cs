@@ -282,13 +282,11 @@ public class GameManager : MonoBehaviour
     public void OnFollowing()
     {
         enemiesFollowing++;
-        Debug.Log(enemiesFollowing);
     }
 
     public void OffFollowing()
     {
         enemiesFollowing--;
-        Debug.Log(enemiesFollowing);
 
         if (enemiesFollowing < 0)
             enemiesFollowing = 0;
