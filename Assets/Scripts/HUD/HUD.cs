@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI healthTxt;
+    [SerializeField] private Image healthImg;
     [SerializeField] private TextMeshProUGUI bulletsTxt;
     [SerializeField] private TextMeshProUGUI moreBulletsTxt;
     [SerializeField] private Slider flashlightPower;
@@ -12,7 +12,7 @@ public class HUD : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.SaveHealth(healthTxt);
+        GameManager.Instance.SaveHealth(healthImg);
         GameManager.Instance.SaveAmmo(bulletsTxt);
         GameManager.Instance.SaveMoreAmmo(moreBulletsTxt);
         GameManager.Instance.SaveFLpower(flashlightPower);

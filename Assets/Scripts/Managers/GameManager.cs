@@ -50,6 +50,12 @@ public class GameManager : MonoBehaviour
 
     private GameObject hud;
 
+    private Image healthImg;
+    [SerializeField] private Sprite hth3;
+    [SerializeField] private Sprite hth2;
+    [SerializeField] private Sprite hth1;
+    [SerializeField] private Sprite hth0;
+
     private PlayerSoundsController soundsController;
 
     private Vector3 spawn;
@@ -223,7 +229,7 @@ public class GameManager : MonoBehaviour
 
         playerHealth -= damage;
         StartCoroutine(Damage());
-        UpdateHealth();
+        UpdateHealthGUI();
 
         if (playerHealth <= 0)
         {
@@ -289,11 +295,23 @@ public class GameManager : MonoBehaviour
     }
 
     // UPDATES
-    public void UpdateHealth()
+    public void UpdateHealthGUI()
     {
-        if (healthTxt == null) return;
-
-        healthTxt.text = playerHealth.ToString();
+        switch (playerHealth)
+        {
+            case 2:
+                healthImg.sprite = hth2;
+                break;
+            case 1:
+                healthImg.sprite = hth1;
+                break;
+            case 0:
+                healthImg.sprite = hth0;
+                break;
+            default:
+                healthImg.sprite = hth3;
+                break;
+        }
     }
 
     public void UpdateAmmo()
@@ -342,10 +360,10 @@ public class GameManager : MonoBehaviour
     }
 
     // SAVES
-    public void SaveHealth(TextMeshProUGUI health)
+    public void SaveHealth(Image health)
     {
-        healthTxt = health;
-        UpdateHealth();
+        healthImg = health;
+        UpdateHealthGUI();
     }
 
     public void SaveAmmo(TextMeshProUGUI ammo)
