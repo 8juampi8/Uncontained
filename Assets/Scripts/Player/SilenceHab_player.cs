@@ -1,12 +1,13 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SilenceHab_player : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer playerSprite;
 
-    private int silenceCooldown = 20;
-    private float silenceWait = 20;
+    private int silenceCooldown = 15;
+    private float silenceWait = 15;
     private bool canSilence = false;
     private int silenceDuration = 5;
     private float silenceTimer = 0;
@@ -20,9 +21,12 @@ public class SilenceHab_player : MonoBehaviour
 
     [SerializeField] private SpriteRenderer sign;
 
+    private Image greenCircle;
+
     void Start()
     {
         soundsController = gameObject.GetComponent<PlayerSoundsController>();
+        greenCircle = GameObject.FindWithTag("GreenCircle").GetComponent<Image>();
     }
 
     void Update()
@@ -46,6 +50,7 @@ public class SilenceHab_player : MonoBehaviour
             {
                 silence = true;
                 soundsController.PlaySilence();
+                silenceWait = 0;
             }
         }
         else
@@ -54,6 +59,7 @@ public class SilenceHab_player : MonoBehaviour
             {
                 silence = true;
                 soundsController.PlaySilence();
+                silenceWait = 0;
             }
         }
 
@@ -65,8 +71,6 @@ public class SilenceHab_player : MonoBehaviour
 
             silenceTimer += Time.deltaTime;
 
-            silenceWait = 0;
-
             if (silenceTimer >= silenceDuration)
             {
                 soundsController.PlaySilence();
@@ -77,14 +81,26 @@ public class SilenceHab_player : MonoBehaviour
         }
         else
         {
-            silenceWait += Time.deltaTime;
-
             playerSprite.color = Color.white;
+        }
+
+        silenceWait += Time.deltaTime;
+
+        float alpha = silenceWait / silenceCooldown;
+        alpha = Mathf.Clamp01(alpha);
+
+        if(greenCircle == null)
+        {
+            greenCircle = GameObject.FindWithTag("GreenCircle").GetComponent<Image>();
+        }
+        else
+        {            
+            greenCircle.fillAmount = alpha;
         }
     }
 
     public void ResetWait()
     {
-        silenceWait = 20;
+        silenceWait = 10;
     }
 }
