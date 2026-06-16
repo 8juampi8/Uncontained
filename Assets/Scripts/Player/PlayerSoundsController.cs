@@ -49,6 +49,11 @@ public class PlayerSoundsController : MonoBehaviour
 
     [SerializeField] private AudioClip explotion;
 
+    [SerializeField] private AudioClip hitenemy;
+
+    [SerializeField] private AudioClip deathenemy;
+
+
     // GENERALES
 
     public void PlayOneShot(AudioSource source, AudioClip sound)
@@ -73,6 +78,15 @@ public class PlayerSoundsController : MonoBehaviour
 
     // INDIVIDUALES
 
+    public void PlayHitEnemy()
+    {
+        PlayOneShot(weaponsSource, hitenemy);
+    }
+
+    public void PlayDeathEnemy()
+    {
+        PlayOneShot(weaponsSource, deathenemy);
+    }
     public void PlayShootSound(AudioClip sound)
     {
         PlayOneShot(weaponsSource, sound);
