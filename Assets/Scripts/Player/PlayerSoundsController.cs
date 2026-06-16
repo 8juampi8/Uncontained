@@ -132,4 +132,18 @@ public class PlayerSoundsController : MonoBehaviour
     {
         PlayOneShot(generalSource, explotion);
     }
+
+    //VOLUMEN
+    public void ChangeSFXGeneral(float volume)
+    {
+        generalSource.volume = volume;
+    }
+    public void ChangeSFXWeapons(float volume)
+    {
+        weaponsSource.volume = volume;
+    }
+    public void ChangeSFXFootSteps(float volume)
+    {
+        footstepsSource.volume = volume;
+    }
 }

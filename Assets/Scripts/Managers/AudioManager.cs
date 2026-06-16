@@ -33,4 +33,9 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(clip);
     }
+
+    public void ChangeMusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
 }
