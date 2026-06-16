@@ -111,7 +111,7 @@ public class ItemInteraction_player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetButtonDown("Fire2"))
         {
             if (flashlight == null) return;
             flashlight.Toggle();

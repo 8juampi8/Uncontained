@@ -49,10 +49,6 @@ public class PlayerSoundsController : MonoBehaviour
 
     [SerializeField] private AudioClip explotion;
 
-    [SerializeField] private AudioClip hitEnemy;
-
-    [SerializeField] private AudioClip deathEnemy;
-
     // GENERALES
 
     public void PlayOneShot(AudioSource source, AudioClip sound)
@@ -137,13 +133,17 @@ public class PlayerSoundsController : MonoBehaviour
         PlayOneShot(generalSource, explotion);
     }
 
-    public void PlayHitEnemy()
+    //VOLUMEN
+    public void ChangeSFXGeneral(float volume)
     {
-        PlayOneShot(generalSource, hitEnemy);
+        generalSource.volume = volume;
     }
-
-    public void PlayDeathEnemy()
+    public void ChangeSFXWeapons(float volume)
     {
-        PlayOneShot(generalSource, deathEnemy);
+        weaponsSource.volume = volume;
+    }
+    public void ChangeSFXFootSteps(float volume)
+    {
+        footstepsSource.volume = volume;
     }
 }
