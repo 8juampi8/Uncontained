@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 4385855970214506266}
   - component: {fileID: -8248357436384275857}
   - component: {fileID: 1428559473178132555}
-  - component: {fileID: 8335012604583236615}
   - component: {fileID: 8827419784266127160}
+  - component: {fileID: 8335012604583236615}
   - component: {fileID: 4700653626060386727}
   - component: {fileID: 7976263137038233028}
   - component: {fileID: 4966044240583808294}
@@ -234,6 +234,38 @@ MonoBehaviour:
   - {fileID: 6122732201608084804, guid: 797e0dea03f5bdd4c8f15d4bd47ab7ad, type: 3}
   - {fileID: 3077089357321430523, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
   - {fileID: 7000981586492112441, guid: d576f9747d88a1a4d91f513e82d73b97, type: 3}
+--- !u!114 &8827419784266127160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148579008531778595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf0aa2f535cab74ea65458330b8f8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSoundsController
+  generalSource: {fileID: 7976263137038233028}
+  weaponsSource: {fileID: 8335012604583236615}
+  footstepsSource: {fileID: 4700653626060386727}
+  pistolShoot: {fileID: 8300000, guid: 170b7099c5b5b914eb8a588b37b1a316, type: 3}
+  shotgunShoot: {fileID: 8300000, guid: 639fcaa4fac2eac40bdbd6fd3370964d, type: 3}
+  smgShoot: {fileID: 8300000, guid: f6bb0401d6c31634fa9c2ae6183ef8af, type: 3}
+  rifleShoot: {fileID: 8300000, guid: 194cd8f4000587b46b6cbe7f6efa2535, type: 3}
+  footsteps: {fileID: 8300000, guid: f6d465915d819d04eb1852e9ac56a5fc, type: 3}
+  alarm: {fileID: 8300000, guid: 94037a7ad9a385944aca6d702671b208, type: 3}
+  getDamage: {fileID: 8300000, guid: 5b2ef487609f4a94d87258dc298190a8, type: 3}
+  death: {fileID: 8300000, guid: f63c9d83c7a180f418f73084fc8cb771, type: 3}
+  pickKey: {fileID: 8300000, guid: 76923eb4b567bae409b96e6339809e80, type: 3}
+  pickAmmo: {fileID: 8300000, guid: ebc36193502163346a1f3fca04d336c8, type: 3}
+  pickBattery: {fileID: 8300000, guid: e510a7540b14aea47b83d8eb07b3bf43, type: 3}
+  toggleFL: {fileID: 8300000, guid: 625fd5c63309db7438937576bd7092df, type: 3}
+  silence: {fileID: 8300000, guid: 99e5b45b411a8a04e8cf31b7f7b32c0e, type: 3}
+  door: {fileID: 8300000, guid: 2e0b04c41edbef543b089113711150fd, type: 3}
+  reload: {fileID: 8300000, guid: 7ed1cbc682276f541a674c8ad8b9797d, type: 3}
+  count: {fileID: 8300000, guid: 3abda7acf56d564428a2ad7aa2ed476a, type: 3}
+  explotion: {fileID: 0}
 --- !u!82 &8335012604583236615
 AudioSource:
   m_ObjectHideFlags: 0
@@ -331,38 +363,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8827419784266127160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148579008531778595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf0aa2f535cab74ea65458330b8f8ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSoundsController
-  generalSource: {fileID: 7976263137038233028}
-  weaponsSource: {fileID: 8335012604583236615}
-  footstepsSource: {fileID: 4700653626060386727}
-  pistolShoot: {fileID: 8300000, guid: 170b7099c5b5b914eb8a588b37b1a316, type: 3}
-  shotgunShoot: {fileID: 8300000, guid: 639fcaa4fac2eac40bdbd6fd3370964d, type: 3}
-  smgShoot: {fileID: 8300000, guid: f6bb0401d6c31634fa9c2ae6183ef8af, type: 3}
-  rifleShoot: {fileID: 8300000, guid: 194cd8f4000587b46b6cbe7f6efa2535, type: 3}
-  footsteps: {fileID: 8300000, guid: f6d465915d819d04eb1852e9ac56a5fc, type: 3}
-  alarm: {fileID: 8300000, guid: 94037a7ad9a385944aca6d702671b208, type: 3}
-  getDamage: {fileID: 8300000, guid: 5b2ef487609f4a94d87258dc298190a8, type: 3}
-  death: {fileID: 8300000, guid: f63c9d83c7a180f418f73084fc8cb771, type: 3}
-  pickKey: {fileID: 8300000, guid: 76923eb4b567bae409b96e6339809e80, type: 3}
-  pickAmmo: {fileID: 8300000, guid: ebc36193502163346a1f3fca04d336c8, type: 3}
-  pickBattery: {fileID: 8300000, guid: e510a7540b14aea47b83d8eb07b3bf43, type: 3}
-  toggleFL: {fileID: 8300000, guid: 625fd5c63309db7438937576bd7092df, type: 3}
-  silence: {fileID: 8300000, guid: 99e5b45b411a8a04e8cf31b7f7b32c0e, type: 3}
-  door: {fileID: 8300000, guid: 2e0b04c41edbef543b089113711150fd, type: 3}
-  reload: {fileID: 8300000, guid: 7ed1cbc682276f541a674c8ad8b9797d, type: 3}
-  count: {fileID: 8300000, guid: 3abda7acf56d564428a2ad7aa2ed476a, type: 3}
-  explotion: {fileID: 0}
 --- !u!82 &4700653626060386727
 AudioSource:
   m_ObjectHideFlags: 0
