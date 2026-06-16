@@ -19709,7 +19709,7 @@ MonoBehaviour:
     rid: 6648279587938893903
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 1386132892}
+    m_Mesh: {fileID: 1809905835}
     m_LocalBounds:
       m_Center: {x: -9.5, y: -4.5, z: 0}
       m_Extent: {x: 29.5, y: 7.5, z: 0}
@@ -25473,7 +25473,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!43 &1386132892
+--- !u!224 &1561307741 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2636211313977477606, guid: 797e0dea03f5bdd4c8f15d4bd47ab7ad, type: 3}
+  m_PrefabInstance: {fileID: 8905463250852947169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!43 &1809905835
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25651,11 +25656,6 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
---- !u!224 &1561307741 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2636211313977477606, guid: 797e0dea03f5bdd4c8f15d4bd47ab7ad, type: 3}
-  m_PrefabInstance: {fileID: 8905463250852947169}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1821908027
 GameObject:
   m_ObjectHideFlags: 0
@@ -25945,11 +25945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2636564767808688028, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -822.86
       objectReference: {fileID: 0}
     - target: {fileID: 2636564767808688028, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -440.07
       objectReference: {fileID: 0}
     - target: {fileID: 2636564767808688028, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25981,11 +25981,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2636564767808688028, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.0006713867
       objectReference: {fileID: 0}
     - target: {fileID: 2636564767808688028, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.002319336
       objectReference: {fileID: 0}
     - target: {fileID: 2636564767808688028, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -26002,6 +26002,18 @@ PrefabInstance:
     - target: {fileID: 3077089357321430523, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_Name
       value: DefeatScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206204891303005196, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 972178496}
+    - target: {fileID: 3206204891303005196, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206204891303005196, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level 6
       objectReference: {fileID: 0}
     - target: {fileID: 3422452037612586862, guid: 2b5817c8cbb12124ea2069be0d0302b0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
