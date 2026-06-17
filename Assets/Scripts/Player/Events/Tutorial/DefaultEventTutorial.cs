@@ -10,7 +10,7 @@ public class DefaultEventTutorial : Events
     [SerializeField] private Light2D globalLight;
     [SerializeField] private Light2D freeLight;
 
-    [SerializeField] private GameObject powerSlider;
+    [SerializeField] private GameObject[] hudItem;
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,6 +22,11 @@ public class DefaultEventTutorial : Events
             globalLight.intensity = 0.01f;
 
             freeLight.enabled = true;
+
+            for (int i = 0; i < hudItem.Length; i++)
+            {
+                hudItem[i].SetActive(true);
+            }
 
             panel.SetActive(true);
             typePanel.SetActive(true);
