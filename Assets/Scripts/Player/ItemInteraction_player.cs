@@ -73,7 +73,7 @@ public class ItemInteraction_player : MonoBehaviour
                     GameManager.Instance.UpdateMoreAmmo();
 
                     soundsController.PlayPickAmmo();
-                    
+
                     break;
 
                 case "ShotgunBullet":
@@ -96,7 +96,7 @@ public class ItemInteraction_player : MonoBehaviour
                     Debug.Log(btnEvent);
 
                     btnEvent.StartCount();
-                
+
                     break;
             }
 
@@ -122,7 +122,6 @@ public class ItemInteraction_player : MonoBehaviour
             if (InvManager.Instance.Obj != null)
             {
                 InvManager.Instance.Obj.GetComponent<Guns_gun>().Reload();
-                Debug.Log(InvManager.Instance.Obj.GetComponent<Guns_gun>().GunCharger);
             }
         }
     }
