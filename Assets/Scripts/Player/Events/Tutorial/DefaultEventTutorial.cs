@@ -18,11 +18,16 @@ public class DefaultEventTutorial : Events
     {
         if (collision.gameObject == player)
         {
+            movementPanel.SetActive(false);
+            typePanel.SetActive(true);
+
+            panel.SetActive(true);
             GameManager.Instance.SetSpawn(transform.position);
 
-            if(wall != null) wall.SetActive(true);
+            if (wall != null)
+                wall.SetActive(true);
 
-            globalLight.color = new Color(0f / 255f, 0f / 255f, 0f / 255f);
+            globalLight.color = Color.black;
             globalLight.intensity = 0.01f;
 
             freeLight.enabled = true;
@@ -30,14 +35,6 @@ public class DefaultEventTutorial : Events
             for (int i = 0; i < hudItem.Length; i++)
             {
                 hudItem[i].SetActive(true);
-            }
-
-            panel.SetActive(true);
-            typePanel.SetActive(true);
-
-            if (typePanel != movementPanel)
-            {
-                movementPanel.SetActive(false);
             }
 
             Destroy(gameObject);
