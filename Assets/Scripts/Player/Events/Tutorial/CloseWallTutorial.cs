@@ -20,6 +20,13 @@ public class CollisionEvents_player : Events
     {
         if (collision.gameObject == player)
         {
+            if(globalLight != null){
+                globalLight.color = Color.black;
+                globalLight.intensity = 0.01f;
+            }
+
+            if(freeLight != null) freeLight.enabled = true;
+            
             GameManager.Instance.SetSpawn(transform.position);
 
             panel.SetActive(true);
@@ -28,11 +35,6 @@ public class CollisionEvents_player : Events
             wallTut.SetActive(true);
 
             silence.ResetWait();
-
-            if (typePanel != movementPanel)
-            {
-                movementPanel.SetActive(false);
-            }
 
             Destroy(gameObject);
         }
