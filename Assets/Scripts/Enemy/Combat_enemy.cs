@@ -16,7 +16,7 @@ public class Combat_enemy : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && hitTimer >= hitCooldown)
+        if (collision.gameObject.CompareTag("Player") && hitTimer >= hitCooldown && !GameManager.Instance.PlayerDied)
         {
             GameManager.instance.getDamage(damage);
             hitTimer = 0;

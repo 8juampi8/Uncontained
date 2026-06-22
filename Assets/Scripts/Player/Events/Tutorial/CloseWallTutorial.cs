@@ -7,6 +7,8 @@ public class CollisionEvents_player : Events
     [SerializeField] private GameObject wallTut;
     [SerializeField] private GameObject panel;
 
+    [SerializeField] private GameObject[] hudItem;
+
     SilenceHab_player silence;
 
     protected override void Start()
@@ -20,6 +22,13 @@ public class CollisionEvents_player : Events
     {
         if (collision.gameObject == player)
         {
+            if(globalLight != null){
+                globalLight.color = Color.black;
+                globalLight.intensity = 0.01f;
+            }
+
+            if(freeLight != null) freeLight.enabled = true;
+            
             GameManager.Instance.SetSpawn(transform.position);
 
             panel.SetActive(true);
@@ -29,9 +38,9 @@ public class CollisionEvents_player : Events
 
             silence.ResetWait();
 
-            if (typePanel != movementPanel)
+            for (int i = 0; i < hudItem.Length; i++)
             {
-                movementPanel.SetActive(false);
+                hudItem[i].SetActive(true);
             }
 
             Destroy(gameObject);

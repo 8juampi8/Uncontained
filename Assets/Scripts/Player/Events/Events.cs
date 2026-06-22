@@ -1,3 +1,6 @@
+using System;
+using Unity.VisualScripting;
+using UnityEngine.Rendering.Universal;
 using UnityEngine;
 
 public class Events : MonoBehaviour
@@ -5,7 +8,8 @@ public class Events : MonoBehaviour
     protected GameObject player;
 
     [SerializeField] protected GameObject typePanel;
-    [SerializeField] protected GameObject movementPanel;
+    [SerializeField] protected Light2D globalLight;
+    [SerializeField] protected Light2D freeLight;
 
     protected virtual void Start()
     {

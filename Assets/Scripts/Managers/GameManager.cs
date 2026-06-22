@@ -83,85 +83,13 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (dialogue == null)
+            if (pauseScreen != null)
             {
-                if (pauseScreen != null)
-                {
-                    pauseScreen.SetActive(true);
-                    Time.timeScale = 0f;
-                }
-            }
-            else
-            {
-                if (!dialogue.activeSelf)
-                {
-                    if (pauseScreen != null)
-                    {
-                        pauseScreen.SetActive(true);
-                    }
-                }
+                pauseScreen.SetActive(true);
             }
         }
 
-        if (pauseScreen != null)
-        {
-            if (!pauseScreen.activeSelf)
-            {
-                Time.timeScale = 1f;
-
-                hud.SetActive(true);
-            }
-        }
-
-        if (defeatScreen != null)
-        {
-            if (defeatScreen.activeSelf)
-            {
-                Time.timeScale = 0f;
-
-                hud.SetActive(false);
-            }
-            else
-            {
-                Time.timeScale = 1f;
-
-                hud.SetActive(true);
-            }
-        }
-
-        if (victoryScreen != null)
-        {
-            if (victoryScreen.activeSelf)
-            {
-                Time.timeScale = 0f;
-
-                hud.SetActive(false);
-            }
-            else
-            {
-                Time.timeScale = 1f;
-
-                hud.SetActive(true);
-
-            }
-        }
-
-        if (tutorialScreen != null)
-        {
-            if (tutorialScreen.activeSelf)
-            {
-                Time.timeScale = 0f;
-
-                hud.SetActive(false);
-            }
-            else
-            {
-                Time.timeScale = 1f;
-
-                hud.SetActive(true);
-
-            }
-        }
+        CheckPanels();
     }
 
     void OnEnable()
@@ -223,14 +151,51 @@ public class GameManager : MonoBehaviour
         enemiesFollowing = 0;
     }
 
+    void CheckPanels()
+{
+    bool panelActive = false;
+
+    if (defeatScreen != null && defeatScreen.activeSelf)
+        panelActive = true;
+
+    if (victoryScreen != null && victoryScreen.activeSelf)
+        panelActive = true;
+
+    if (pauseScreen != null && pauseScreen.activeSelf)
+        panelActive = true;
+
+    if (tutorialScreen != null && tutorialScreen.activeSelf)
+        panelActive = true;
+
+    if (dialogue != null && dialogue.activeSelf)
+        panelActive = true;
+
+
+    if (panelActive)
+    {
+        Time.timeScale = 0f;
+
+        if (hud != null)
+            hud.SetActive(false);
+    }
+    else
+    {
+        Time.timeScale = 1f;
+
+        if (hud != null)
+            hud.SetActive(true);
+    }
+}
+
     public void getDamage(int damage)
     {
-        soundsController.PlayOneShot(soundsController.GeneralSource, soundsController.GetDamage);
+        if(playerHealth > 0) {
+            soundsController.PlayOneShot(soundsController.GeneralSource, soundsController.GetDamage);
 
-        playerHealth -= damage;
-        StartCoroutine(Damage());
-        UpdateHealthGUI();
-
+            playerHealth -= damage;
+            StartCoroutine(Damage());
+            UpdateHealthGUI();
+        }
         if (playerHealth <= 0)
         {
             playerHealth = 0;
@@ -244,8 +209,6 @@ public class GameManager : MonoBehaviour
 
             if (defeatScreen != null)
                 defeatScreen.SetActive(true);
-
-            playerHealth = 3;
         }
     }
 
@@ -272,6 +235,7 @@ public class GameManager : MonoBehaviour
     public void ResetDeathState()
     {
         playerDied = false;
+        playerHealth = 3;
     }
 
     public void Win()
