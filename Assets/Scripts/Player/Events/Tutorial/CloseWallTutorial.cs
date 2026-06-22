@@ -7,6 +7,8 @@ public class CollisionEvents_player : Events
     [SerializeField] private GameObject wallTut;
     [SerializeField] private GameObject panel;
 
+    [SerializeField] private GameObject[] hudItem;
+
     SilenceHab_player silence;
 
     protected override void Start()
@@ -35,6 +37,11 @@ public class CollisionEvents_player : Events
             wallTut.SetActive(true);
 
             silence.ResetWait();
+
+            for (int i = 0; i < hudItem.Length; i++)
+            {
+                hudItem[i].SetActive(true);
+            }
 
             Destroy(gameObject);
         }

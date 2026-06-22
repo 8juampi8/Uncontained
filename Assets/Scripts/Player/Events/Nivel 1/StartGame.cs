@@ -5,9 +5,6 @@ using System;
 
 public class StartGame : Events
 {
-    [SerializeField] private Light2D globalLight;
-    [SerializeField] private Light2D freeLight;
-
     [SerializeField] private GameObject startingPanel;
     private GameObject hud;
 
