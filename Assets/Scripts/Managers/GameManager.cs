@@ -261,6 +261,12 @@ public class GameManager : MonoBehaviour
     public void SetSpawn(Vector3 newSpawn)
     {
         spawn = newSpawn;
+        smallAmmoOD = InvManager.Instance.SmallAmmo;
+        shotgunAmmoOD = InvManager.Instance.ShotgunAmmo;
+        rifleAmmoOD = InvManager.Instance.RifleAmmo;
+        flashlightPowerOD = flashlightPower;
+        gunID = InvManager.Instance.SlotItem;
+        enemiesFollowing = 0;
     }
 
     public void ResetDeathState()
