@@ -19,8 +19,6 @@ public class SilenceHab_player : MonoBehaviour
 
     [SerializeField] private GameObject dialogue;
 
-    [SerializeField] private SpriteRenderer sign;
-
     private Image greenCircle;
 
     void Start()
@@ -31,8 +29,6 @@ public class SilenceHab_player : MonoBehaviour
 
     void Update()
     {
-        sign.enabled = GameManager.IsFollowing;
-
         // VERIFICAR QUE SILENCE NO ESTE EN COOLDOWN
         if (silenceWait >= silenceCooldown)
         {
