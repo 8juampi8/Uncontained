@@ -199,7 +199,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SilenceHab_player
   playerSprite: {fileID: 1391675941740519288}
   dialogue: {fileID: 0}
-  sign: {fileID: 0}
 --- !u!114 &-8248357436384275857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,7 +605,7 @@ Transform:
   m_GameObject: {fileID: 4999458737575079140}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 1.467, z: 0}
+  m_LocalPosition: {x: -0.3, y: 0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -637,7 +636,7 @@ Transform:
   m_GameObject: {fileID: 5543712082058359760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.384, y: 0.94, z: 0}
+  m_LocalPosition: {x: -0.384, y: 0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -758,7 +757,7 @@ Transform:
   m_GameObject: {fileID: 6697766426015018466}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.33, y: 1.89, z: 0}
+  m_LocalPosition: {x: -0.33, y: 1.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
