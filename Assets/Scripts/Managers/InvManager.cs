@@ -41,8 +41,8 @@ public class InvManager : MonoBehaviour
 
     private GameObject cannon;
 
-    private PlayerSoundsController soundsController;
-    public PlayerSoundsController SoundsController => soundsController;
+    private AudioManager audioManager;
+    public AudioManager Audio => audioManager;
 
     private AudioClip shootSound;
 
@@ -57,7 +57,7 @@ public class InvManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        }
+        }   
 
         itemDictionary = new Dictionary<string, (GameObject, Guns_gun)>();
 
@@ -93,7 +93,7 @@ public class InvManager : MonoBehaviour
         if (player == null) return;
 
         animator = player.GetComponent<Animator>();
-        soundsController = player.GetComponent<PlayerSoundsController>();
+        audioManager = player.GetComponent<AudioManager>();
 
         if (GameManager.Instance.PlayerDied)
         {
@@ -154,47 +154,37 @@ public class InvManager : MonoBehaviour
         if (string.IsNullOrEmpty(slotItem)) return;
 
         obj = GetPrefab(slotItem);
-
         if (obj == null) return;
 
         isEquipped = true;
+        currentGun = obj.GetComponent<Guns_gun>();
 
         ResetWeaponBools();
 
-        if (obj.GetComponent<Pistol_gun>() != null)
+        switch (currentGun.MyType)
         {
-            cannon = GameObject.FindWithTag("PistolCannon");
-            animator.SetBool("equipPistol", true);
-            shootSound = soundsController.PistolShoot;
+            case Guns_gun.WeaponType.Pistol:
+                cannon = GameObject.FindWithTag("PistolCannon");
+                animator.SetBool("equipPistol", true);
+                break;
+            case Guns_gun.WeaponType.Shotgun:
+                cannon = GameObject.FindWithTag("ShotgunCannon");
+                animator.SetBool("equipShotgun", true);
+                break;
+            case Guns_gun.WeaponType.SMG:
+                cannon = GameObject.FindWithTag("SMGCannon");
+                animator.SetBool("equipSMG", true);
+                break;
+            case Guns_gun.WeaponType.Rifle:
+                cannon = GameObject.FindWithTag("RifleCannon");
+                animator.SetBool("equipRifle", true);
+                break;
         }
-        else if (obj.GetComponent<Shotgun_gun>() != null)
-        {
-            cannon = GameObject.FindWithTag("ShotgunCannon");
-            animator.SetBool("equipShotgun", true);
-            shootSound = soundsController.ShotgunShoot;
-        }
-        else if (obj.GetComponent<SMG_gun>() != null)
-        {
-            cannon = GameObject.FindWithTag("SMGCannon");
-            animator.SetBool("equipSMG", true);
-            shootSound = soundsController.SmgShoot;
-        }
-        else if (obj.GetComponent<Rifle_gun>() != null)
-        {
-            cannon = GameObject.FindWithTag("RifleCannon");
-            animator.SetBool("equipRifle", true);
-            shootSound = soundsController.RifleShoot;
-        }
-
-        currentGun = obj.GetComponent<Guns_gun>();
-
-        if (currentGun == null) return;
-
-        savedCharger = GetGunScript(slotItem).GunCharger;
 
         currentGun.setCannon(cannon);
+        currentGun.setAmmo(GetGunScript(slotItem).GunCharger);
+        currentGun.setCannon(cannon);
         currentGun.setAmmo(savedCharger);
-        currentGun.setShootSound(shootSound);
 
         GameManager.Instance.UpdateAmmo();
         GameManager.Instance.UpdateMoreAmmo();
@@ -236,23 +226,15 @@ public class InvManager : MonoBehaviour
 
     public void TriggerShootAnimation()
     {
-        if (animator == null || obj == null) return;
+        if (animator == null || currentGun == null) return;
 
-        if (obj.GetComponent<Pistol_gun>() != null)
+        // Usamos el mismo switch para las animaciones
+        switch (currentGun.MyType)
         {
-            animator.SetTrigger("shootPistol");
-        }
-        else if (obj.GetComponent<Shotgun_gun>() != null)
-        {
-            animator.SetTrigger("shootShotgun");
-        }
-        else if (obj.GetComponent<SMG_gun>() != null)
-        {
-            animator.SetTrigger("shootSMG");
-        }
-        else if (obj.GetComponent<Rifle_gun>() != null)
-        {
-            animator.SetTrigger("shootRifle");
+            case Guns_gun.WeaponType.Pistol: animator.SetTrigger("shootPistol"); break;
+            case Guns_gun.WeaponType.Shotgun: animator.SetTrigger("shootShotgun"); break;
+            case Guns_gun.WeaponType.SMG: animator.SetTrigger("shootSMG"); break;
+            case Guns_gun.WeaponType.Rifle: animator.SetTrigger("shootRifle"); break;
         }
     }
 
@@ -303,19 +285,18 @@ public class InvManager : MonoBehaviour
     {
         if (obj == null) return;
 
-        if (obj.GetComponent<Pistol_gun>() != null || obj.GetComponent<SMG_gun>() != null)
+        switch (currentGun.MyType)
         {
-            smallAmmo -= ammo;
-        }
-
-        if (obj.GetComponent<Shotgun_gun>() != null)
-        {
-            shotgunAmmo -= ammo;
-        }
-
-        if (obj.GetComponent<Rifle_gun>() != null)
-        {
-            rifleAmmo -= ammo;
+            case Guns_gun.WeaponType.Pistol:
+            case Guns_gun.WeaponType.SMG:
+                smallAmmo -= ammo;
+                break;
+            case Guns_gun.WeaponType.Shotgun:
+                shotgunAmmo -= ammo;
+                break;
+            case Guns_gun.WeaponType.Rifle:
+                rifleAmmo -= ammo;
+                break;
         }
     }
 }

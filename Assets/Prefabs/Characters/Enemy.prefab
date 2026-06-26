@@ -231,6 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health_enemy
   keyCard: {fileID: 0}
   item: {fileID: 347615297868850925, guid: 0db435013f11ae64e9c13fc1a2383da2, type: 3}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: feee5a27a6818b1418e7d33633182a26, type: 3}
 --- !u!114 &7942482471127461854
 MonoBehaviour:
   m_ObjectHideFlags: 0

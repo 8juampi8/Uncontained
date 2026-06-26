@@ -10,7 +10,7 @@ public class StartGame : Events
 
     [SerializeField] private Movement_player movement;
 
-    [SerializeField] private PlayerSoundsController soundsController;
+    [SerializeField] private AudioClip alarmSound;
 
     protected override void Start()
     {
@@ -23,9 +23,9 @@ public class StartGame : Events
     {
         float intvl = 0.2f;
 
-        if (startingPanel.activeSelf)
+        if (startingPanel.activeSelf && alarmSound != null)
         {
-            soundsController.PlayLoop(soundsController.GeneralSource, soundsController.Alarm);
+            AudioManager.Instance.PlayMusic(alarmSound);
         }
 
         while (startingPanel.activeSelf)
@@ -39,8 +39,6 @@ public class StartGame : Events
             globalLight.color = Color.black;
             yield return new WaitForSeconds(intvl);
         }
-
-        soundsController.Stop(soundsController.GeneralSource);
 
         globalLight.color = new Color(0f / 255f, 0f / 255f, 0f / 255f);
         globalLight.intensity = 0.01f;

@@ -7,16 +7,16 @@ public class Movement_player : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Camera cam;
+    [SerializeField] private AudioClip walkAudio;
 
     private Vector3 mousePos;
 
     private bool isMoving;
 
-    private PlayerSoundsController playSound;
 
     void Start()
     {
-        playSound = gameObject.GetComponent<PlayerSoundsController>();
+
     }
 
     void Update()
@@ -30,11 +30,11 @@ public class Movement_player : MonoBehaviour
 
         if (isMoving)
         {
-            playSound.PlayFootsteps();
+            AudioManager.Instance.PlaySFX(walkAudio);
         }
         else
         {
-            playSound.StopFootsteps();
+            return;
         }
     }
 

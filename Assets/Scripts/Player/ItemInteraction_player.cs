@@ -3,18 +3,13 @@ using UnityEngine;
 public class ItemInteraction_player : MonoBehaviour
 {
     [SerializeField] private LayerMask itemLayer;
+    [SerializeField] private Flashlight flashlight;
+    [SerializeField] private AudioClip pickAmmoSound;
+    [SerializeField] private AudioClip pickKeySound;
+    [SerializeField] private AudioClip pickBatterySound;
 
     private bool hasKeyCard = false;
     public bool HasKeyCard => hasKeyCard;
-
-    [SerializeField] private Flashlight flashlight;
-
-    private PlayerSoundsController soundsController;
-
-    void Start()
-    {
-        soundsController = gameObject.GetComponent<PlayerSoundsController>();
-    }
 
     void Update()
     {
@@ -49,14 +44,14 @@ public class ItemInteraction_player : MonoBehaviour
                     InvManager.Instance.AddItem(item.ItemName);
                     InvManager.Instance.EquipGun();
 
-                    soundsController.PlayPickAmmo();
+                    if (pickAmmoSound != null) AudioManager.Instance.PlaySFX(pickAmmoSound);
 
                     break;
 
                 case "KeyCard":
                     hasKeyCard = true;
 
-                    soundsController.PlayPickKey();
+                    if (pickKeySound != null) AudioManager.Instance.PlaySFX(pickKeySound);
 
                     break;
 
@@ -64,7 +59,7 @@ public class ItemInteraction_player : MonoBehaviour
                     if (flashlight == null) return;
                     flashlight.AddPower();
 
-                    soundsController.PlayPickBattery();
+                    if (pickBatterySound != null) AudioManager.Instance.PlaySFX(pickBatterySound);
 
                     break;
 
@@ -72,7 +67,7 @@ public class ItemInteraction_player : MonoBehaviour
                     InvManager.Instance.PickPistolAmmo();
                     GameManager.Instance.UpdateMoreAmmo();
 
-                    soundsController.PlayPickAmmo();
+                    if (pickAmmoSound != null) AudioManager.Instance.PlaySFX(pickAmmoSound);
 
                     break;
 
@@ -80,21 +75,18 @@ public class ItemInteraction_player : MonoBehaviour
                     InvManager.Instance.PickShotgunAmmo();
                     GameManager.Instance.UpdateMoreAmmo();
 
-                    soundsController.PlayPickAmmo();
+                    if (pickAmmoSound != null) AudioManager.Instance.PlaySFX(pickAmmoSound);
 
                     break;
                 case "RifleBullet":
                     InvManager.Instance.PickRifleAmmo();
                     GameManager.Instance.UpdateMoreAmmo();
 
-                    soundsController.PlayPickAmmo();
+                    if (pickAmmoSound != null) AudioManager.Instance.PlaySFX(pickAmmoSound);
 
                     break;
                 case "Button":
-                    Debug.Log("Botón presionado");
                     Button btnEvent = GameObject.FindWithTag("ButtonEvent").GetComponent<Button>();
-                    Debug.Log(btnEvent);
-
                     btnEvent.StartCount();
 
                     break;

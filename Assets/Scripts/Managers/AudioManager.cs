@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioManager Instance;
-
+    public static AudioManager Instance;
+    
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
 
@@ -37,5 +37,10 @@ public class AudioManager : MonoBehaviour
     public void ChangeMusicVolume(float volume)
     {
         musicSource.volume = volume;
+    }
+
+    public void ChangeSFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
     }
 }

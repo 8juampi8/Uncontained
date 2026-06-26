@@ -17,9 +17,6 @@ GameObject:
   - component: {fileID: -8248357436384275857}
   - component: {fileID: 1428559473178132555}
   - component: {fileID: 8335012604583236615}
-  - component: {fileID: 8827419784266127160}
-  - component: {fileID: 4700653626060386727}
-  - component: {fileID: 7976263137038233028}
   - component: {fileID: 4966044240583808294}
   m_Layer: 7
   m_Name: Player
@@ -185,6 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Movement_player
   rb: {fileID: 8903048847353405809}
   cam: {fileID: 0}
+  walkAudio: {fileID: 8300000, guid: 384cb11bf0d6d1f4a9d4513b381b73d8, type: 3}
 --- !u!114 &4385855970214506266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SilenceHab_player
   playerSprite: {fileID: 1391675941740519288}
   dialogue: {fileID: 0}
-  sign: {fileID: 0}
+  silenceSound: {fileID: 8300000, guid: 99e5b45b411a8a04e8cf31b7f7b32c0e, type: 3}
 --- !u!114 &-8248357436384275857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +214,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   flashlight: {fileID: 2009477315645215261}
+  pickAmmoSound: {fileID: 8300000, guid: ebc36193502163346a1f3fca04d336c8, type: 3}
+  pickKeySound: {fileID: 8300000, guid: 76923eb4b567bae409b96e6339809e80, type: 3}
+  pickBatterySound: {fileID: 8300000, guid: e510a7540b14aea47b83d8eb07b3bf43, type: 3}
 --- !u!114 &1428559473178132555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,234 +249,6 @@ AudioSource:
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.3
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &8827419784266127160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148579008531778595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf0aa2f535cab74ea65458330b8f8ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSoundsController
-  generalSource: {fileID: 7976263137038233028}
-  weaponsSource: {fileID: 8335012604583236615}
-  footstepsSource: {fileID: 4700653626060386727}
-  pistolShoot: {fileID: 8300000, guid: 170b7099c5b5b914eb8a588b37b1a316, type: 3}
-  shotgunShoot: {fileID: 8300000, guid: 639fcaa4fac2eac40bdbd6fd3370964d, type: 3}
-  smgShoot: {fileID: 8300000, guid: f6bb0401d6c31634fa9c2ae6183ef8af, type: 3}
-  rifleShoot: {fileID: 8300000, guid: 194cd8f4000587b46b6cbe7f6efa2535, type: 3}
-  footsteps: {fileID: 8300000, guid: f6d465915d819d04eb1852e9ac56a5fc, type: 3}
-  alarm: {fileID: 8300000, guid: 94037a7ad9a385944aca6d702671b208, type: 3}
-  getDamage: {fileID: 8300000, guid: 5b2ef487609f4a94d87258dc298190a8, type: 3}
-  death: {fileID: 8300000, guid: f63c9d83c7a180f418f73084fc8cb771, type: 3}
-  pickKey: {fileID: 8300000, guid: 76923eb4b567bae409b96e6339809e80, type: 3}
-  pickAmmo: {fileID: 8300000, guid: ebc36193502163346a1f3fca04d336c8, type: 3}
-  pickBattery: {fileID: 8300000, guid: e510a7540b14aea47b83d8eb07b3bf43, type: 3}
-  toggleFL: {fileID: 8300000, guid: 625fd5c63309db7438937576bd7092df, type: 3}
-  silence: {fileID: 8300000, guid: 99e5b45b411a8a04e8cf31b7f7b32c0e, type: 3}
-  door: {fileID: 8300000, guid: 2e0b04c41edbef543b089113711150fd, type: 3}
-  reload: {fileID: 8300000, guid: 7ed1cbc682276f541a674c8ad8b9797d, type: 3}
-  count: {fileID: 8300000, guid: 3abda7acf56d564428a2ad7aa2ed476a, type: 3}
-  explotion: {fileID: 8300000, guid: 20e56c1ba5b2f7f4f8eb8d69a75e8ed5, type: 3}
-  hitenemy: {fileID: 8300000, guid: 864dbf96c49284449a868dc381024e85, type: 3}
-  deathenemy: {fileID: 8300000, guid: feee5a27a6818b1418e7d33633182a26, type: 3}
---- !u!82 &4700653626060386727
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148579008531778595}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &7976263137038233028
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148579008531778595}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -892,3 +665,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9190d6666ccf341a85b879439c096f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Flashlight
+  flashlight: {fileID: 0}

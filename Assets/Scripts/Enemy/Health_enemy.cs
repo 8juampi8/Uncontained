@@ -7,33 +7,32 @@ public class Health_enemy : MonoBehaviour
 
     [SerializeField] private GameObject keyCard;
     [SerializeField] private GameObject item;
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private AudioClip deathSound;
 
     private SpriteRenderer sprite;
-
-    private PlayerSoundsController soundsController;
 
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-
-        soundsController = GameObject.FindWithTag("Player").GetComponent<PlayerSoundsController>();
     }
 
     public void getDamage(int damage)
     {
         health -= damage;
 
-        soundsController.PlayHitEnemy();
+        if (AudioManager.Instance != null && hitSound != null)
+            AudioManager.Instance.PlaySFX(hitSound);
 
         StartCoroutine(Damage());
 
         if (health <= 0)
         {
             Destroy(gameObject);
-
             GameManager.Instance.OffFollowing();
 
-            soundsController.PlayDeathEnemy();
+            if (AudioManager.Instance != null && deathSound != null)
+                AudioManager.Instance.PlaySFX(deathSound);
 
             if (keyCard != null)
             {

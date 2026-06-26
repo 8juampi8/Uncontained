@@ -7,8 +7,8 @@ public class Flashlight : MonoBehaviour
     Light2D lght;
 
     private GameObject player;
-    private PlayerSoundsController soundsController;
-
+    [SerializeField] private AudioClip flashlight;
+        
     void Start()
     {
         lght = GetComponent<Light2D>();
@@ -16,8 +16,6 @@ public class Flashlight : MonoBehaviour
         power = GameManager.Instance.FlashlightPower;
 
         player = GameObject.FindWithTag("Player");
-
-        if (player != null) soundsController = player.GetComponent<PlayerSoundsController>();
     }
 
     public void Toggle()
@@ -28,7 +26,7 @@ public class Flashlight : MonoBehaviour
             {    
                 lght.enabled = !lght.enabled;
 
-                soundsController.PlayToggleFL();
+               AudioManager.Instance.PlaySFX(flashlight);
             }
         }
     }

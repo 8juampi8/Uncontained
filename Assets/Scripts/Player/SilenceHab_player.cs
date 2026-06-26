@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class SilenceHab_player : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer playerSprite;
+    [SerializeField] private GameObject dialogue;
+    [SerializeField] private AudioClip silenceSound;
 
     private int silenceCooldown = 15;
     private float silenceWait = 15;
@@ -15,21 +17,16 @@ public class SilenceHab_player : MonoBehaviour
 
     public bool inSilence => silence;
 
-    private PlayerSoundsController soundsController;
-
-    [SerializeField] private GameObject dialogue;
-
     private Image greenCircle;
 
     void Start()
     {
-        soundsController = gameObject.GetComponent<PlayerSoundsController>();
         greenCircle = GameObject.FindWithTag("GreenCircle").GetComponent<Image>();
     }
 
     void Update()
     {
-        // VERIFICAR QUE SILENCE NO ESTE EN COOLDOWN
+        //Veo que no este en cooldown
         if (silenceWait >= silenceCooldown)
         {
             canSilence = true;
@@ -39,37 +36,44 @@ public class SilenceHab_player : MonoBehaviour
             canSilence = false;
         }
 
-        // SI APRETA X Y SILENCE NO ESTA EN COOLDOWN, SE ACTIVA
+        bool puedeActivar = false;
+
         if (dialogue != null)
         {
-            if (Input.GetKeyDown(KeyCode.X) && canSilence && !dialogue.activeSelf)
+            if (!dialogue.activeSelf)
             {
-                silence = true;
-                soundsController.PlaySilence();
-                silenceWait = 0;
+                puedeActivar = true;
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.X) && canSilence)
-            {
-                silence = true;
-                soundsController.PlaySilence();
-                silenceWait = 0;
-            }
+            puedeActivar = true;
         }
 
-        // MIENTRAS SILENCE ESTE ACTIVO
+        //Activacion de habilidad
+        if (Input.GetKeyDown(KeyCode.X) && canSilence && puedeActivar)
+        {
+            silence = true;
+            if (AudioManager.Instance != null && silenceSound != null)
+            {
+                AudioManager.Instance.PlaySFX(silenceSound);
+            }
+
+            silenceWait = 0;
+        }
+
+        //Efecto de silence
         if (silence)
         {
-
-            playerSprite.color = Color.gray4;
-
+            playerSprite.color = Color.gray;
             silenceTimer += Time.deltaTime;
 
             if (silenceTimer >= silenceDuration)
             {
-                soundsController.PlaySilence();
+                if (AudioManager.Instance != null && silenceSound != null)
+                {
+                    AudioManager.Instance.PlaySFX(silenceSound);
+                }
 
                 silence = false;
                 silenceTimer = 0;
@@ -81,20 +85,13 @@ public class SilenceHab_player : MonoBehaviour
         }
 
         silenceWait += Time.deltaTime;
+        float alpha = Mathf.Clamp01(silenceWait / silenceCooldown);
 
-        float alpha = silenceWait / silenceCooldown;
-        alpha = Mathf.Clamp01(alpha);
-
-        if(greenCircle == null)
+        if (greenCircle != null)
         {
-            greenCircle = GameObject.FindWithTag("GreenCircle").GetComponent<Image>();
-        }
-        else
-        {            
             greenCircle.fillAmount = alpha;
         }
     }
-
     public void ResetWait()
     {
         silenceWait = 10;

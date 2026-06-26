@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Sprite hth2;
     [SerializeField] private Sprite hth1;
     [SerializeField] private Sprite hth0;
-
-    private PlayerSoundsController soundsController;
+    [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioClip deathSound;
 
     private Vector3 spawn;
     public Vector3 Spawn => spawn;
@@ -106,12 +106,7 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 
-        if (player != null) playerSpt = player.GetComponent<SpriteRenderer>();
-
-        if (player != null)
-        {
-            soundsController = player.GetComponent<PlayerSoundsController>();
-        }
+        if (player != null) playerSpt = player.GetComponent<SpriteRenderer>();  
 
         defeatScreen = FindAnyObjectByType<Defeat>(FindObjectsInactive.Include)?.gameObject;
 
@@ -190,7 +185,8 @@ public class GameManager : MonoBehaviour
     public void getDamage(int damage)
     {
         if(playerHealth > 0) {
-            soundsController.PlayOneShot(soundsController.GeneralSource, soundsController.GetDamage);
+            if (AudioManager.Instance != null && damageSound != null)
+                AudioManager.Instance.PlaySFX(damageSound);
 
             playerHealth -= damage;
             StartCoroutine(Damage());
@@ -200,12 +196,10 @@ public class GameManager : MonoBehaviour
         {
             playerHealth = 0;
 
-            soundsController.PlayOneShot(soundsController.GeneralSource, soundsController.Death);
+            if (AudioManager.Instance != null && deathSound != null)
+                AudioManager.Instance.PlaySFX(deathSound);
 
             playerDied = true;
-
-            // if (player != null)
-            //     Destroy(player);
 
             if (defeatScreen != null)
                 defeatScreen.SetActive(true);

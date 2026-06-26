@@ -4,18 +4,15 @@ using System.Collections;
 
 public class Button : Events
 {
-    [SerializeField] private TextMeshProUGUI countTxt; 
-
-    private PlayerSoundsController soundsController;
-
+    [SerializeField] private TextMeshProUGUI countTxt;
     [SerializeField] private GameObject victory;
     [SerializeField] private GameObject black;
+    [SerializeField] private AudioClip countSound;
+    [SerializeField] private AudioClip explosionSound;
 
     protected override void Start()
     {
         base.Start();
-
-        soundsController = player.GetComponent<PlayerSoundsController>();
     }
 
     public void StartCount()
@@ -27,7 +24,7 @@ public class Button : Events
     {
         countTxt.enabled = true;
 
-        soundsController.PlayCount();
+        if (countSound != null) AudioManager.Instance.PlaySFX(countSound);
 
         for (int i = 10; i >= 0; i--)
         {
@@ -38,7 +35,7 @@ public class Button : Events
 
         black.SetActive(true);
 
-        soundsController.PlayExplotion();
+        if (explosionSound != null) AudioManager.Instance.PlaySFX(explosionSound);
 
         yield return new WaitForSeconds(7);
 
