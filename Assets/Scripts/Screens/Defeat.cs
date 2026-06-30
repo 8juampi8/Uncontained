@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Defeat : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Defeat : MonoBehaviour
 
     void Start()
     {
-        tryAgain.onClick.AddListener(GameManager.Instance.ResetDeathState);
+        tryAgain.onClick.AddListener(() => {
+            GameManager.Instance.ResetDeathState();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        });
     }
 }

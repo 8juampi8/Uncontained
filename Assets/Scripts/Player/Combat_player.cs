@@ -29,10 +29,6 @@ public class Combat_player : MonoBehaviour
 
                     InvManager.Instance.CurrentGun.Shoot();
                 }
-                else
-                {
-                    Debug.Log("No tenes balas");
-                }
             }
             else
             {
@@ -44,9 +40,7 @@ public class Combat_player : MonoBehaviour
 
                 if (meleHit != null)
                 {
-                    meleHit
-                        .GetComponent<Health_enemy>()
-                        .getDamage(meleDamage);
+                    meleHit.GetComponent<Health_enemy>().getDamage(meleDamage);
                 }
             }
         }

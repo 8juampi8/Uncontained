@@ -105,32 +105,6 @@ public class InvManager : MonoBehaviour
         animator = player.GetComponent<Animator>();
         audioManager = player.GetComponent<AudioManager>();
 
-        if (GameManager.Instance.PlayerDied)
-        {
-            smallAmmo = GameManager.Instance.SmallAmmoOD;
-            shotgunAmmo = GameManager.Instance.ShotgunAmmoOD;
-            rifleAmmo = GameManager.Instance.RifleAmmoOD;
-
-            slotItem = GameManager.Instance.GunID;
-
-            if (!string.IsNullOrEmpty(slotItem))
-            {
-                EquipGun();
-            }
-
-            if (currentGun != null)
-            {
-                savedCharger = currentGun.MaxCharger;
-                currentGun.setAmmo(savedCharger);
-            }
-
-            GameManager.Instance.ResetDeathState();
-
-            GameManager.Instance.ChangePower(GameManager.Instance.FlashlightPowerOD);
-
-            return;
-        }
-
         if (SceneManager.GetActiveScene().name == "Level 1" || SceneManager.GetActiveScene().name == "Tutorial")
         {
             smallAmmo = 0;
@@ -143,6 +117,31 @@ public class InvManager : MonoBehaviour
         }
 
         EquipGun();
+    }
+
+    public void ResetInvState()
+    {
+        smallAmmo = GameManager.Instance.SmallAmmoOD;
+        shotgunAmmo = GameManager.Instance.ShotgunAmmoOD;
+        rifleAmmo = GameManager.Instance.RifleAmmoOD;
+
+        slotItem = GameManager.Instance.GunID;
+
+        if (!string.IsNullOrEmpty(slotItem))
+        {
+            EquipGun();
+        }
+
+        if (currentGun != null)
+        {
+            savedCharger = GameManager.Instance.SavedChargerOD;
+            currentGun.setAmmo(savedCharger);
+        }
+
+        GameManager.Instance.UpdateAmmo();
+        GameManager.Instance.UpdateMoreAmmo();
+        GameManager.Instance.UpdateFLpower();
+        GameManager.Instance.UpdateHealthGUI();
     }
 
     public void AddItem(string item)
@@ -191,8 +190,10 @@ public class InvManager : MonoBehaviour
                 break;
         }
 
+        savedCharger = GetGunScript(slotItem).GunCharger;
+
         currentGun.setCannon(cannon);
-        currentGun.setAmmo(GetGunScript(slotItem).GunCharger);
+        currentGun.setAmmo(savedCharger);
         shootSound = currentGun.ShootSound;
 
         GameManager.Instance.UpdateAmmo();
@@ -227,6 +228,7 @@ public class InvManager : MonoBehaviour
             cannon = null;
             shootSound = null;
             obj = null;
+            savedCharger = 0;
 
             GameManager.Instance.UpdateAmmo();
             GameManager.Instance.UpdateMoreAmmo();

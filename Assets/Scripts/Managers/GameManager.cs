@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     private bool playerDied = false;
     public bool PlayerDied => playerDied;
 
+    private int savedChargerOD;
+    public int SavedChargerOD => savedChargerOD;
+
     private int smallAmmoOD;
     public int SmallAmmoOD => smallAmmoOD;
 
@@ -105,45 +108,50 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         player = GameObject.FindWithTag("Player");
-
         if (player != null) playerSpt = player.GetComponent<SpriteRenderer>();  
 
         defeatScreen = FindAnyObjectByType<Defeat>(FindObjectsInactive.Include)?.gameObject;
-
         victoryScreen = FindAnyObjectByType<Victory>(FindObjectsInactive.Include)?.gameObject;
-
         pauseScreen = FindAnyObjectByType<Pause>(FindObjectsInactive.Include)?.gameObject;
-
         tutorialScreen = FindAnyObjectByType<Tutorial>(FindObjectsInactive.Include)?.gameObject;
-
         hud = FindAnyObjectByType<HUD>(FindObjectsInactive.Include)?.gameObject;
-
         dialogue = FindAnyObjectByType<Dialogue>(FindObjectsInactive.Include)?.gameObject;
 
-        if (SceneManager.GetActiveScene().name == "Level 1")
+        if (SceneManager.GetActiveScene().name == "Level 1" || SceneManager.GetActiveScene().name == "Tutorial")
         {
-            flashlightPower = 100;
+            // Si el jugador NO viene de morir, inicializamos en 100
+            if (!playerDied) 
+            {
+                flashlightPower = 100;
+                flashlightPowerOD = 100;
+            }
             playerHealth = 3;
+            
+            if (SceneManager.GetActiveScene().name == "Tutorial" && player != null)
+            {
+                player.transform.position = spawn;
+            }
         }
-
-        if (SceneManager.GetActiveScene().name == "Tutorial")
-        {
-            flashlightPower = 100;
-            playerHealth = 3;
-            player.transform.position = spawn;
-        }
-
-        if (SceneManager.GetActiveScene().name == "Menu")
+        else if (SceneManager.GetActiveScene().name == "Menu")
         {
             spawn = Vector3.zero;
         }
 
+        // Si el jugador viene de una muerte, ya restablecimos el valor en ResetDeathState()
+        if (!playerDied)
+        {
+            flashlightPowerOD = flashlightPower;
+        }
+
+        // Datos del inventario
         smallAmmoOD = InvManager.Instance.SmallAmmo;
         shotgunAmmoOD = InvManager.Instance.ShotgunAmmo;
         rifleAmmoOD = InvManager.Instance.RifleAmmo;
-        flashlightPowerOD = flashlightPower;
+        savedChargerOD = InvManager.Instance.SavedCharger;
         gunID = InvManager.Instance.SlotItem;
         enemiesFollowing = 0;
+
+        UpdateFLpower(); 
     }
 
     void CheckPanels()
@@ -222,14 +230,17 @@ public class GameManager : MonoBehaviour
         shotgunAmmoOD = InvManager.Instance.ShotgunAmmo;
         rifleAmmoOD = InvManager.Instance.RifleAmmo;
         flashlightPowerOD = flashlightPower;
+        savedChargerOD = InvManager.Instance.SavedCharger;
         gunID = InvManager.Instance.SlotItem;
         enemiesFollowing = 0;
     }
 
     public void ResetDeathState()
     {
-        playerDied = false;
         playerHealth = 3;
+        flashlightPower = flashlightPowerOD;
+        InvManager.Instance.ResetInvState();
+        playerDied = false; 
     }
 
     public void Win()
@@ -284,7 +295,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        ammoTxt.text = InvManager.Instance.SavedCharger.ToString() + " | " + InvManager.Instance.Obj.GetComponent<Guns_gun>().MaxCharger.ToString();
+        ammoTxt.text = InvManager.Instance.CurrentGun.GunCharger.ToString() + " | " + InvManager.Instance.Obj.GetComponent<Guns_gun>().MaxCharger.ToString();
     }
 
     public void UpdateMoreAmmo()
