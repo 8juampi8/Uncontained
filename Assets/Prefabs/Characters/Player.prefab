@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Movement_player
   rb: {fileID: 8903048847353405809}
   cam: {fileID: 0}
-  walkAudio: {fileID: 8300000, guid: 384cb11bf0d6d1f4a9d4513b381b73d8, type: 3}
+  walkAudio: {fileID: 8300000, guid: 1cec6a9550d9bbd45982d727e229e579, type: 3}
 --- !u!114 &4385855970214506266
 MonoBehaviour:
   m_ObjectHideFlags: 0
