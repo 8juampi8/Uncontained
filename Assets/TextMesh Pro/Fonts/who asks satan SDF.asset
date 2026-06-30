@@ -12,9 +12,9 @@ Texture2D:
     Hash: 00000000000000000000000000000000
   m_IsAlphaChannelOptional: 0
   serializedVersion: 4
-  m_Width: 1024
-  m_Height: 1024
-  m_CompleteImageSize: 1048576
+  m_Width: 1
+  m_Height: 1
+  m_CompleteImageSize: 1
   m_MipsStripped: 0
   m_TextureFormat: 1
   m_MipCount: 1
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_SourceFontFilePath: 
   m_AtlasPopulationMode: 1
   InternalDynamicOS: 0
+<<<<<<< HEAD
   m_GlyphTable:
   - m_Index: 39
     m_Metrics:
@@ -887,6 +888,10 @@ MonoBehaviour:
     m_Unicode: 81
     m_GlyphIndex: 34
     m_Scale: 1
+=======
+  m_GlyphTable: []
+  m_CharacterTable: []
+>>>>>>> f1411b05a5814ff615f727de237bbd4eac0d2233
   m_AtlasTextures:
   - {fileID: -4662342254847913609}
   m_AtlasTextureIndex: 0
@@ -897,6 +902,7 @@ MonoBehaviour:
   m_AtlasHeight: 1024
   m_AtlasPadding: 9
   m_AtlasRenderMode: 4165
+<<<<<<< HEAD
   m_UsedGlyphRects:
   - m_X: 0
     m_Y: 0
@@ -1139,9 +1145,14 @@ MonoBehaviour:
     m_Y: 232
     m_Width: 809
     m_Height: 40
+=======
+  m_UsedGlyphRects: []
+  m_FreeGlyphRects:
+>>>>>>> f1411b05a5814ff615f727de237bbd4eac0d2233
   - m_X: 0
-    m_Y: 983
+    m_Y: 0
     m_Width: 1023
+<<<<<<< HEAD
     m_Height: 40
   - m_X: 66
     m_Y: 894
@@ -1211,6 +1222,9 @@ MonoBehaviour:
     m_Y: 345
     m_Width: 796
     m_Height: 678
+=======
+    m_Height: 1023
+>>>>>>> f1411b05a5814ff615f727de237bbd4eac0d2233
   m_FontFeatureTable:
     m_MultipleSubstitutionRecords: []
     m_LigatureSubstitutionRecords: []
