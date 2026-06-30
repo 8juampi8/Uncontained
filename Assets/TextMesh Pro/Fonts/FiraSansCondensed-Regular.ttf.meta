@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 19f90817010c2bf439bd71d6e19ad4f3
+guid: 9024f09e65a9ce544bde3873281fde09
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Help Me
+  - Fira Sans Condensed
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
