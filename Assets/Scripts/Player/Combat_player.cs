@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Combat_player : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Combat_player : MonoBehaviour
     private int meleDamage = 10;
 
     [SerializeField] private GameObject[] panels;
+    [SerializeField] private GameObject reloadTxt;
 
     void Update()
     {
@@ -29,6 +31,10 @@ public class Combat_player : MonoBehaviour
 
                     InvManager.Instance.CurrentGun.Shoot();
                 }
+                else 
+                {
+                    StartCoroutine(HaveToReload());
+                }
             }
             else
             {
@@ -44,5 +50,13 @@ public class Combat_player : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator HaveToReload()
+    {
+        float dly = 0.5f;
+        reloadTxt.SetActive(true);
+        yield return new WaitForSeconds(dly);
+        reloadTxt.SetActive(false);
     }
 }

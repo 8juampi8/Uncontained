@@ -235,6 +235,7 @@ MonoBehaviour:
   panels:
   - {fileID: 0}
   - {fileID: 0}
+  reloadTxt: {fileID: 6836714827522013153, guid: 08cc8dcd4f7efb44f992d54c49589314, type: 3}
 --- !u!82 &8335012604583236615
 AudioSource:
   m_ObjectHideFlags: 0
