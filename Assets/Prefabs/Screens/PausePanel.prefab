@@ -510,16 +510,16 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2267238286607415319}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 200
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 200
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: ChangeMusicVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3014,6 +3014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7677bb7b984e274ba377fe96ca64702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pause
+  musicSlider: {fileID: 5898934249761193534}
+  sfxSlider: {fileID: 5423368804525460136}
 --- !u!1 &6670826585542903540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3699,40 +3701,16 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5299838011164953543}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 200
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 200
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8827419784266127160, guid: 329e7032cf62787418f1a86991f92384, type: 3}
-        m_TargetAssemblyTypeName: PlayerSoundsController, Assembly-CSharp
-        m_MethodName: ChangeSFXFootSteps
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8827419784266127160, guid: 329e7032cf62787418f1a86991f92384, type: 3}
-        m_TargetAssemblyTypeName: PlayerSoundsController, Assembly-CSharp
-        m_MethodName: ChangeSFXGeneral
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8827419784266127160, guid: 329e7032cf62787418f1a86991f92384, type: 3}
-        m_TargetAssemblyTypeName: PlayerSoundsController, Assembly-CSharp
-        m_MethodName: ChangeSFXWeapons
-        m_Mode: 0
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: ChangeSFXVolume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

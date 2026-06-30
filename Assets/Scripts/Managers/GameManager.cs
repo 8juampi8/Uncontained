@@ -147,40 +147,40 @@ public class GameManager : MonoBehaviour
     }
 
     void CheckPanels()
-{
-    bool panelActive = false;
-
-    if (defeatScreen != null && defeatScreen.activeSelf)
-        panelActive = true;
-
-    if (victoryScreen != null && victoryScreen.activeSelf)
-        panelActive = true;
-
-    if (pauseScreen != null && pauseScreen.activeSelf)
-        panelActive = true;
-
-    if (tutorialScreen != null && tutorialScreen.activeSelf)
-        panelActive = true;
-
-    if (dialogue != null && dialogue.activeSelf)
-        panelActive = true;
-
-
-    if (panelActive)
     {
-        Time.timeScale = 0f;
+        bool panelActive = false;
 
-        if (hud != null)
-            hud.SetActive(false);
-    }
-    else
-    {
-        Time.timeScale = 1f;
+        if (defeatScreen != null && defeatScreen.activeSelf)
+            panelActive = true;
 
-        if (hud != null)
-            hud.SetActive(true);
+        if (victoryScreen != null && victoryScreen.activeSelf)
+            panelActive = true;
+
+        if (pauseScreen != null && pauseScreen.activeSelf)
+            panelActive = true;
+
+        if (tutorialScreen != null && tutorialScreen.activeSelf)
+            panelActive = true;
+
+        if (dialogue != null && dialogue.activeSelf)
+            panelActive = true;
+
+
+        if (panelActive)
+        {
+            Time.timeScale = 0f;
+
+            if (hud != null)
+                hud.SetActive(false);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+
+            if (hud != null)
+                hud.SetActive(true);
+        }
     }
-}
 
     public void getDamage(int damage)
     {

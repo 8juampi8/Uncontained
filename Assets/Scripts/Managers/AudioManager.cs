@@ -8,11 +8,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
 
-    [SerializeField] private GameObject musicObj;
-    [SerializeField] private GameObject sfxObj;
+    private float musicVolume = 1;
+    public float MusicVolume => musicVolume;
 
-    private float musicVolume;
-    private float sfxVolume;
+    private float sfxVolume = 1;
+    public float SfxVolume => sfxVolume;
 
     private void Awake()
     {
@@ -38,16 +38,16 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
-    public void ChangeMusicVolume()
+    public void ChangeMusicVolume(float vol)
     {
-        Slider musicSlider = musicObj.GetComponent<Slider>();
-        musicSource.volume = musicSlider.value;
+        musicSource.volume = vol;
+        musicVolume = vol;
     }
 
-    public void ChangeSFXVolume()
+    public void ChangeSFXVolume(float vol)
     {
-        Slider sfxSlider = sfxObj.GetComponent<Slider>();
-        sfxSource.volume = sfxSlider.value;
+        sfxSource.volume = vol;
+        sfxVolume = vol;
     }
     public void StopMusic()
     {
