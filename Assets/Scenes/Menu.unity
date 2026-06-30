@@ -3791,6 +3791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 1286380114}
   sfxSource: {fileID: 1286380113}
+  musicObj: {fileID: 2002855205}
+  sfxObj: {fileID: 1782446636}
 --- !u!4 &1286380116
 Transform:
   m_ObjectHideFlags: 0
@@ -5911,40 +5913,16 @@ MonoBehaviour:
   m_HandleRect: {fileID: 298582633}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 200
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 200
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8827419784266127160, guid: 329e7032cf62787418f1a86991f92384, type: 3}
-        m_TargetAssemblyTypeName: PlayerSoundsController, Assembly-CSharp
-        m_MethodName: ChangeSFXFootSteps
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8827419784266127160, guid: 329e7032cf62787418f1a86991f92384, type: 3}
-        m_TargetAssemblyTypeName: PlayerSoundsController, Assembly-CSharp
-        m_MethodName: ChangeSFXGeneral
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8827419784266127160, guid: 329e7032cf62787418f1a86991f92384, type: 3}
-        m_TargetAssemblyTypeName: PlayerSoundsController, Assembly-CSharp
-        m_MethodName: ChangeSFXWeapons
-        m_Mode: 0
+      - m_Target: {fileID: 1286380115}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: ChangeSFXVolume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6388,16 +6366,16 @@ MonoBehaviour:
   m_HandleRect: {fileID: 958999043}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 200
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 200
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1286380115}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: ChangeMusicVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

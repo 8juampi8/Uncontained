@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class AudioManager : MonoBehaviour
     
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
+
+    [SerializeField] private GameObject musicObj;
+    [SerializeField] private GameObject sfxObj;
 
     private float musicVolume;
     private float sfxVolume;
@@ -21,7 +25,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    } 
+    }
 
     public void PlayMusic(AudioClip clip)
     {
@@ -34,14 +38,16 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
-    public void ChangeMusicVolume(float volume)
+    public void ChangeMusicVolume()
     {
-        musicSource.volume = volume;
+        Slider musicSlider = musicObj.GetComponent<Slider>();
+        musicSource.volume = musicSlider.value;
     }
 
-    public void ChangeSFXVolume(float volume)
+    public void ChangeSFXVolume()
     {
-        sfxSource.volume = volume;
+        Slider sfxSlider = sfxObj.GetComponent<Slider>();
+        sfxSource.volume = sfxSlider.value;
     }
     public void StopMusic()
     {
