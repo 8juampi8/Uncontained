@@ -38,9 +38,10 @@ public class Flashlight : MonoBehaviour
 
     private void FlashlightLife()
     {
+        if (Time.timeScale == 0f) return;
+
         if (power <= 0)
         {
-
             power = 0;
             lght.enabled = false;
         }
