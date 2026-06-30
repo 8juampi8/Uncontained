@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Sprite hth0;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip bgMusic;
 
     private Vector3 spawn;
     public Vector3 Spawn => spawn;
@@ -137,11 +138,15 @@ public class GameManager : MonoBehaviour
             playerHealth = 3;
 
             player.transform.position = spawn;
+
+            AudioManager.Instance.StopMusic();
         }
 
         if (SceneManager.GetActiveScene().name == "Menu")
         {
             spawn = Vector3.zero;
+            
+            AudioManager.Instance.PlayMusic(bgMusic);
         }
 
         smallAmmoOD = InvManager.Instance.SmallAmmo;
@@ -240,6 +245,7 @@ public class GameManager : MonoBehaviour
         flashlightPowerOD = flashlightPower;
         savedChargerOD = InvManager.Instance.SavedCharger;
         gunID = InvManager.Instance.SlotItem;
+        Debug.Log(gunID);
         enemiesFollowing = 0;
     }
 

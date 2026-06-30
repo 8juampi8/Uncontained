@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
   toScene: Level 5
-  doorSound: {fileID: 0}
+  doorSound: {fileID: 8300000, guid: 2e0b04c41edbef543b089113711150fd, type: 3}
 --- !u!19719996 &19792715
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -20661,7 +20661,7 @@ PrefabInstance:
     - target: {fileID: 5803355697542321436, guid: e8983eab2f56cbb4f90cd157b1177360, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8922534567621697489, guid: a494d9c51570ff94f8c0335cfdf8c9de, type: 3}
     - target: {fileID: 5803355697542321436, guid: e8983eab2f56cbb4f90cd157b1177360, type: 3}
       propertyPath: keyCard
       value: 

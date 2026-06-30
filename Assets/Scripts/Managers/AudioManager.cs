@@ -8,6 +8,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
 
+    // Apartes
+    // private AudioSource enemySFX;
+    private AudioSource footstepsSFX;
+
     private float musicVolume = 1;
     public float MusicVolume => musicVolume;
 
@@ -38,6 +42,18 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
+    public void SetFootstepsSource(AudioSource source)
+    {
+        footstepsSFX = source;
+        footstepsSFX.volume = sfxVolume;
+    }
+
+    // public void SetEnemySource(AudioSource source)
+    // {
+    //     enemySFX = source;
+    //     enemySFX.volume = sfxVolume;
+    // }
+
     public void ChangeMusicVolume(float vol)
     {
         musicSource.volume = vol;
@@ -47,6 +63,14 @@ public class AudioManager : MonoBehaviour
     public void ChangeSFXVolume(float vol)
     {
         sfxSource.volume = vol;
+        if(footstepsSFX != null)
+        {
+            footstepsSFX.volume = vol;
+        }
+        // if(enemySFX != null)
+        // {
+        //     enemySFX.volume = vol;
+        // }
         sfxVolume = vol;
     }
     public void StopMusic()

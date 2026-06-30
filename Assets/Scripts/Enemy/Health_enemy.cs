@@ -5,7 +5,7 @@ public class Health_enemy : MonoBehaviour
 {
     private int health = 100;
 
-    [SerializeField] private GameObject keyCard;
+    [SerializeField] private GameObject item;
     [SerializeField] private GameObject pistolBullet;
     [SerializeField] private GameObject shotgunBullet;
     [SerializeField] private GameObject rifleBullet;
@@ -36,9 +36,10 @@ public class Health_enemy : MonoBehaviour
             if (AudioManager.Instance != null && deathSound != null)
                 AudioManager.Instance.PlaySFX(deathSound);
 
-            if (keyCard != null)
+            if (item != null)
             {
-                Instantiate(keyCard, transform.position, transform.rotation);
+                Instantiate(item, transform.position, transform.rotation);
+                return;
             }
             if (InvManager.Instance.CurrentGun != null)
             {

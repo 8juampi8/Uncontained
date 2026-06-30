@@ -7,16 +7,15 @@ public class Movement_player : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Camera cam;
-    [SerializeField] private AudioClip walkAudio;
+    [SerializeField] private AudioSource footstepsSource;
 
     private Vector3 mousePos;
 
     private bool isMoving;
 
-
     void Start()
     {
-
+        AudioManager.Instance.SetFootstepsSource(GetComponent<AudioSource>());
     }
 
     void Update()
@@ -26,15 +25,16 @@ public class Movement_player : MonoBehaviour
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        isMoving = moveX != 0 || moveY != 0;
+        bool isMoving = Time.timeScale > 0 && moveX != 0 || moveY != 0;
 
-        if (isMoving)
+        if (isMoving && !footstepsSource.isPlaying)
         {
-            AudioManager.Instance.PlaySFX(walkAudio);
+            footstepsSource.loop = true;
+            footstepsSource.Play();
         }
-        else
+        else if (!isMoving && footstepsSource.isPlaying)
         {
-            return;
+            footstepsSource.Stop();
         }
     }
 

@@ -98,14 +98,7 @@ public class InvManager : MonoBehaviour
         currentGun = null;
         isEquipped = false;
 
-        player = GameObject.FindWithTag("Player");
-
-        if (player == null) return;
-
-        animator = player.GetComponent<Animator>();
-        audioManager = player.GetComponent<AudioManager>();
-
-        if (SceneManager.GetActiveScene().name == "Level 1" || SceneManager.GetActiveScene().name == "Tutorial")
+        if (SceneManager.GetActiveScene().name == "Menu")
         {
             smallAmmo = 0;
             shotgunAmmo = 0;
@@ -113,8 +106,17 @@ public class InvManager : MonoBehaviour
 
             slotItem = null;
 
+            Debug.Log(slotItem);
+
             return;
         }
+
+        player = GameObject.FindWithTag("Player");
+
+        if (player == null) return;
+
+        animator = player.GetComponent<Animator>();
+        audioManager = player.GetComponent<AudioManager>();
 
         EquipGun();
     }

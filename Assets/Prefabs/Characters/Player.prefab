@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Movement_player
   rb: {fileID: 8903048847353405809}
   cam: {fileID: 0}
-  walkAudio: {fileID: 8300000, guid: 9340a3e24326d144d8a6cbafe1529aed, type: 3}
+  footstepsSource: {fileID: 8335012604583236615}
 --- !u!114 &4385855970214506266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,9 +246,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: f6d465915d819d04eb1852e9ac56a5fc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

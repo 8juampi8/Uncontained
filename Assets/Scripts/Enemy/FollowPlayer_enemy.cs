@@ -18,6 +18,7 @@ public class FollowPlayer_enemy : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         silenceHab = player.GetComponent<SilenceHab_player>();
+        // AudioManager.Instance.SetEnemySource(GetComponent<AudioSource>());
     }
 
     void Update()

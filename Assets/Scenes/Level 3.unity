@@ -459,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 5803355697542321436, guid: e8983eab2f56cbb4f90cd157b1177360, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8922534567621697489, guid: a494d9c51570ff94f8c0335cfdf8c9de, type: 3}
     - target: {fileID: 5803355697542321436, guid: e8983eab2f56cbb4f90cd157b1177360, type: 3}
       propertyPath: keyCard
       value: 
@@ -3969,11 +3969,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1389206257048259564, guid: e52af77fdb03268489f9dae83d60abee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.0690727
+      value: 6.1535
       objectReference: {fileID: 0}
     - target: {fileID: 1389206257048259564, guid: e52af77fdb03268489f9dae83d60abee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.4817433
+      value: -5.4422
       objectReference: {fileID: 0}
     - target: {fileID: 1389206257048259564, guid: e52af77fdb03268489f9dae83d60abee, type: 3}
       propertyPath: m_LocalPosition.z
