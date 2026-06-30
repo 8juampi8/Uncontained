@@ -28,6 +28,7 @@ public class Combat_player : MonoBehaviour
                     InvManager.Instance.TriggerShootAnimation();
 
                     InvManager.Instance.CurrentGun.Shoot();
+                    AudioManager.Instance.PlaySFX(InvManager.Instance.ShootSound);
                 }
                 else
                 {

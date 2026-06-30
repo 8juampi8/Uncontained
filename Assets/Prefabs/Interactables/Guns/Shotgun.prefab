@@ -263,6 +263,8 @@ MonoBehaviour:
   shootCooldown: 1.25
   maxCharger: 2
   shootSound: {fileID: 8300000, guid: 639fcaa4fac2eac40bdbd6fd3370964d, type: 3}
+  reloadSound: {fileID: 8300000, guid: 7ed1cbc682276f541a674c8ad8b9797d, type: 3}
+  myType: 1
 --- !u!1 &4072051952653767348
 GameObject:
   m_ObjectHideFlags: 0

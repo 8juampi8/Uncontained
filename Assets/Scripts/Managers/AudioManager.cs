@@ -43,4 +43,8 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.volume = volume;
     }
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
 }

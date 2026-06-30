@@ -17,15 +17,27 @@ public class InvManager : MonoBehaviour
     private GameObject obj;
     public GameObject Obj => obj;
 
+    //AudioManager
+    private AudioManager audioManager;
+    public AudioManager Audio => audioManager;
+
+    //Sonido de disparo
+    private AudioClip shootSound;
+    public AudioClip ShootSound => shootSound;
+
+    //Si esta equipado o no
     private bool isEquipped = false;
     public bool IsEquipped => isEquipped;
 
+    //Arma actual
     private Guns_gun currentGun;
     public Guns_gun CurrentGun => currentGun;
 
+    //Cargador
     private int savedCharger = 0;
     public int SavedCharger => savedCharger;
 
+    //Municiones
     private int smallAmmo = 0;
     public int SmallAmmo => smallAmmo;
 
@@ -35,16 +47,14 @@ public class InvManager : MonoBehaviour
     private int rifleAmmo = 0;
     public int RifleAmmo => rifleAmmo;
 
+
     private Animator animator;
 
     private GameObject player;
 
     private GameObject cannon;
 
-    private AudioManager audioManager;
-    public AudioManager Audio => audioManager;
-
-    private AudioClip shootSound;
+    
 
     void Awake()
     {
@@ -185,6 +195,7 @@ public class InvManager : MonoBehaviour
         currentGun.setAmmo(GetGunScript(slotItem).GunCharger);
         currentGun.setCannon(cannon);
         currentGun.setAmmo(savedCharger);
+        shootSound = currentGun.ShootSound;
 
         GameManager.Instance.UpdateAmmo();
         GameManager.Instance.UpdateMoreAmmo();

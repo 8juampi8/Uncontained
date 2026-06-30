@@ -665,4 +665,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9190d6666ccf341a85b879439c096f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Flashlight
-  flashlight: {fileID: 0}
+  flashlight: {fileID: 8300000, guid: 625fd5c63309db7438937576bd7092df, type: 3}

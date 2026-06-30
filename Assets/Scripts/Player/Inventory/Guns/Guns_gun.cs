@@ -8,9 +8,12 @@ public class Guns_gun : MonoBehaviour
     protected float shootTimer;
     [SerializeField] protected int maxCharger;
     [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip reloadSound;
     [SerializeField] private WeaponType myType;
 
     public enum WeaponType { Pistol, Shotgun, SMG, Rifle }
+
+    public AudioClip ShootSound=> shootSound;
 
     public WeaponType MyType => myType;
     public int MaxCharger => maxCharger;
@@ -94,5 +97,6 @@ public class Guns_gun : MonoBehaviour
 
         GameManager.Instance.UpdateAmmo();
         GameManager.Instance.UpdateMoreAmmo();
+        AudioManager.Instance.PlaySFX(reloadSound);
     }
 }
