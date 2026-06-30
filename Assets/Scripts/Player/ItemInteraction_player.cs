@@ -86,7 +86,7 @@ public class ItemInteraction_player : MonoBehaviour
 
                     break;
                 case "Button":
-                    Button btnEvent = GameObject.FindWithTag("ButtonEvent").GetComponent<Button>();
+                    ButtonEvnt btnEvent = GameObject.FindWithTag("ButtonEvent").GetComponent<ButtonEvnt>();
                     btnEvent.StartCount();
 
                     break;

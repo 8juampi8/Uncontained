@@ -193,8 +193,6 @@ public class InvManager : MonoBehaviour
 
         currentGun.setCannon(cannon);
         currentGun.setAmmo(GetGunScript(slotItem).GunCharger);
-        currentGun.setCannon(cannon);
-        currentGun.setAmmo(savedCharger);
         shootSound = currentGun.ShootSound;
 
         GameManager.Instance.UpdateAmmo();
