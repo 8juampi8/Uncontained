@@ -98,7 +98,7 @@ public class InvManager : MonoBehaviour
         currentGun = null;
         isEquipped = false;
 
-        if (SceneManager.GetActiveScene().name == "Menu")
+        if (SceneManager.GetActiveScene().name == "Menu" || SceneManager.GetActiveScene().name == "Level 1")
         {
             smallAmmo = 0;
             shotgunAmmo = 0;
